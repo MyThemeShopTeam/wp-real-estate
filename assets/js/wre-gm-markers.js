@@ -144,6 +144,7 @@
 			infoboxOptions = {
 				content: '<div class="map-marker-wrapper">' +
 							'<div class="map-marker-container">' +
+								'<div class="close-infobox"><i class="wre-icon-close"></i></div>' +
 								'<div class="arrow-down"></div>' +
 								'<a href="' + markerData[i].permalink + '">' +
 									'<img width="80" src="' + markerData[i].thumbnail + '" />' +
@@ -158,17 +159,26 @@
 							'</div>' +
 						'</div>',
 				disableAutoPan: false,
-				pixelOffset: new google.maps.Size(-33, -90),
+				pixelOffset: new google.maps.Size(-33, -70),
 				zIndex: null,
 				isHidden: true,
 				alignBottom: true,
-				closeBoxURL: wre_map_data.images.close_infobox,
+				closeBoxURL: '',
 				infoBoxClearance: new google.maps.Size(25, 25)
 			};
 
 			newMarkers.push(marker);
 
 			newMarkers[i].infobox = new InfoBox(infoboxOptions);
+
+			google.maps.event.addListener(newMarkers[i].infobox, 'domready', function(e) {
+				var current_infobox = jQuery(this)[0];
+				jQuery('.close-infobox').on('click', function(){
+					current_infobox.hide();
+					map.setCenter(current_infobox.getPosition());
+					map.panBy(0, -175);
+				});
+			});
 
 			google.maps.event.addListener(marker, 'click', (function (marker, i) {
 				return function () {
@@ -188,7 +198,6 @@
 			google.maps.event.addListener(map, 'click', function () {
 				jQuery('.infoBox').hide();
 			});
-
 			// Extend map bounds for this marker
 			bounds.extend(markerData[i].latLng);
 

@@ -35,7 +35,6 @@ class WRE_Maps_Shortcodes {
 			$listings_data = array();
 			$listings_data['images'] = array(
 				'green_marker' => WRE_PLUGIN_URL . 'assets/images/wre-default-marker.png',
-				'close_infobox' => WRE_PLUGIN_URL . 'assets/images/wre-close-infobox.png',
 			);
 			wp_localize_script('wre-gm-markers-js', 'wre_map_data', apply_filters('wre_localized_script', $listings_data));
 		}

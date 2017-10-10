@@ -17,7 +17,7 @@ $status = wre_get_status();
 	<a href="<?php esc_url( the_permalink() ); ?>" title="<?php esc_attr( the_title() ); ?>">
 
 		<?php if( $status ) { ?>
-				<span style="background:#1e73be; color:#ffffff" class="status <?php echo esc_attr( $status['status'] ); ?>">
+				<span class="status <?php echo esc_attr( strtolower( str_replace( ' ', '-', $status['status']) ) ); ?>">
 					<i class="wre-icon-house"></i>
 					<?php echo esc_html( $status['status'] ); ?>
 				</span>

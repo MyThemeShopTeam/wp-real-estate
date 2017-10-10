@@ -384,14 +384,15 @@ form#wre_contact_form .button-primary:hover {
 	box-shadow: none;
 }
 .wre-items li .status {
-	background: rgba(255, 255, 255, 0.9) none repeat scroll 0 0;
+	background: #1e73be;
 	bottom: 20px;
-	color: #222;
+	color: #fff;
 	font-size: 14px;
 	line-height: 28px;
 	padding: 3px 10px;
 	position: absolute;
 }
+.wre-items li .status.sold { background: #dd3333; }
 .wre-items li .status i {
 	display: inline-block;
 	padding: 0;
@@ -1573,67 +1574,67 @@ form#wre_contact_form .button-primary:hover {
 	vertical-align: bottom;
 	line-height: 1.5;
 }
-.wre-icon-tick-2:before { content: '\21'; } /* '!' */
-.wre-icon-tick-7:before { content: '\22'; } /* '&quot;' */
-.wre-icon-tick-1:before { content: '\23'; } /* '#' */
-.wre-icon-tick-4:before { content: '\24'; } /* '$' */
-.wre-icon-tick-5:before { content: '\25'; } /* '%' */
-.wre-icon-tick-3:before { content: '\26'; } /* '&amp;' */
-.wre-icon-tick-6:before { content: '\27'; } /* ''' */
-.wre-icon-bed-4:before { content: '\28'; } /* '(' */
-.wre-icon-bed-3:before { content: '\29'; } /* ')' */
-.wre-icon-bed-1:before { content: '\2a'; } /* '*' */
-.wre-icon-bed-7:before { content: '\2b'; } /* '+' */
-.wre-icon-bed-2:before { content: '\2c'; } /* ',' */
-.wre-icon-bed-5:before { content: '\2d'; } /* '-' */
-.wre-icon-bed-6:before { content: '\2e'; } /* '.' */
-.wre-icon-bath-1:before { content: '\30'; } /* '0' */
-.wre-icon-bath-2:before { content: '\2f'; } /* '/' */
-.wre-icon-bath-3:before { content: '\31'; } /* '1' */
-.wre-icon-bath-4:before { content: '\32'; } /* '2' */
-.wre-icon-bath-5:before { content: '\33'; } /* '3' */
-.wre-icon-bath-6:before { content: '\34'; } /* '4' */
-.wre-icon-bath-7:before { content: '\35'; } /* '5' */
-.wre-icon-car-1:before { content: '\37'; } /* '7' */
-.wre-icon-car-2:before { content: '\36'; } /* '6' */
-.wre-icon-car-3:before { content: '\38'; } /* '8' */
-.wre-icon-car-4:before { content: '\39'; } /* '9' */
-.wre-icon-car-5:before { content: '\3a'; } /* ':' */
-.wre-icon-car-6:before { content: '\3b'; } /* ';' */
-.wre-icon-car-7:before { content: '\3c'; } /* '&lt;' */
-.wre-icon-arrow-1:before { content: '\3d'; } /* '=' */
-.wre-icon-arrow-2:before { content: '\3e'; } /* '&gt;' */
-.wre-icon-arrow-3:before { content: '\3f'; } /* '?' */
-.wre-icon-arrow-4:before { content: '\40'; } /* '@' */
-.wre-icon-arrow-5:before { content: '\41'; } /* 'A' */
-.wre-icon-arrow-6:before { content: '\42'; } /* 'B' */
-.wre-icon-arrow-7:before { content: '\43'; } /* 'C' */
-.wre-icon-auction-1:before { content: '\44'; } /* 'D' */
-.wre-icon-auction-2:before { content: '\45'; } /* 'E' */
-.wre-icon-auction-3:before { content: '\46'; } /* 'F' */
-.wre-icon-sold-1:before { content: '\47'; } /* 'G' */
-.wre-icon-sold-2:before { content: '\48'; } /* 'H' */
-.wre-icon-sold-3:before { content: '\49'; } /* 'I' */
-.wre-icon-house:before { content: '\4a'; } /* 'J' */
-.wre-icon-old-phone:before { content: '\4b'; } /* 'K' */
-.wre-icon-fax:before { content: '\4c'; } /* 'L' */
-.wre-icon-garbage:before { content: '\4d'; } /* 'M' */
-.wre-icon-website:before { content: '\4e'; } /* 'N' */
-.wre-icon-phone:before { content: '\4f'; } /* 'O' */
-.wre-icon-email:before { content: '\50'; } /* 'P' */
-.wre-icon-grid-view:before { content: '\51'; } /* 'Q' */
-.wre-icon-list-view:before { content: '\52'; } /* 'R' */
-.wre-icon-marker:before { content: '\53'; } /* 'S' */
-.wre-icon-star:before { content: '\54'; } /* 'T' */
-.wre-icon-edit:before { content: '\55'; } /* 'U' */
-.wre-icon-avatar:before { content: '\56'; } /* 'V' */
-.wre-icon-avatar-1:before { content: '\57'; } /* 'W' */
-.wre-icon-facebook:before { content: '\58'; } /* 'X' */
-.wre-icon-gplus:before { content: '\59'; } /* 'Y' */
-.wre-icon-twitter:before { content: '\5a'; } /* 'Z' */
-.wre-icon-linkedin:before { content: '\5b'; } /* '[' */
-.wre-icon-youtube:before { content: '\5c'; } /* '\' */
-.wre-icon-compare:before { content: '\5d'; font-size: 14px; } /* ']' */
-.wre-icon-close:before { content: '\5e'; font-size: 14px; } /* '^' */
-.wre-icon-pinterest:before { content: '\5f'; } /* '_' */
-.wre-icon-gmail:before { content: '\6d'; } /* 'm' */
+.wre-icon-tick-2:before { content: '\21'; }
+.wre-icon-tick-7:before { content: '\22'; }
+.wre-icon-tick-1:before { content: '\23'; }
+.wre-icon-tick-4:before { content: '\24'; }
+.wre-icon-tick-5:before { content: '\25'; }
+.wre-icon-tick-3:before { content: '\26'; }
+.wre-icon-tick-6:before { content: '\27'; }
+.wre-icon-bed-4:before { content: '\28'; }
+.wre-icon-bed-3:before { content: '\29'; }
+.wre-icon-bed-1:before { content: '\2a'; }
+.wre-icon-bed-7:before { content: '\2b'; }
+.wre-icon-bed-2:before { content: '\2c'; }
+.wre-icon-bed-5:before { content: '\2d'; }
+.wre-icon-bed-6:before { content: '\2e'; }
+.wre-icon-bath-1:before { content: '\30'; }
+.wre-icon-bath-2:before { content: '\2f'; }
+.wre-icon-bath-3:before { content: '\31'; }
+.wre-icon-bath-4:before { content: '\32'; }
+.wre-icon-bath-5:before { content: '\33'; }
+.wre-icon-bath-6:before { content: '\34'; }
+.wre-icon-bath-7:before { content: '\35'; }
+.wre-icon-car-1:before { content: '\37'; }
+.wre-icon-car-2:before { content: '\36'; }
+.wre-icon-car-3:before { content: '\38'; }
+.wre-icon-car-4:before { content: '\39'; }
+.wre-icon-car-5:before { content: '\3a'; }
+.wre-icon-car-6:before { content: '\3b'; }
+.wre-icon-car-7:before { content: '\3c'; }
+.wre-icon-arrow-1:before { content: '\3d'; }
+.wre-icon-arrow-2:before { content: '\3e'; }
+.wre-icon-arrow-3:before { content: '\3f'; }
+.wre-icon-arrow-4:before { content: '\40'; }
+.wre-icon-arrow-5:before { content: '\41'; }
+.wre-icon-arrow-6:before { content: '\42'; }
+.wre-icon-arrow-7:before { content: '\43'; }
+.wre-icon-auction-1:before { content: '\44'; }
+.wre-icon-auction-2:before { content: '\45'; }
+.wre-icon-auction-3:before { content: '\46'; }
+.wre-icon-sold-1:before { content: '\47'; }
+.wre-icon-sold-2:before { content: '\48'; }
+.wre-icon-sold-3:before { content: '\49'; }
+.wre-icon-house:before { content: '\4a'; }
+.wre-icon-old-phone:before { content: '\4b'; }
+.wre-icon-fax:before { content: '\4c'; }
+.wre-icon-garbage:before { content: '\4d'; }
+.wre-icon-website:before { content: '\4e'; }
+.wre-icon-phone:before { content: '\4f'; }
+.wre-icon-email:before { content: '\50'; }
+.wre-icon-grid-view:before { content: '\51'; }
+.wre-icon-list-view:before { content: '\52'; }
+.wre-icon-marker:before { content: '\53'; }
+.wre-icon-star:before { content: '\54'; }
+.wre-icon-edit:before { content: '\55'; }
+.wre-icon-avatar:before { content: '\56'; }
+.wre-icon-avatar-1:before { content: '\57'; }
+.wre-icon-facebook:before { content: '\58'; }
+.wre-icon-gplus:before { content: '\59'; }
+.wre-icon-twitter:before { content: '\5a'; }
+.wre-icon-linkedin:before { content: '\5b'; }
+.wre-icon-youtube:before { content: '\5c'; }
+.wre-icon-compare:before { content: '\5d'; font-size: 14px; }
+.wre-icon-close:before { content: '\61'; font-size: 14px; }
+.wre-icon-pinterest:before { content: '\5f'; }
+.wre-icon-gmail:before { content: '\6d'; }

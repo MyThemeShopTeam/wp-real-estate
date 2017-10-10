@@ -431,7 +431,7 @@ function wre_options_page() {
 	));
 
 	$cmb->add_field(array(
-		'name' => __('Agents Archive Listing Columns', 'wp-real-estate'),
+		'name' => __('Agents Archive Grid Columns', 'wp-real-estate'),
 		'desc' => __('The number of columns to display, when viewing agents in grid mode.', 'wp-real-estate'),
 		'id' => 'wre_archive_agents_columns',
 		'type' => 'select',
@@ -502,7 +502,7 @@ function wre_options_page() {
 	));
 
 	$cmb->add_field(array(
-		'name' => __('Single Agent Page Listing Columns', 'wp-real-estate'),
+		'name' => __('Single Agent Page Grid Columns', 'wp-real-estate'),
 		'desc' => __('The number of columns to display, when viewing agent listings in grid mode.', 'wp-real-estate'),
 		'id' => 'wre_agent_columns',
 		'type' => 'select',

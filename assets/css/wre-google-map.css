@@ -154,20 +154,6 @@
 	display: inline;
 }
 .wre-google-map .infoBox { width: auto !important; }
-.wre-google-map .infoBox img[src*="wre-close-infobox.png"] {
-	position: absolute !important;
-	z-index: 1001;
-	width: 32px;
-	height: 32px;
-	margin: 0;
-	top: -2px;
-	right: -2px;
-	background-color: rgba(255, 255, 255, 0.9);
-	opacity: .5;
-	-webkit-transition: all .2s;
-	transition: all .2s;
-}
-.wre-google-map .infoBox img[src*="wre-close-infobox.png"]:hover { opacity: 1; }
 .wre-google-map .map-marker-container {
 	max-width: 330px;
 	position: relative;
@@ -186,6 +172,19 @@
 	border: 14px solid transparent;
 	border-top-color: #fff;
 	border-top-color: rgba(255, 255, 255, 0.9);
+}
+.wre-google-map .map-marker-container .close-infobox {
+	position: absolute;
+	right: 10px;
+	top: 0;
+	cursor: pointer;
+	opacity: 0.5;
+}
+.wre-google-map .map-marker-container .close-infobox:hover { opacity: 1; }
+.wre-google-map .map-marker-container .close-infobox i:before {
+	font-size: 24px;
+	color: #444;
+	font-weight: normal;
 }
 .wre-google-map .map-marker-container .content {
 	margin: 5px 0 0;

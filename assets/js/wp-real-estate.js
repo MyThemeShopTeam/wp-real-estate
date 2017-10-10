@@ -114,7 +114,7 @@
 							null, // size is determined at runtime
 							null, // origin is 0,0
 							null, // anchor is bottom center of the scaled image
-							new google.maps.Size(50, 69)
+							new google.maps.Size(50, 50)
 						),
 					map: wre_map,
 					position: position

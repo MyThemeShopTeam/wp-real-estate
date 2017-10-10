@@ -47,8 +47,8 @@ function wre_enqueue_styles_scripts() {
 			$slider_localize_data = array(
 				'gallery_mode' => 'slide',
 				'auto_slide' => true,
-				'slide_delay' => 3000,
-				'slide_duration' => 1000,
+				'slide_delay' => 5000,
+				'slide_duration' => 1500,
 				'thumbs_shown' => 6,
 				'gallery_prev' => '<i class="prev wre-icon-arrow-2"></i>',
 				'gallery_next' => '<i class="next wre-icon-arrow-2"></i>',

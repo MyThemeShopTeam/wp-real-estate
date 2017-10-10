@@ -1,0 +1,197 @@
+body {
+	direction: rtl;
+	unicode-bidi: embed;
+}
+.wre-search-form .search-button { float: left; }
+.wre-search-form .search-text-wrap { float: right; }
+.wre-search-form .search-input { float: right; }
+.wre-search-form .search-text-wrap a.get-current-location  {
+	right: auto;
+	left: 5px;
+}
+.wre-search-form > div { float: right; }
+.wre-select-wrap select {
+	padding-right: 0.3em;
+	padding-left: 1.7em;
+}
+.wre-select-wrap::after {
+	right: auto;
+	left: 0.7em;
+}
+.wre-ordering { float: right; }
+.wre-view-switcher {
+	float: right;
+	margin: 0 30px 40px 0;
+}
+.wre-pagination { float: left; }
+.wre-pagination ul li {
+	float: right;
+	margin: 0 -2px 0 0;
+}
+.wre-pagination ul li a.prev, .wre-pagination ul li a.next { /* IE 9 */
+	-webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+	transform: rotate(180deg);
+}
+.wre-items li { float: right !important; }
+.wre-items li .image { float: right; }
+.wre-items li.compact .image {
+	margin-right: 0;
+	margin-left: 5%;
+}
+.wre-items li .summary {
+	float: left;
+	text-align: right;
+}
+.wre-single .title, .wre-items .title { text-align: right; }
+.wre-items li .glance > div {
+	float: right;
+	margin-left: 30px;
+	margin-right: 0;
+}
+.wre-single .glance { float: right; }
+.wre-single .glance > div {
+	float: right;
+	margin: 0 0 0 30px;
+}
+.wre-single .sizes > div {
+	float: right;
+	margin: 0 0 0 30px;
+}
+.wre-single .int-features, .wre-single .ext-features { float: right; }
+.wre-single .int-features {
+	margin-right: 0;
+	margin-left: 4%;
+}
+.wre.single .agent .avatar-wrap, .wre.single .agent .image {
+	float: right;
+	margin: 5px 0 10px 20px;
+}
+.wre.single .wre-sidebar .agent ul.contact, .wre .wre-sidebar .contact li, .wre .wre-sidebar .contact li i {
+	float: right;
+}
+.wre ul.contact li i:before {
+	margin-left: 15px;
+	margin-right: 0;
+}
+.wre-items li .status i:before {
+	margin-right: 0;
+	margin-left: 5px;
+}
+.wre-social-icons-wrapper {
+	float: right;
+	padding-right: 0;
+	padding-left: 15px;
+}
+.wre-single.agent .agent-details-wrapper {
+	float: right;
+	padding-right: 15px;
+	padding-left: 0;
+}
+.wre-single.agent .avatar-wrap { float: right; }
+.wre-single.agent .wre-social li { margin: 0 0 0 8px; }
+.wre-single .int-features [class^="wre-icon-"]:before, .wre-single .int-features [class*=" wre-icon-"]:before,.wre-single .ext-features [class^="wre-icon-"]:before, .wre-single .ext-features [class*=" wre-icon-"]:before {
+	margin-right: 0;
+	margin-left: 10px;
+}
+.wre-single .glance .count {
+	margin-right: 0;
+	margin-left: 7px;
+}
+.wre-items li .glance .count {
+	margin-right: 0;
+	margin-left: 7px;
+}
+.agents-wrapper.list-view .agent-image-wrapper, .agents-wrapper.list-view .wre-agent-details { float: right; }
+.wre-social-icons-wrapper .wre-social li:last-child { margin-left: 0; }
+.wre-single.agent .wre-social-icons-wrapper {
+	float: right;
+	padding-right: 0;
+	padding-left: 15px;
+}
+.wre-items .summary .logo {
+	float: right;
+	margin: 5px 0 5px 15px
+}
+.wre-compare-listings .wre-compare-lists li { float: right; }
+.wre-compare-listings .wre-compare-lists li a {
+	right: auto;
+	left: 10px;
+}
+.wre-compare-listings a.compare-lists-btn { float: right; }
+.wre-items li .compare-wrapper span {
+	float: right;
+	margin-right: 0;
+	margin-left: 5px;
+}
+.wre-compare-wrapper .listing-column { float: right; }
+.wre-google-map .map-marker-container img {
+	float: right;
+    margin: 0 0 0 15px;
+}
+.wre-google-map .map-marker-container .price { float: right; }
+.wre-google-map .infoBox img[src*="wre-close-infobox.png"] {
+	left: -2px;
+	right: auto;
+}
+/*
+ * WP Real Estate plugin by MyThemeShop
+ * https://wordpress.com/plugins/wp-real-estate/
+ */
+.wre-map-wrapper .search-panel {
+	right: 10px;
+	left: auto;
+}
+.wre-map-wrapper .map-controls {
+	left: 10px;
+	right: auto;
+	text-align: left;
+}
+.wre-map-wrapper .search-panel input.button {
+	left: 0;
+	right: auto;
+	margin: 0 0 0 8px;
+}
+.wre-map-wrapper .search-panel input.search-input {	padding: 5px 10px 5px 35px }
+.wre-share-networks .share-label { float: right; }
+.wre-share-networks a {
+	float: right;
+	padding: 14px 0px 13px 15px;
+	border-left: 1px solid #dedede;
+	border-right: none;
+}
+.wre-share-networks a:last-child { border-left: none; }
+.wre-share-networks a i { margin: 0 12px 0 5px; }
+@media (min-width: 768px) {
+	.wre .main-wrap {
+		float: right;
+		margin-left: 6%;
+		margin-right: 0;
+	}
+	.wre .wre-single .wre-sidebar { float: left; }
+	.wre-search-form.display-both .purpose-wrap {
+		float: right;
+		margin-right: 0;
+		margin-left: 2%;
+	}
+	.agents-wrapper.agents-lists.grid-view .wre-col { float: right; }
+	.agents-wrapper.agents-lists.grid-view .clear { clear: right; }
+	.wre-items.grid-view li.col-2:nth-child(2n+1),
+	.wre-items.grid-view li.col-3:nth-child(3n+1),
+	.wre-items.grid-view li.col-4:nth-child(4n+1) {
+		clear: right;
+	}
+}
+@media (max-width: 767px) {
+	.wre-social-icons-wrapper { padding-left: 0; }
+	.wre-single.agent .agent-details-wrapper { padding-right: 0; }
+	.wre-map-wrapper .map-controls {
+		left: 0;
+		right: 0;
+		text-align: center;
+	}
+	.wre-map-wrapper .search-panel {
+		left: 5px;
+		right: 5px;
+	}
+	.wre-google-map .map-marker-container img { margin-left: 0; }
+}

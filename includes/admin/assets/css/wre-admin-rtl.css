@@ -1,0 +1,19 @@
+/*
+ * WP Real Estate plugin by MyThemeShop
+ * https://wordpress.com/plugins/wp-real-estate/
+ */
+.wre h2.hndle .dashicons {
+	margin-right: 0;
+	margin-left: 8px;
+}
+.wre #wre-find {
+	float: right;
+	margin-left: 10px;
+	margin-right: 0;
+}
+.wre #wre-reset { float: right; }
+#cmb2-metabox-_wre_listing_open .cmb-repeatable-group .cmb-group-title {
+	padding-right: 40px;
+	padding-left: 10px;
+}
+.wre .cmb2-wrap input[type="email"], .wre .cmb2-wrap input[type="number"] { text-align: right; }

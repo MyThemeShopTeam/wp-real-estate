@@ -1,0 +1,2224 @@
+# Copyright (C) 2016 MyThemeShop
+# This file is distributed under the same license as the MyThemeShop Base Theme package.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Real Estate by MyThemeShop\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/style\n"
+"POT-Creation-Date: 2017-10-08 03:20+0530\n"
+"PO-Revision-Date: 2016-11-16 21:35+0530\n"
+"Last-Translator: MyThemeShop <support-team@mythemeshop.com>\n"
+"Language-Team: MyThemeShop\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;_x\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../includes/admin/class-wre-admin-agent-columns.php:34
+#: ../includes/admin/class-wre-admin-options.php:11
+#: ../includes/class-wre-post-types.php:64
+msgid "Listings"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-agent-columns.php:35
+msgid "Mobile"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-agent-columns.php:36
+#: ../includes/class-wre-agent.php:42
+msgid "Office Phone"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-columns.php:96
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:142
+msgid "Type"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-columns.php:97
+#: ../includes/admin/class-wre-admin.php:220
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:124
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:597
+msgid "Price"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-columns.php:98
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:150
+msgid "Status"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-columns.php:99
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:158
+msgid "Purpose"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-columns.php:100
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:598
+msgid "Address"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-columns.php:101
+#: ../includes/admin/class-wre-admin-enquiry-columns.php:73
+#: ../includes/admin/class-wre-admin.php:122
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:582
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:601
+msgid "Agent"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-columns.php:102
+#: ../includes/class-wre-post-types.php:111
+msgid "Enquiries"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-columns.php:103
+msgid "ID"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-columns.php:276
+#: ../includes/admin/class-wre-admin-enquiry-columns.php:192
+#, php-format
+msgid "Show all %s"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-enquiry-columns.php:72
+#: ../includes/admin/class-wre-admin-options.php:10
+#: ../includes/admin/class-wre-admin.php:105
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:35
+#: ../includes/class-wre-post-types.php:64
+msgid "Listing"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-enquiry-columns.php:74
+msgid "From Name"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-enquiry-columns.php:75
+msgid "From Email"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-enquiry-columns.php:89
+msgid "Edit Listing"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-menu.php:34
+#: ../includes/admin/class-wre-admin-options.php:51
+msgid "Agents"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-metaboxes.php:52
+#: ../includes/admin/class-wre-admin-metaboxes.php:60
+msgid "Marker Image"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-metaboxes.php:61
+msgid "Upload an image or enter a URL."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-metaboxes.php:65
+msgid "Add Image"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:29
+msgid "General"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:39
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:83
+msgid "Google Maps"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:87
+msgid "API Key"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:88
+#, php-format
+msgid ""
+"A Google Maps API Key is required to be able to show the maps. It's free and "
+"you can get yours %s."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:88
+msgid ""
+"You can add a configurable map to pinpoint your listings on the front end "
+"using [wre_map] shortcode."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:93
+msgid "Map Zoom"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:103
+msgid "Map Height"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:119
+#: ../includes/admin/class-wre-admin.php:139
+#: ../includes/admin/class-wre-admin.php:465
+#: ../includes/class-wre-search.php:89 ../includes/wre-widgets.php:143
+msgid "Search"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:123
+msgid "Distance Measurement"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:124
+msgid "These settings relate to the [wre_search] shortcode."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:125
+#: ../includes/admin/class-wre-admin.php:168 ../includes/wre-widgets.php:307
+msgid "Choose miles or kilometers for the radius."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:129
+#: ../includes/admin/class-wre-admin.php:164 ../includes/wre-widgets.php:304
+msgid "Miles"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:130
+#: ../includes/admin/class-wre-admin.php:165 ../includes/wre-widgets.php:305
+msgid "Kilometers"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:135
+#: ../includes/admin/class-wre-admin.php:172
+msgid "Radius"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:136
+#: ../includes/admin/class-wre-admin.php:174 ../includes/wre-widgets.php:313
+msgid ""
+"Show listings that are within this distance (mi or km as selected above)."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:146
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:526
+msgid "Country"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:147
+#, php-format
+msgid "Country name or two letter %s country code."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:161
+msgid "Listing Setup"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:165
+msgid "Rent / Sell"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:166
+msgid "Are your listings only for rent or only for sale? Or both?"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:171
+#: ../includes/admin/class-wre-admin.php:392
+msgid "Both"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:172
+msgid "Rent Only"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:173
+msgid "Sell Only"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:177
+msgid "Default Listing Type"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:178
+msgid ""
+"If the above is set to \"Both\", which type would you like to display as the "
+"default on the listings page?"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:182
+#: ../includes/admin/class-wre-admin.php:394
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:163
+msgid "Sell"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:183
+#: ../includes/admin/class-wre-admin.php:393
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:164
+#: ../includes/class-wre-search.php:130
+msgid "Rent"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:187
+msgid "Listings Page"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:188
+msgid "The main page to display your listings."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:194
+msgid "Compare Listings Page"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:195
+msgid ""
+"The page to display compare listings data. This page must have an "
+"[wre_compare_listings] shortcode."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:202
+msgid "Force Listings Page Title"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:203
+msgid ""
+"If your page title is not displaying correctly, you can force the page title "
+"here."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:203
+msgid ""
+"(Some themes may be using incorrect template tags to display the archive "
+"title. This forces the title within the page)"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:208
+#: ../includes/admin/class-wre-admin-options.php:404
+#: ../includes/admin/class-wre-admin-options.php:466
+#: ../includes/admin/class-wre-admin-options.php:488
+#: ../includes/admin/class-wre-admin-options.php:579
+#: ../includes/admin/class-wre-admin-options.php:611
+#: ../includes/admin/class-wre-admin.php:153
+msgid "No"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:209
+#: ../includes/admin/class-wre-admin-options.php:403
+#: ../includes/admin/class-wre-admin-options.php:465
+#: ../includes/admin/class-wre-admin-options.php:487
+#: ../includes/admin/class-wre-admin-options.php:578
+#: ../includes/admin/class-wre-admin-options.php:610
+#: ../includes/admin/class-wre-admin.php:152
+msgid "Yes"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:214
+msgid "Single Listing URL"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:215
+msgid "The single listing URL (or slug)."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:227
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:259
+#, php-format
+msgid "%s Features"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:231
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:310
+msgid "Internal Features"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:232
+msgid ""
+"Once Features have been added here, they are then available as checkboxes "
+"when adding or editing a listing."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:233
+msgid "Internal Features such as Open Fireplace, Gas Heating, Dishwasher etc."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:238
+#: ../includes/admin/class-wre-admin-options.php:248
+msgid "Add Feature"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:242
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:316
+msgid "External Features"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:243
+msgid "External Features such as Balcony, Shed, Outdoor Entertaining etc."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:257
+#, php-format
+msgid "%s Statuses"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:262
+msgid "Statuses"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:263
+msgid ""
+"Once Statuses have been added here, they are then available in the Status "
+"dropdown field when adding or editing a listing."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:263
+msgid "Statuses appear in a styled box over the listing's image."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:264
+msgid "Listing Statuses such as Under Offer, Sold, Available etc."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:269
+msgid "Add Status"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:282
+msgid "Contact Form Settings"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:286
+msgid "Email From"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:287
+msgid "The \"from\" address for all enquiry emails that are sent to Agents."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:291
+msgid ""
+"Contact form enquiries are sent directly to the selected Agent on that "
+"listing."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:294
+msgid "Email From Name"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:295
+msgid "The \"from\" name for all enquiry emails that are sent to Agents."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:301
+msgid "CC"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:302
+msgid "Extra email addresses that are CC'd on every enquiry (comma separated)."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:310
+msgid "BCC"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:311
+msgid ""
+"Extra email addresses that are BCC'd on every enquiry (comma separated)."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:325
+msgid "Contact Form Email"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:331
+msgid "Email Type"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:336
+msgid "HTML"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:337
+msgid "Plain Text"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:342
+msgid "Email Subject"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:346
+#: ../includes/class-wre-contact-form.php:357
+#: ../includes/class-wre-install.php:283
+msgid "New enquiry on listing #{listing_id}"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:349
+msgid "Email Message"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:350
+msgid ""
+"Content of the email that is sent to the agent (and other email addresses "
+"above). Available tags are:<br>{agent_name}<br>{listing_title}"
+"<br>{listing_id}<br>{enquiry_name}<br>{enquiry_email}<br>{enquiry_phone}"
+"<br>{enquiry_message}<br>"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:360
+#: ../includes/class-wre-contact-form.php:368
+#: ../includes/class-wre-install.php:272
+msgid "Hi {agent_name},"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:361
+#: ../includes/class-wre-contact-form.php:369
+#: ../includes/class-wre-install.php:273
+msgid "There has been a new enquiry on <strong>{listing_title}</strong>"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:363
+#: ../includes/class-wre-contact-form.php:370
+#: ../includes/class-wre-install.php:275
+msgid "Name: {enquiry_name}"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:364
+#: ../includes/class-wre-contact-form.php:371
+#: ../includes/class-wre-install.php:276
+msgid "Email: {enquiry_email}"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:365
+#: ../includes/class-wre-contact-form.php:372
+#: ../includes/class-wre-install.php:277
+msgid "Phone: {enquiry_phone}"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:366
+#: ../includes/class-wre-contact-form.php:373
+#: ../includes/class-wre-install.php:278
+msgid "Message: {enquiry_message}"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:378
+msgid "Contact Form Messages"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:384
+msgid "Success Message"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:385
+msgid ""
+"The message that is displayed to users upon successfully sending a message."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:388
+#: ../includes/class-wre-install.php:286
+msgid "Thank you, the agent will be in touch with you soon."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:391
+msgid "Error Message"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:392
+msgid "The message that is displayed if there is an error sending the message."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:395
+#: ../includes/class-wre-install.php:285
+msgid "There was an error. Please try again."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:398
+msgid "Include Error Code"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:399
+msgid ""
+"Should the error code be shown with the error. Can be helpful for "
+"troubleshooting."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:417
+msgid "Agents Archive"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:422
+msgid "Agents Archive Listing Style"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:428
+#: ../includes/admin/class-wre-admin-options.php:499
+msgid "Grid Mode"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:429
+#: ../includes/admin/class-wre-admin-options.php:500
+msgid "List Mode"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:434
+msgid "Agents Archive Listing Columns"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:435
+#: ../includes/wre-widgets.php:487
+msgid "The number of columns to display, when viewing agents in grid mode."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:440
+#: ../includes/admin/class-wre-admin-options.php:511
+#: ../includes/admin/class-wre-admin.php:189
+#: ../includes/admin/class-wre-admin.php:288 ../includes/wre-widgets.php:327
+#: ../includes/wre-widgets.php:483
+msgid "2 columns"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:441
+#: ../includes/admin/class-wre-admin-options.php:512
+#: ../includes/admin/class-wre-admin.php:190
+#: ../includes/admin/class-wre-admin.php:289 ../includes/wre-widgets.php:328
+#: ../includes/wre-widgets.php:484
+msgid "3 columns"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:442
+#: ../includes/admin/class-wre-admin-options.php:513
+#: ../includes/admin/class-wre-admin.php:191
+#: ../includes/admin/class-wre-admin.php:290 ../includes/wre-widgets.php:329
+#: ../includes/wre-widgets.php:485
+msgid "4 columns"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:447
+msgid "Agents Archive Number of Agents"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:448
+msgid "The max number of agents to show"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:448
+msgid "Could show less than this if not enough agents are found."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:459
+msgid "Agents Archive Allow Pagination"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:476
+msgid "Agent Single"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:481
+msgid "Show Agent Listings"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:482
+msgid "Should the agent listings be shown below the content."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:493
+msgid "Single Agent Page Listing Style"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:505
+msgid "Single Agent Page Listing Columns"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:506
+msgid ""
+"The number of columns to display, when viewing agent listings in grid mode."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:518
+msgid "Single Agent Page Max Listings"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:519
+msgid "The max number of agent listings to show"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:519
+msgid "Could show less than this if not enough agent listings are found."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:530
+msgid "Single Agent Page"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:531
+msgid "Single agent page, used when Theme Compatibility is enabled."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:546
+msgid "Template HTML"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:550
+msgid "Opening HTML Tag(s)"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:551
+msgid ""
+"Used for theme compatability, this option will override the opening HTML for "
+"all Listings pages."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:551
+#: ../includes/admin/class-wre-admin-options.php:563
+msgid "This can help you to match the HTML with your current theme."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:561
+msgid "Closing HTML Tag(s)"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:562
+msgid ""
+"Used for theme compatability, this option will override the closing HTML for "
+"all Listings pages."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:572
+msgid "Hide In-content sidebar page"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:573
+msgid "Used for removing in-content sidebar on single-listing page."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:583
+msgid "Theme Compatibility"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:584
+msgid ""
+"If enabled, add [wre_archive_listings], [wre_archive_agencies] & "
+"[wre_archive_agent] shortcode on there respective pages and remove it if "
+"disabled."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:589
+msgid "Enabled"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:590
+msgid "Disabled"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:600
+msgid "Uninstall"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:604
+msgid "Delete Data"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:605
+msgid "Should all plugin data be deleted upon uninstalling this plugin?"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:621
+msgid "Save Options"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:626
+msgid "Publish?"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:627
+msgid "Save Changes"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin-options.php:638
+msgid "WRE Settings"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:107
+msgid "The ID of the listing you want to display."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:113
+msgid "Select Agent"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:124
+msgid "Show a single agent"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:132
+msgid "Placeholder"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:133
+#: ../includes/class-wre-search.php:88
+msgid "Address, Suburb, Region, Zip or Landmark"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:134
+msgid "Text to display as the placeholder text in the text input"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:138
+msgid "Submit Button"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:140
+msgid "Text to display on the search button"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:144
+msgid "Exclude (Comma separated list of fields)"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:146
+msgid ""
+"Comma separated list of fields that you don't want to include on the search "
+"box."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:150
+msgid "Show Map"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:162
+msgid "Distance"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:178
+#: ../includes/admin/class-wre-admin.php:180
+#: ../includes/admin/class-wre-admin.php:278 ../includes/wre-widgets.php:319
+#: ../includes/wre-widgets.php:474
+msgid "List View"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:181
+#: ../includes/admin/class-wre-admin.php:279 ../includes/wre-widgets.php:320
+#: ../includes/wre-widgets.php:475
+msgid "Grid View"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:187
+msgid "Number of Columns"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:194 ../includes/wre-widgets.php:331
+msgid "The number of columns to display, when viewing listings in grid mode."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:198
+#: ../includes/admin/class-wre-admin.php:254
+msgid "Compact"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:200
+#: ../includes/admin/class-wre-admin.php:256
+#: ../includes/admin/class-wre-admin.php:304
+#: ../includes/admin/class-wre-admin.php:314
+#: ../includes/admin/class-wre-admin.php:324
+#: ../includes/admin/class-wre-admin.php:334 ../includes/wre-widgets.php:337
+#: ../includes/wre-widgets.php:494 ../includes/wre-widgets.php:503
+#: ../includes/wre-widgets.php:512 ../includes/wre-widgets.php:521
+msgid "True"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:201
+#: ../includes/admin/class-wre-admin.php:257
+#: ../includes/admin/class-wre-admin.php:305
+#: ../includes/admin/class-wre-admin.php:315
+#: ../includes/admin/class-wre-admin.php:325
+#: ../includes/admin/class-wre-admin.php:335 ../includes/wre-widgets.php:338
+#: ../includes/wre-widgets.php:495 ../includes/wre-widgets.php:504
+#: ../includes/wre-widgets.php:513 ../includes/wre-widgets.php:522
+msgid "False"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:207
+#: ../includes/admin/class-wre-admin.php:209
+#: ../includes/admin/class-wre-admin.php:235
+#: ../includes/admin/class-wre-admin.php:237
+#: ../includes/admin/class-wre-admin.php:372
+#: ../includes/admin/class-wre-admin.php:374
+msgid "Number of listings to show"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:216
+msgid "OrderBy"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:218
+msgid "Date"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:219
+msgid "Title"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:226
+msgid "Order"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:228
+msgid "Asc"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:229
+msgid "Desc"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:241
+msgid "Agent Id (only show listings by this agent ID)"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:244
+msgid "Show Listings of particular agent"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:248
+msgid "Listing Ids (only show these listings)"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:250
+msgid "Comma seperated ids of Listings to display on front-end"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:266
+msgid "View"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:268 ../includes/wre-widgets.php:465
+msgid "Lists"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:269 ../includes/wre-widgets.php:466
+msgid "Carousel"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:272
+msgid "Select option to display agents either in a carousel or listing view."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:276
+msgid "Agents View"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:285
+msgid "Agent Columns"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:287 ../includes/wre-widgets.php:482
+msgid "1 column"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:293
+msgid "The number of columns to display, when viewing agents in grid view."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:298 ../includes/wre-widgets.php:490
+msgid "Carousel Settings"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:302
+msgid "Autoplay"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:308 ../includes/wre-widgets.php:497
+msgid "If true, the Slider will automatically start to play."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:312
+msgid "Show Dots"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:318 ../includes/wre-widgets.php:506
+msgid "Show dots below the slider."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:322
+msgid "Controls"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:328 ../includes/wre-widgets.php:515
+msgid "If false, prev/next buttons will not be displayed."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:332
+msgid "Loop"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:338 ../includes/wre-widgets.php:524
+msgid ""
+"If false, will disable the ability to loop back to the beginning of the "
+"slide when on the last element."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:342
+msgid "How many agents to show at once."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:344 ../includes/wre-widgets.php:530
+msgid "How many agents to show at once if carousel option is selected above."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:348
+#: ../includes/admin/class-wre-admin.php:350
+msgid "Number of agents to show."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:354
+msgid "Select Status"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:363
+msgid "Select Type"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:378
+msgid "Include Ids (only show these listings)"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:380
+msgid "Comma seperated ids of Listings to display"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:384
+msgid "Exclude Ids (exclude these listings)"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:386
+msgid "Comma seperated ids of Listings to exclude"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:390
+msgid "Listings Purpose"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:400
+msgid "Listings Status"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:406
+msgid "Listings Type"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:412
+msgid "Relation"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:414
+msgid "AND"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:415
+msgid "OR"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:418
+msgid "This is the relationship between purpose, status and agent."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:423
+msgid "Agent Ids"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:425
+msgid ""
+"Comma separated list of Agent ids for showing only listings by those agents."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:431
+msgid "Map Settings"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:436
+msgid "Height (Height of the map in pixels.)"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:438
+msgid "Height of the map in pixels."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:443
+msgid "Fit"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:445
+#: ../includes/admin/class-wre-admin.php:467
+msgid "TRUE"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:446
+#: ../includes/admin/class-wre-admin.php:468
+msgid "FALSE"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:449
+msgid ""
+" This will automatically adjust center and zoom so that all listings fit "
+"within the map viewport."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:453
+msgid "Zoom (A number between 1-20)"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:455
+msgid "A number between 1-20. Only works if fit is set to false."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:459
+msgid "Center (Latitude and longitude of the center of the map)"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:461
+msgid "Comma seperated lat and lng. Only works if fit is set to false"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:471
+msgid " Show the search box or not on the map."
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:475
+msgid "Search Zoom (A number between 1-20)"
+msgstr ""
+
+#: ../includes/admin/class-wre-admin.php:477
+msgid "A number between 1-20. Only works if search is set to false."
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:66
+#, php-format
+msgid "%s Description"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:73
+msgid "Tagline"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:80
+msgid "Main Description"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:116
+#, php-format
+msgid "%s Details"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:125
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:170
+msgid "Numbers only."
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:135
+msgid "Suffix"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:136
+msgid "Optional text to add after the price. Such as p/w, per month or POA."
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:169
+msgid "Bedrooms"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:180
+msgid "Bathrooms"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:190
+msgid "Car Spaces"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:266
+msgid "Building Size"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:276
+msgid "Building Unit"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:280
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:301
+msgid "Squares"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:281
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:302
+msgid "Sq Mtr"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:282
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:303
+msgid "Sq Ft"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:287
+msgid "Land Size"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:297
+msgid "Land Unit"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:304
+msgid "Acres"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:305
+msgid "Hectares"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:380
+msgid "Images"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:387
+msgid "Image Gallery"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:388
+msgid ""
+"The first image will be used as the main feature image. Drag and drop to re-"
+"order."
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:393
+msgid "Add Images"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:417
+#, php-format
+msgid "%s Status"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:454
+#, php-format
+msgid "%s Address"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:462
+msgid "Find Address"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:468
+msgid "Type your address..."
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:472
+msgid "Displayed Address"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:481
+msgid "Street Number"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:490
+msgid "Street Name"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:499
+msgid "City / Town / Locality"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:508
+msgid "Zip / Postal Code"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:517
+msgid "State"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:535
+msgid "Latitude"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:544
+msgid "Longitude"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:574
+#, php-format
+msgid "%s Settings"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:591
+msgid "Hide Items"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:592
+msgid "Allows you to hide items on the front end, even if they are filled in."
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:599
+msgid "Map"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:600
+#: ../includes/class-wre-contact-form.php:146
+msgid "Contact Form"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:602
+msgid "Social Share"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:626
+msgid "Open For Inspection"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:637
+msgid "Open Time {#}"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:638
+msgid "Add Open Time"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:639
+msgid "Remove Time"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:647
+msgid "Day"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:653
+msgid "Start Time"
+msgstr ""
+
+#: ../includes/admin/metaboxes/class-wre-metaboxes.php:659
+msgid "End Time"
+msgstr ""
+
+#: ../includes/admin/metaboxes/functions.php:89
+msgid "No Agent"
+msgstr ""
+
+#: ../includes/admin/metaboxes/functions.php:145
+msgid "Find"
+msgstr ""
+
+#: ../includes/admin/metaboxes/functions.php:146
+msgid "Reset"
+msgstr ""
+
+#: ../includes/admin/metaboxes/functions.php:152
+msgid "Modify the marker's position by dragging it."
+msgstr ""
+
+#: ../includes/admin/metaboxes/functions.php:175
+msgid "Most Recent:"
+msgstr ""
+
+#: ../includes/admin/metaboxes/functions.php:175
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: ../includes/admin/metaboxes/functions.php:181
+msgid "Archive This Listing"
+msgstr ""
+
+#: ../includes/admin/metaboxes/functions.php:185
+msgid "This listing is archived."
+msgstr ""
+
+#: ../includes/admin/metaboxes/functions.php:185
+msgid "It is no longer visible on the front end."
+msgstr ""
+
+#: ../includes/admin/metaboxes/functions.php:185
+msgid "Hit the Publish button to un-archive it."
+msgstr ""
+
+#: ../includes/admin/metaboxes/functions.php:247
+msgid "This listing is now archived. It is no longer visible on the front end."
+msgstr ""
+
+#: ../includes/admin/metaboxes/functions.php:252
+msgid "There was an error archiving this listing"
+msgstr ""
+
+#: ../includes/class-wre-agent-rewrite.php:135
+msgid "No profile found or it's not available now!"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:34
+msgid "Agent Profile Information"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:37
+msgid "Title/Position"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:47
+msgid "Mobile/Cell Phone"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:52
+#: ../templates/single-listing/social-share.php:21
+msgid "Facebook"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:57
+#: ../templates/single-listing/social-share.php:25
+msgid "Twitter"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:62
+msgid "Google Plus"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:67
+msgid "LinkedIn"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:72
+msgid "YouTube"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:77
+#: ../includes/frontend/template-tags.php:692
+msgid "Specialties"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:82
+#: ../includes/frontend/template-tags.php:707
+msgid "Awards"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:188
+msgid "Change Current Image"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:188 ../includes/class-wre-agent.php:230
+msgid "Upload New Image"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:199
+msgid "Agent Profile Photo"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:208 ../includes/class-wre-agent.php:219
+msgid "Remove"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:212
+msgid "Edit"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:233
+msgid "Use External URL"
+msgstr ""
+
+#: ../includes/class-wre-agent.php:250
+msgid "Update Profile to save your changes."
+msgstr ""
+
+#: ../includes/class-wre-archive-listings.php:77
+#: ../includes/class-wre-map.php:177 ../includes/functions-general.php:319
+#: ../templates/archive-listing.php:52
+msgid "Sorry, no listings were found."
+msgstr ""
+
+#: ../includes/class-wre-compare-listings.php:166
+msgid "No Listings Found!"
+msgstr ""
+
+#: ../includes/class-wre-contact-form.php:97
+msgid "Security check failed."
+msgstr ""
+
+#: ../includes/class-wre-contact-form.php:164
+#: ../includes/class-wre-contact-form.php:173
+msgid "Anti spam field"
+msgstr ""
+
+#: ../includes/class-wre-contact-form.php:178
+msgid "Name*"
+msgstr ""
+
+#: ../includes/class-wre-contact-form.php:188
+msgid "Email*"
+msgstr ""
+
+#: ../includes/class-wre-contact-form.php:198
+msgid "Phone Number"
+msgstr ""
+
+#: ../includes/class-wre-contact-form.php:208
+msgid "Message*"
+msgstr ""
+
+#: ../includes/class-wre-contact-form.php:256
+#, php-format
+msgid "Enquiry on listing #%s"
+msgstr ""
+
+#: ../includes/class-wre-contact-form.php:297
+msgid "Contact Agent"
+msgstr ""
+
+#: ../includes/class-wre-install.php:421
+msgid "Success!"
+msgstr ""
+
+#: ../includes/class-wre-install.php:421
+msgid " A sample listing has been created: "
+msgstr ""
+
+#: ../includes/class-wre-install.php:422
+msgid "View First Listing"
+msgstr ""
+
+#: ../includes/class-wre-install.php:423
+msgid ""
+"Step 1. Please go through each tab below, configure the options and "
+"<strong>hit the save button</strong>."
+msgstr ""
+
+#: ../includes/class-wre-install.php:424
+msgid ""
+"Step 2. Add your first Listing by navigating to <strong>Listings > New "
+"Listing</strong>"
+msgstr ""
+
+#: ../includes/class-wre-map.php:198
+msgid "City, Street, Landmark..."
+msgstr ""
+
+#: ../includes/class-wre-map.php:209
+msgid "Roadmap"
+msgstr ""
+
+#: ../includes/class-wre-map.php:210
+msgid "Satellite"
+msgstr ""
+
+#: ../includes/class-wre-map.php:211
+msgid "Hybrid"
+msgstr ""
+
+#: ../includes/class-wre-map.php:212
+msgid "Terrain"
+msgstr ""
+
+#: ../includes/class-wre-map.php:215
+msgid "My Location"
+msgstr ""
+
+#: ../includes/class-wre-post-status.php:24
+msgid "Archive"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:45
+#: ../includes/class-wre-post-types.php:51
+#: ../includes/class-wre-post-types.php:57
+#: ../includes/class-wre-post-types.php:92
+#: ../includes/class-wre-post-types.php:98
+#: ../includes/class-wre-post-types.php:104
+#, php-format
+msgid "%2$s"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:46
+#: ../includes/class-wre-post-types.php:93
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:47
+#: ../includes/class-wre-post-types.php:94
+#, php-format
+msgid "New %1s"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:48
+#: ../includes/class-wre-post-types.php:95
+#, php-format
+msgid "Add New %1$s"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:49
+#: ../includes/class-wre-post-types.php:96
+#, php-format
+msgid "Edit %1$s"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:50
+#: ../includes/class-wre-post-types.php:97
+#, php-format
+msgid "New %1$s"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:52
+#: ../includes/class-wre-post-types.php:99
+#, php-format
+msgid "View %1$s"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:53
+#: ../includes/class-wre-post-types.php:100
+#, php-format
+msgid "Search %2$s"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:54
+#: ../includes/class-wre-post-types.php:101
+#, php-format
+msgid "No %2$s found"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:55
+#: ../includes/class-wre-post-types.php:102
+#, php-format
+msgid "No %2$s found in Trash"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:58
+#: ../includes/class-wre-post-types.php:105
+#, php-format
+msgid "Filter %2$s list"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:59
+#: ../includes/class-wre-post-types.php:106
+#, php-format
+msgid "%2$s list navigation"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:60
+#: ../includes/class-wre-post-types.php:107
+#, php-format
+msgid "%2$s list"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:111
+msgid "Enquiry"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:139
+#: ../includes/class-wre-post-types.php:140
+#: ../includes/class-wre-post-types.php:149
+msgid "Listing Type"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:141
+msgid "Search Listing Type"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:142
+msgid "All Types"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:143
+msgid "Parent Listing Type"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:144
+msgid "Parent Listing Type:"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:145
+msgid "Edit Listing Type"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:146
+msgid "Update Listing Type"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:147
+msgid "Add New Listing Type"
+msgstr ""
+
+#: ../includes/class-wre-post-types.php:148
+msgid "New Listing Type"
+msgstr ""
+
+#: ../includes/class-wre-roles.php:26
+msgid "WRE Agent"
+msgstr ""
+
+#: ../includes/class-wre-search.php:50
+msgid "Min Price"
+msgstr ""
+
+#: ../includes/class-wre-search.php:57
+msgid "Max Price"
+msgstr ""
+
+#: ../includes/class-wre-search.php:64
+msgid "Min Beds"
+msgstr ""
+
+#: ../includes/class-wre-search.php:71
+msgid "Max Beds"
+msgstr ""
+
+#: ../includes/class-wre-search.php:129
+msgid "Buy"
+msgstr ""
+
+#: ../includes/class-wre-search.php:146
+msgid "Get Current Location"
+msgstr ""
+
+#: ../includes/class-wre-shortcodes.php:308
+msgid "No agent found."
+msgstr ""
+
+#: ../includes/frontend/template-tags.php:280
+#, php-format
+msgid "Search Results %s"
+msgstr ""
+
+#: ../includes/frontend/template-tags.php:283
+#, php-format
+msgid "&nbsp;&ndash; Page %s"
+msgstr ""
+
+#: ../includes/frontend/template-tags.php:646
+#: ../includes/frontend/template-tags.php:852
+msgid "Agents Listings"
+msgstr ""
+
+#: ../includes/functions-general.php:414
+msgid "You have reached the maximum of four listings per comparison."
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:27
+msgid "Repeating Field Group using a Grid"
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:31
+#: ../includes/libraries/cmb2-grid/Test/Test.php:105
+msgid "Test Text"
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:32
+#: ../includes/libraries/cmb2-grid/Test/Test.php:38
+#: ../includes/libraries/cmb2-grid/Test/Test.php:106
+#: ../includes/libraries/cmb2-grid/Test/Test.php:112
+#: ../includes/libraries/cmb2-grid/Test/Test.php:118
+#: ../includes/libraries/cmb2-grid/Test/Test.php:124
+#: ../includes/libraries/cmb2-grid/Test/Test.php:130
+msgid "field description (optional)"
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:37
+#: ../includes/libraries/cmb2-grid/Test/Test.php:111
+msgid "Test Text Small"
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:48
+msgid "Entry {#}"
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:49
+msgid "Add Another Entry"
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:50
+msgid "Remove Entry"
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:55
+msgid "Entry Title"
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:60
+msgid "Description"
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:61
+msgid "Write a short description for this entry"
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:101
+msgid "Test Metabox using a Grid"
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:117
+msgid "Test Text Medium"
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:123
+msgid "Website URL"
+msgstr ""
+
+#: ../includes/libraries/cmb2-grid/Test/Test.php:129
+msgid "Test Text Email"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/code/cmb2_metatabs_options.php:1012
+msgid "Settings updated."
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:93
+msgid "Internet Doggies"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:97
+msgid "That's a Good Dog!"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:98
+msgid "What do you say when you see a dog on the internet?"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:103
+#: ../includes/libraries/cmb2-metatabs/example.php:124
+msgid "Repeated How Many Times?"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:104
+#: ../includes/libraries/cmb2-metatabs/example.php:125
+msgid "To the nearest multiple 3, how many times do you say it?"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:114
+msgid "Internet Kitties"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:118
+msgid "Nice kitty!"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:119
+msgid "What do you say when you see a cat on the internet?"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:135
+msgid "Eating for Good Health"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:139
+msgid "What is a healthy food?"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:140
+msgid "Examples: Apple, Ding Dong"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:145
+msgid "How Many Servings?"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:146
+msgid "How many times per day should you eat this?"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:156
+msgid "Foods to Avoid"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:160
+msgid "What is an unhealthy food?"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:161
+msgid "Examples: Apple, not Ding Dong"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:166
+msgid "How Many Pushups?"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:167
+msgid ""
+"To the nearest 1, how many pushups do you need to counter your bad decision?"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:177
+msgid "Judging"
+msgstr ""
+
+#: ../includes/libraries/cmb2-metatabs/example.php:183
+msgid "This example page offers no judgment on your choices."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/CMB2_Base.php:406
+#, php-format
+msgid ""
+"The \"%1$s\" field parameter has been deprecated in favor of the \"%1$s\" "
+"parameter."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/CMB2_Base.php:410
+#, php-format
+msgid ""
+"Using the \"%1$s\" field parameter as a callback has been deprecated in "
+"favor of the \"%1$s\" parameter."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/CMB2_Base.php:440
+#, php-format
+msgid ""
+"%1$s was called with a parameter that is <strong>deprecated</strong> since "
+"version %2$s! %3$s"
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/CMB2_Base.php:442
+#, php-format
+msgid ""
+"%1$s was called with a parameter that is <strong>deprecated</strong> since "
+"version %2$s with no alternative available."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/CMB2_JS.php:135
+msgid "mm/dd/yy"
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/CMB2_JS.php:155
+msgid "hh:mm TT"
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/CMB2_Types.php:230
+msgid "Custom CMB2 field type classes must extend CMB2_Type_Base."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/CMB2_hookup.php:404
+#, php-format
+msgid "Toggle panel: %s"
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller.php:257
+msgid "This box does not have read permissions."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller.php:275
+msgid "This box does not have write permissions."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller.php:296
+msgid ""
+"No box found by that id. A box needs to be registered with the \"show_in_rest"
+"\" parameter configured."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller.php:372
+msgid "A human-readable description of the object."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller.php:379
+msgid "The id for the object."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller.php:386
+msgid "The title for the object."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:51
+msgid "Includes the registered fields for the box in the response."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:72
+msgid ""
+"Includes the fully rendered attributes, 'form_open', 'form_close', as well "
+"as the enqueued 'js_dependencies' script handles, and 'css_dependencies' "
+"stylesheet handles."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Boxes.php:122
+msgid "No boxes found."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:27
+msgid ""
+"Includes the box object which the fields are registered to in the response."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:30
+msgid ""
+"When the '_rendered' argument is passed, the renderable field attributes "
+"will be returned fully rendered. By default, the names of the callback "
+"handers for the renderable attributes will be returned."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:33
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:36
+msgid ""
+"To view or modify the field's value, the 'object_id' and 'object_type' "
+"arguments are required."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:236
+msgid ""
+"CMB2 Field value cannot be updated without the value parameter specified."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:295
+msgid ""
+"CMB2 Field value cannot be modified without the object_id and object_type "
+"parameters specified."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:308
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:335
+msgid "No field found by that id."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/rest-api/CMB2_REST_Controller_Fields.php:407
+#, php-format
+msgid "Value Error for %s"
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:24
+msgid "The register_routes() method must be overriden"
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:34
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:44
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:54
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:64
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:74
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:84
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:94
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:104
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:114
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:124
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:134
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:145
+#, php-format
+msgid "Method '%s' not implemented. Must be over-ridden in subclass."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:248
+msgid "Current page of the collection."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:256
+msgid "Maximum number of items to be returned in result set."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:265
+msgid "Limit results to those matching a string."
+msgstr ""
+
+#: ../includes/libraries/cmb2/includes/shim/WP_REST_Controller.php:283
+msgid ""
+"Scope under which the request is made; determines fields present in response."
+msgstr ""
+
+#: ../includes/wre-widgets.php:22
+msgid "WRE Widget"
+msgstr ""
+
+#: ../includes/wre-widgets.php:22
+msgid ""
+"Use this widget to display Agent Details and Agent Listings on there "
+"respective pages."
+msgstr ""
+
+#: ../includes/wre-widgets.php:66
+msgid "Your site's most recent Listings."
+msgstr ""
+
+#: ../includes/wre-widgets.php:69
+msgid "WRE Recent Listings"
+msgstr ""
+
+#: ../includes/wre-widgets.php:78
+msgid "Recent Listings"
+msgstr ""
+
+#: ../includes/wre-widgets.php:106 ../includes/wre-widgets.php:172
+#: ../includes/wre-widgets.php:297 ../includes/wre-widgets.php:458
+msgid "Title:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:111 ../includes/wre-widgets.php:343
+msgid "Number of listings to show:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:129
+msgid "Use this widget to display search listings form"
+msgstr ""
+
+#: ../includes/wre-widgets.php:132
+msgid "WRE Search Listings"
+msgstr ""
+
+#: ../includes/wre-widgets.php:141
+msgid "Search Listings"
+msgstr ""
+
+#: ../includes/wre-widgets.php:142
+msgid "Search by Keyword, City or State"
+msgstr ""
+
+#: ../includes/wre-widgets.php:177
+msgid "Placeholder Text:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:179
+msgid "Text to display as the placeholder text in the text input."
+msgstr ""
+
+#: ../includes/wre-widgets.php:183
+msgid "Submit Button Text:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:185
+msgid "Text to display on the search button."
+msgstr ""
+
+#: ../includes/wre-widgets.php:189
+msgid "Exclude Fields:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:192
+msgid "Exclude Fields"
+msgstr ""
+
+#: ../includes/wre-widgets.php:200
+msgid "Select list of fields that you don't want to include on the search box."
+msgstr ""
+
+#: ../includes/wre-widgets.php:216
+msgid "Nearby Listings to be shown."
+msgstr ""
+
+#: ../includes/wre-widgets.php:219
+msgid "WRE NearBy Listings"
+msgstr ""
+
+#: ../includes/wre-widgets.php:232
+msgid "Nearby Listings"
+msgstr ""
+
+#: ../includes/wre-widgets.php:302
+msgid "Distance Measurement:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:311
+msgid "Radius:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:317
+msgid "List View:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:325
+msgid "List Columns:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:335
+msgid "Compact Mode:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:361
+msgid "Display agents either in a carousel or listing view."
+msgstr ""
+
+#: ../includes/wre-widgets.php:364
+msgid "WRE Agents"
+msgstr ""
+
+#: ../includes/wre-widgets.php:373
+msgid "Agents you can trust"
+msgstr ""
+
+#: ../includes/wre-widgets.php:463
+msgid "View:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:468
+msgid "Select option to display agents either in a carousel or listing view"
+msgstr ""
+
+#: ../includes/wre-widgets.php:472
+msgid "Agents View:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:480
+msgid "Agent Columns:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:492
+msgid "Autoplay:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:501
+msgid "Dots:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:510
+msgid "Controls:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:519
+msgid "Loop:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:528
+msgid "Items:"
+msgstr ""
+
+#: ../includes/wre-widgets.php:534
+msgid "Number of agents to show:"
+msgstr ""
+
+#: ../templates/loop/compare.php:23
+msgid "Added to Compare"
+msgstr ""
+
+#: ../templates/loop/compare.php:28
+msgid "Add to Compare"
+msgstr ""
+
+#: ../templates/loop/comparison.php:20
+msgid "Compare Listings"
+msgstr ""
+
+#: ../templates/loop/comparison.php:30
+msgid "Compare"
+msgstr ""
+
+#: ../templates/loop/orderby.php:19
+msgid "Newest Listings"
+msgstr ""
+
+#: ../templates/loop/orderby.php:20
+msgid "Oldest Listings"
+msgstr ""
+
+#: ../templates/loop/orderby.php:21
+msgid "Price (Low to High)"
+msgstr ""
+
+#: ../templates/loop/orderby.php:22
+msgid "Price (High to Low)"
+msgstr ""
+
+#: ../templates/single-listing/contact-form.php:13
+msgid "Quick Contact"
+msgstr ""
+
+#: ../templates/single-listing/social-share.php:18
+msgid "Share this"
+msgstr ""
+
+#: ../templates/single-listing/social-share.php:30
+msgid "Google"
+msgstr ""
+
+#: ../templates/single-listing/social-share.php:35
+msgid "Pin it"
+msgstr ""
+
+#: ../uninstall.php:27 ../uninstall.php:31 ../wp-real-estate.php:77
+#: ../wp-real-estate.php:81
+msgid "Cheating huh?"
+msgstr ""
+
+#: ../wp-real-estate.php:220
+msgid "View Documentation"
+msgstr ""
+
+#: ../wp-real-estate.php:220
+msgid "Help"
+msgstr ""

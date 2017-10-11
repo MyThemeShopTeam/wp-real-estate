@@ -35,8 +35,6 @@ register_activation_hook( WRE_PLUGIN_FILE, 'wre_install' );
 
 function wre_install_listings_page() {
 
-	global $wpdb;
-	
 	$options = get_option( 'wre_options' );
 
 	if ( isset( $options['archives_page'] ) && ( $page_object = get_post( $options['archives_page'] ) ) ) {

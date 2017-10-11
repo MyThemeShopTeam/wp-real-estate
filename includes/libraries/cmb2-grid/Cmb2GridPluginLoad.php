@@ -81,6 +81,7 @@ if ( ! class_exists( '\Cmb2Grid\Cmb2GridPlugin' ) ) {
 		}
 
 		public function admin_enqueue_scripts() {
+			if( ! is_wre_admin() ) return false;
 			$suffix = ( ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min' );
 			wp_enqueue_style( 'cmb2_grid_bootstrap_light', $this->url( 'assets/css/bootstrap' . $suffix . '.css' ), null, self::VERSION );
 		}

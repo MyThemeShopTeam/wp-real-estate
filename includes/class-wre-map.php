@@ -101,10 +101,7 @@ class WRE_Maps_Shortcodes {
 			'search' => $atts['search'],
 			'search_zoom' => $atts['search_zoom'],
 		);
-		$listings_data['images'] = array(
-			'green_marker' => WRE_PLUGIN_URL . 'assets/images/default-marker.png',
-			'close_infobox' => WRE_PLUGIN_URL . 'assets/images/wre-close-infobox.png',
-		);
+		$listings_data['images'] = array( 'green_marker' => WRE_PLUGIN_URL . 'assets/images/default-marker.png' );
 
 		// start the query
 		$query_args = array(

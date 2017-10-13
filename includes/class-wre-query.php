@@ -24,21 +24,23 @@ class WRE_Query {
 	/**
 	 * Hook into pre_get_posts to do the main listing query.
 	 *
-	 * @param mixed $q query object
+	 * @param mixed $query Query object.
 	 */
-	public function pre_get_posts( $q ) {
+	public function pre_get_posts( $query ) {
 
-		// don't modify any other queries
-		if ( ! is_wre_archive() )
+		// Don't modify any other queries.
+		if ( ! $query->is_post_type_archive( 'listing' ) ) {
 			return;
+		}
 
-		// We only want to affect the main query
-		if ( ! $q->is_main_query() )
+		// We only want to affect the main query.
+		if ( ! $query->is_main_query() ) {
 			return;
+		}
 
-		$this->listings_query( $q );
+		$this->listings_query( $query );
 
-		// And remove the pre_get_posts hook
+		// And remove the pre_get_posts hook.
 		$this->remove_listing_query();
 	}
 
@@ -48,7 +50,7 @@ class WRE_Query {
 	 * @param mixed $q
 	 */
 	public function listings_query( $q ) {
-		
+
 		$q->set( 'post_status', 'publish' );
 
 		// Ordering query vars

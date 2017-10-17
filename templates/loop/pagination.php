@@ -19,8 +19,14 @@ if ( ! $paged && isset( $_GET['paged'] ) && $_GET['paged'] != '' ) {
 } else if( $paged == 0 ) {
 	$paged = 1;
 }
+
+$orderby = '';
+if( isset( $_GET['wre-orderby'] ) && $_GET['wre-orderby'] != '' ) {
+	$orderby = $_GET['wre-orderby'];
+}
+
 ?>
-<nav class="wre-pagination">
+<nav class="wre-pagination" data-orderby="<?php echo esc_attr( $orderby ); ?>">
 	<?php
 	echo paginate_links( apply_filters( 'wre_pagination_args', array(
 		'base'		=> add_query_arg('paged','%#%'),

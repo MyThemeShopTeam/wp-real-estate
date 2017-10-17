@@ -159,7 +159,7 @@ class WRE_Maps_Shortcodes {
 						'lat' => $lat,
 						'lng' => $lng,
 						'price' => wre_price(wre_meta('price')),
-						'content' => wp_trim_words(wre_meta('main_description'), 20, '...'),
+						'content' => wp_trim_words(esc_html(wre_meta('content')), 20, '...'),
 						'thumbnail' => wre_get_first_image(),
 						'icon' => $marker_image
 					));

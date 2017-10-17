@@ -26,7 +26,7 @@ do_action( 'wre_before_single_listing' );
 
 	<div id="listing-<?php the_ID(); ?>" class="wre-single listing">
 
-		<div class="main-wrap <?php echo esc_attr( $main_class ); ?>">
+		<div class="main-wrap <?php echo esc_attr( $main_class ); ?>" itemscope itemtype="http://schema.org/House">
 
 			<?php
 			$images = wre_meta( 'image_gallery' );

@@ -57,13 +57,16 @@ class WRE_Archive_Listings extends WRE_Search {
 			 */
 			do_action('wre_before_listings_loop');
 
-			echo '<ul class="wre-items">';
+			echo '<div id="wre-archive-wrapper"><ul class="wre-items">';
 				while ($archive_listings->have_posts()) : $archive_listings->the_post();
 
 					wre_get_part('content-listing.php');
 
 				endwhile;
+
 			echo '</ul>';
+			echo '<div class="wre-orderby-loader"><img src="'. WRE_PLUGIN_URL .'assets/images/loading.svg" /></div>';
+			echo '</div>';
 
 			/**
 			 * @hooked wre_pagination (the pagination)
@@ -111,7 +114,7 @@ class WRE_Archive_Listings extends WRE_Search {
 		$type_query[] = self::type_meta_query();
 		$radius_query[] = self::radius_query('');
 		$keyword_query[] = self::keyword_query('');
-		$ordering = $this->get_ordering_args();
+		$ordering = self::get_ordering_args();
 		$query_args['orderby'] = $ordering['orderby'];
 		$query_args['order'] = $ordering['order'];
 		if (isset($ordering['meta_key'])) {
@@ -147,49 +150,6 @@ class WRE_Archive_Listings extends WRE_Search {
 		return $archive_listings = new WP_Query($query_args);
 	}
 
-	/**
-	 * Returns an array of arguments for ordering listings based on the selected values.
-	 *
-	 * @access public
-	 * @return array
-	 */
-	public function get_ordering_args($orderby = '', $order = '') {
-
-		// Get ordering from query string unless defined
-		if (!$orderby) {
-			$orderby_value = isset($_GET['wre-orderby']) ? esc_html($_GET['wre-orderby']) : 'date';
-
-			// Get order + orderby args from string
-			$orderby_value = explode('-', $orderby_value);
-			$orderby = esc_attr($orderby_value[0]);
-			$order = !empty($orderby_value[1]) ? $orderby_value[1] : $order;
 		}
-
-		$orderby = strtolower($orderby);
-		$order = strtoupper($order);
-		$args = array();
-
-		// default - menu_order
-		$args['orderby'] = 'date ID';
-		$args['order'] = $order == 'OLD' ? 'ASC' : 'DESC';
-		$args['meta_key'] = '';
-
-		switch ($orderby) {
-
-			case 'date' :
-				$args['orderby'] = 'date ID';
-				$args['order'] = $order == 'OLD' ? 'ASC' : 'DESC';
-				break;
-			case 'price' :
-				$args['orderby'] = "meta_value_num ID";
-				$args['order'] = $order == 'HIGH' ? 'DESC' : 'ASC';
-				$args['meta_key'] = '_wre_listing_price';
-				break;
-		}
-
-		return apply_filters('wre_get_ordering_args', $args);
-	}
-
-}
 
 return new WRE_Archive_Listings();

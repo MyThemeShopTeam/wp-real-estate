@@ -27,10 +27,64 @@
 	 * Ordering
 	 */
 	function wp_real_estate_ordering() {
-		$('.wre-ordering').on('change', 'select.orderby', function () {
-			$(this).closest('form').submit();
+		$('.wre-ordering').on('change', 'select.listings-orderby', function () {
+			var orderby = $(this).val();
+			var search_form_data = $(this).closest('form').serialize();
+			wre_orderby_ajax_filter( 'wre_orderby_value', orderby, search_form_data );
 		});
 	}
+
+	function wre_orderby_ajax_filter( action, orderby, formdata ) {
+
+		$('#wre-archive-wrapper').find('.wre-orderby-loader').addClass('in');
+		$.ajax({
+			type: 'POST',
+			url: wre.ajax_url,
+			data: {
+				'action': action,
+				'order_by': orderby,
+				'search_data': formdata
+			},
+			success: function (response) {
+				$('#wre-archive-wrapper').find('.wre-items').html(response);
+				$('#wre-archive-wrapper').find('.wre-orderby-loader').removeClass('in')
+				var newurl = window.location.pathname;
+				if( window.location.search == '' ) {
+					newurl = newurl+'?wre-orderby='+orderby;
+				} else {
+					var search_string = window.location.search;
+					if (search_string.indexOf("wre-orderby") <= 0) {
+						newurl = window.location.href+'&wre-orderby='+orderby;
+					} else {
+						var search_parameters = search_string.split('&');
+						jQuery.each(search_parameters, function(key, value){
+							if (value.indexOf("wre-orderby") >= 0) {
+								var orderby_value = value.split('=');
+								newurl = newurl+orderby_value[0]+'='+orderby;
+							} else {
+								newurl = newurl+value;
+							}
+							if( search_parameters.length < (key+1) ) {
+								newurl = newurl + '&';
+							}
+						});
+					}
+				}
+				$('body').find('.wre-pagination').attr('data-orderby', orderby);
+				window.history.pushState({path:newurl},'',newurl);
+			}
+		});
+
+	}
+
+	$('.wre-pagination a').on('click', function(e){
+		e.preventDefault();
+		var url = $(this).attr('href');
+		var orderby = $(this).parents('.wre-pagination').attr('data-orderby');
+		url = url+'&wre-orderby='+orderby;
+		window.location.href = url;
+		return false;
+	});
 
 	/**
 	 * Buy/Sell option

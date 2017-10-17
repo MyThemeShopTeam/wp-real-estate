@@ -21,7 +21,7 @@ if( empty( $bedrooms ) &&  empty( $bathrooms ) &&  empty( $cars ) )
 
 	<?php if( $bedrooms ) { ?>
 		<div class="beds">
-			<span class="count"><?php echo esc_html( $bedrooms ); ?></span>
+			<span class="count" itemprop="numberOfRooms"><?php echo esc_html( $bedrooms ); ?></span>
 			<i class="wre-icon-bed-1"></i>
 		</div>
 	<?php } ?>

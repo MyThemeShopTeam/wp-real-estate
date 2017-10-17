@@ -19,10 +19,14 @@ if( empty( $building_size ) &&  empty( $land_size ) )
 ?>
 
 <div class="sizes">
+	<?php if( $land_size ) { ?>
 	<div class="land">
 		<?php echo esc_html( $land_size ); ?> <?php echo esc_html( $land_unit ); ?>
 	</div>
+	<?php } ?>
+	<?php if( $building_size ) { ?>
 	<div class="building">
 		<?php echo esc_html( $building_size ); ?> <?php echo esc_html( $building_unit ); ?>
 	</div>
+	<?php } ?>
 </div>

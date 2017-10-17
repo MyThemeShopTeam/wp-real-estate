@@ -21,12 +21,13 @@ $orderby_options = apply_filters( 'wre_listings_orderby', array(
 	'price'			=> __( 'Price (Low to High)', 'wp-real-estate' ),
 	'price-high'	=> __( 'Price (High to Low)', 'wp-real-estate' )
 ) );
+$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 ?>
 <form class="wre-ordering" method="get">
 
 	<div class="wre-select-wrap">
-		<select name="wre-orderby" class="orderby">
+		<select name="wre-orderby" class="listings-orderby">
 			<?php foreach ( $orderby_options as $id => $name ) : ?>
 				<option value="<?php echo esc_attr( $id ); ?>" <?php selected( $orderby, $id ); ?>><?php echo esc_html( $name ); ?></option>
 			<?php endforeach; ?>
@@ -49,5 +50,5 @@ $orderby_options = apply_filters( 'wre_listings_orderby', array(
 
 	}
 	?>
-
+	<input type="hidden" name="paged" value="<?php echo esc_attr( $paged ); ?>" />
 </form>

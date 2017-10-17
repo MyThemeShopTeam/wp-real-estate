@@ -32,7 +32,7 @@ get_header( 'listings' );
 			 *
 			 */
 			do_action( 'wre_before_listings_loop' );
-
+			echo '<div id="wre-archive-wrapper">';
 			echo '<ul class="wre-items">';
 				while ( have_posts() ) : the_post();
 
@@ -40,6 +40,8 @@ get_header( 'listings' );
 
 				endwhile;
 			echo '</ul>';
+				echo '<div class="wre-orderby-loader"><img src="'. WRE_PLUGIN_URL .'assets/images/loading.svg" /></div>';
+			echo '</div>';
 
 			/**
 			 * @hooked wre_pagination (the pagination)

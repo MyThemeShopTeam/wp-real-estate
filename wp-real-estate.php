@@ -172,11 +172,11 @@ if ( ! class_exists( 'WRE' ) ) :
 			include_once( 'includes/wre-widgets.php' );
 			include_once( 'includes/class-wre-compare-listings.php' );
 
-			if( wre_is_theme_compatible() ) {
+			if( wre_is_theme_compatible() && $this->is_request( 'frontend' ) ) {
 				include_once( 'includes/class-wre-archive-listings.php' );
 				include_once( 'includes/class-wre-agent-rewrite.php' );
 			}
-
+//			include_once( 'includes/admin/class-wre-idx-import.php' );
 		}
 
 		/**

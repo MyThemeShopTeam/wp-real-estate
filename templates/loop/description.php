@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-$description = wre_meta( 'main_description' );
+$description = wre_meta( 'content' );
 if( empty( $description ) )
 	return;
 

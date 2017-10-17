@@ -199,7 +199,7 @@ function wre_install_sample_listing() {
 	if( ! empty( $listings ) ) return;
 
 	$listing_title = 'My Sample Listing';
-
+	$listing_content = '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p><p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>';
 	$listing_data = array(
 		'post_status'		=> 'publish',
 		'post_type'			=> 'listing',
@@ -213,7 +213,6 @@ function wre_install_sample_listing() {
 	$save_meta = array(
 		$prefix . 'status' => 'under-offer',
 		$prefix . 'tagline' => 'Close to everything!',
-		$prefix . 'main_description' => '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p><p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>',
 		$prefix . 'price' => '420000',
 		$prefix . 'price_suffix' => 'or near offer',
 		$prefix . 'purpose' => 'Sell',
@@ -233,6 +232,7 @@ function wre_install_sample_listing() {
 		$prefix . 'lat' => '42.2868698',
 		$prefix . 'lng' => '-87.9432837',
 		$prefix . 'agent' => get_current_user_id(),
+		'content' => $listing_content,
 	);
 
 	//Save values from created array into db
@@ -264,7 +264,7 @@ function wre_install_data() {
 		'Balcony',
 		'Tennis Court',
 	);
-	$options['listing_status'] = array( 'Under Offer', 'Sold' );
+	$options['listing_status'] = array( 'Under Offer', 'Sold', 'Active' );
 		
 		// Save Contact form Default Data
 	$contact_message = __( 'Hi {agent_name},', 'wp-real-estate' ) . "\r\n" .

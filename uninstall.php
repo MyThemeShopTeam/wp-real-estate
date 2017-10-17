@@ -176,14 +176,10 @@ if ( ! class_exists( 'WRE_Uninstall' ) ) :
 			delete_option( 'wre_options' );
 			delete_option( 'wre_version' );
 			delete_option( 'wre_version_upgraded_from' );
-			
-			$options = wp_load_alloptions();
-			foreach( $options as $key => $value ) {
-				$exp_key = explode('_', $key );
-				if( $exp_key[0] == 'wre' ) {
-					 remove_theme_mod( $key );
-				}
-			}
+			delete_option( 'wre_idx_featured_listing_wp_options' );
+			delete_option( 'wre_import_progress' );
+			// Delete cron job
+			wp_clear_scheduled_hook('wre_idx_update');
 
 		}
 

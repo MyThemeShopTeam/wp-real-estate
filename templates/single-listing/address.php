@@ -10,9 +10,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $address = wre_meta( 'displayed_address' );
+$lat = wre_meta('lat');
+$lng = wre_meta('lng');
 if( empty( $address ) )
 	return;
 
 ?>
 
-<div class="address"><?php echo esc_html( $address ); ?></div>
+<div class="address" itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+	<span itemprop="streetAddress"><?php echo esc_html( $address ); ?></span>
+	<?php echo $lat; ?>
+</div>
+<?php if( $lat && $lng ) { ?>
+	<span itemprop="geo" itemscope="" itemtype="http://schema.org/GeoCoordinates">
+		<meta itemprop="latitude" content="<?php echo esc_attr($lat); ?>">
+		<meta itemprop="longitude" content="<?php echo esc_attr($lng); ?>">
+	</span>
+<?php }

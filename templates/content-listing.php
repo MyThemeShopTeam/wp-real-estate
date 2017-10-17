@@ -8,11 +8,9 @@
 if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
-
-$columns = 3;
 ?>
 
-<li <?php post_class('col-' . $columns); ?>>
+<li <?php post_class('col-3'); ?> itemscope itemtype="http://schema.org/House">
 	<?php do_action('wre_before_listings_loop_item_wrapper'); ?>
 		<?php do_action('wre_before_listings_loop_item_summary'); ?>
 

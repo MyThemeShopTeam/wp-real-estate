@@ -482,7 +482,7 @@ if (!function_exists('wre_template_loop_compare')) {
 
 	function wre_template_loop_compare() {
 		$single_agent_page = wre_option( 'archives_page' );
-		if( is_wre_archive() || (wre_is_theme_compatible() && is_page( $single_agent_page ) ) )
+	if( is_wre_archive() || (wre_is_theme_compatible() && is_page( $single_agent_page ) ) || defined( 'DOING_AJAX' ) )
 			wre_get_part('loop/compare.php');
 
 		return;
@@ -654,7 +654,7 @@ if (!function_exists('wre_agent_name')) {
 
 	function wre_agent_name( $agent_id ) {
 		?>
-		<h3 class="name"><?php echo esc_html( get_the_author_meta( 'display_name', $agent_id ) ); ?></h3>
+		<h3 class="name" itemprop="name"><?php echo esc_html( get_the_author_meta( 'display_name', $agent_id ) ); ?></h3>
 		<?php
 	}
 
@@ -676,7 +676,7 @@ if (!function_exists('wre_get_agent_description')) {
 		if( ! get_the_author_meta( 'description', $agent_id ) )
 			return;
 		?>
-		<div class="description"><?php echo wpautop( wp_kses_post( get_the_author_meta( 'description', $agent_id ) ) ); ?></div>
+		<div class="description" itemprop="description"><?php echo wpautop( wp_kses_post( get_the_author_meta( 'description', $agent_id ) ) ); ?></div>
 		<?php
 	}
 
@@ -855,7 +855,7 @@ if (!function_exists('wre_get_agent_footer_data')) {
 				while ($agent_listings->have_posts()) {
 					$agent_listings->the_post();
 					?>
-					<li <?php post_class('col-'.$listing_columns); ?>>
+					<li <?php post_class('col-'.$listing_columns); ?> itemscope itemtype="http://schema.org/House">
 						<?php do_action('wre_before_listings_loop_item_wrapper'); ?>
 							<?php do_action('wre_before_listings_loop_item_summary'); ?>
 
@@ -880,45 +880,6 @@ if (!function_exists('wre_get_agent_footer_data')) {
 
 }
 
-/*
- * Set the path to be used in the theme folder.
- * Templates in this folder will override the plugins frontend templates.
- */
-
-function wre_template_path() {
-	return apply_filters('wre_template_path', 'listings/');
-}
-
-function wre_get_part($part, $id = null) {
-
-	if ($part) {
-
-		// Look within passed path within the theme - this is priority.
-		$template = locate_template(
-				array(
-					trailingslashit(wre_template_path()) . $part,
-					$part,
-				)
-		);
-
-		// Get template from plugin directory
-		if (!$template) {
-
-			$check_dirs = apply_filters('wre_template_directory', array(
-				WRE_PLUGIN_DIR . 'templates/',
-			));
-			foreach ($check_dirs as $dir) {
-				if (file_exists(trailingslashit($dir) . $part)) {
-					$template = $dir . $part;
-				}
-			}
-		}
-
-		include( $template );
-	}
-}
-
-
 /**
  * Show the selected agent data on agent-single and [wre_agent] page
  */
@@ -931,7 +892,7 @@ if (!function_exists('wre_get_single_agent_data')) {
 
 		<div class="wre-single agent">
 
-			<div class="main-wrap full-width">
+			<div class="main-wrap full-width" itemscope itemtype="http://schema.org/ProfilePage">
 
 				<div class="summary">
 					<div class="wre-social-icons-wrapper">
@@ -947,7 +908,7 @@ if (!function_exists('wre_get_single_agent_data')) {
 				</div>
 
 				<?php if( $show_agents_listings == 'yes' ) { ?>
-					<div class="bottom">
+					<div class="bottom" itemscope itemtype="http://schema.org/House">
 						<?php do_action( 'wre_single_agent_bottom', $agent_id ); ?>
 					</div>
 				<?php } ?>

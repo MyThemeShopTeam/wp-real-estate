@@ -97,7 +97,7 @@ class WRE_Agent_Rewrite {
 
 					<div class="wre-single agent">
 
-						<div class="main-wrap full-width">
+						<div class="main-wrap full-width" itemscope itemtype="http://schema.org/ProfilePage">
 
 							<div class="summary">
 								<div class="wre-social-icons-wrapper">

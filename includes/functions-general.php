@@ -27,7 +27,12 @@ function wre_get_ID() {
 function wre_meta($meta, $post_id = 0) {
 	if (!$post_id)
 		$post_id = get_the_ID();
+
 	$meta_key = '_wre_listing_' . $meta;
+	if( $meta == 'content' ) {
+		$meta_key = $meta;
+	}
+	
 	if ($meta == 'type' || $meta == 'listing-type') {
 		$data = wp_get_post_terms($post_id, 'listing-type', array("fields" => "slugs"));
 		if (!empty($data))
@@ -87,7 +92,7 @@ function is_wre_admin() {
 		$return = true;
 	}
 
-	if (in_array($screen->id, array('listing', 'edit-listing', 'listing-enquiry', 'edit-listing-enquiry', 'listing_page_wre_options'))) {
+	if (in_array($screen->id, array('listing', 'edit-listing', 'listing-enquiry', 'edit-listing-enquiry', 'listing_page_wre_options', 'listing_page_wre-idx-listing'))) {
 		$return = true;
 	}
 
@@ -501,4 +506,42 @@ if (!function_exists('wre_get_contextual_query')) {
 		return $wp_query;
 	}
 
+}
+
+/*
+ * Set the path to be used in the theme folder.
+ * Templates in this folder will override the plugins frontend templates.
+ */
+
+function wre_template_path() {
+	return apply_filters('wre_template_path', 'listings/');
+}
+
+function wre_get_part($part, $id = null) {
+
+	if ($part) {
+
+		// Look within passed path within the theme - this is priority.
+		$template = locate_template(
+				array(
+					trailingslashit(wre_template_path()) . $part,
+					$part,
+				)
+		);
+
+		// Get template from plugin directory
+		if (!$template) {
+
+			$check_dirs = apply_filters('wre_template_directory', array(
+				WRE_PLUGIN_DIR . 'templates/',
+			));
+			foreach ($check_dirs as $dir) {
+				if (file_exists(trailingslashit($dir) . $part)) {
+					$template = $dir . $part;
+				}
+			}
+		}
+
+		include( $template );
+	}
 }

@@ -79,7 +79,7 @@ if ( ! class_exists( 'WRE_Metaboxes' ) ) :
 						$fields[20] = array(
 							'name'          => __( 'Main Description', 'wp-real-estate' ),
 							'desc'    		=> '',
-							'id'            => $this->prefix . 'main_description',
+							'id'            => 'content',
 							'type'    => 'wysiwyg',
 								'options' => array(
 									'wpautop' => true, // use wpautop?
@@ -121,6 +121,11 @@ if ( ! class_exists( 'WRE_Metaboxes' ) ) :
 						$fields = array();
 
 						$fields[10] = array(
+							'name'			=> __( 'MLS #:', 'wp-real-estate' ),
+							'id'			=> $this->prefix . 'mls',
+							'type'			=> 'text',
+						);
+						$fields[11] = array(
 							'name'			=> __( 'Price', 'wp-real-estate' ),
 							'desc'			=> __( 'Numbers only.', 'wp-real-estate' ),
 							'id'			=> $this->prefix . 'price',
@@ -131,7 +136,7 @@ if ( ! class_exists( 'WRE_Metaboxes' ) ) :
 								'step'	=> '0.01',
 							),
 						);
-						$fields[11] = array(
+						$fields[12] = array(
 							'name'			=> __( 'Suffix', 'wp-real-estate' ),
 							'desc'			=> __( 'Optional text to add after the price. Such as p/w, per month or POA.', 'wp-real-estate' ),
 							'id'			=> $this->prefix . 'price_suffix',

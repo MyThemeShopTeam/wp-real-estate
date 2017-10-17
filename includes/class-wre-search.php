@@ -16,10 +16,91 @@ class WRE_Search {
 			add_filter( 'query_vars', array( $this, 'register_query_vars' ) );
 
 		add_action( 'pre_get_posts', array( $this, 'pre_get_posts' ), 999 );
+		
+		add_action('wp_ajax_wre_orderby_value', array( $this, 'wre_orderby_value' ));
+		add_action('wp_ajax_nopriv_wre_orderby_value', array( $this, 'wre_orderby_value' ));
 	}
 	
 	private $ids = '';
 
+	public function wre_orderby_value() {
+		$search_data = str_replace('?', '', $_POST['search_data']);
+		parse_str($search_data, $form_data);
+		$paged = $form_data['paged'];
+		$query_args = array(
+			'post_type' => 'listing',
+			'post_status' => 'publish',
+			'paged' => $paged,
+		);
+
+		$purpose_query[] = array(
+			'key' => '_wre_listing_purpose',
+			'value' => wre_display(),
+			'compare' => 'LIKE'
+		);
+		$meta_query = array();
+		$min_price = isset( $form_data['min_price'] ) ? $form_data['min_price'] : '';
+		$max_price = isset( $form_data['max_price'] ) ? $form_data['max_price'] : '';
+		
+		$min_beds = isset( $form_data['min_beds'] ) ? $form_data['min_beds'] : '';
+		$max_beds = isset( $form_data['max_beds'] ) ? $form_data['max_beds'] : '';
+		$type = isset( $form_data['type'] ) ? $form_data['type'] : '';
+		$location = isset( $form_data['location'] ) ? $form_data['location'] : '';
+		
+		$meta_query = array();
+		$price_query[] = $this->price_meta_query( $min_price, $max_price );
+		
+		$beds_query[] = $this->beds_meta_query( $min_beds, $max_beds );
+		$type_query[] = $this->type_meta_query( $type );
+		
+		$radius_query[] = $this->radius_query('', $location);
+		$keyword_query[] = $this->keyword_query('', $location);
+		
+		$order_by = $_POST['order_by'];
+		$orderby_value = explode('-', $order_by);
+		$orderby = $orderby_value[0];
+		$order = !empty($orderby_value[1]) ? $orderby_value[1] : $order;
+		$ordering = $this->get_ordering_args($orderby, $order);
+		if (isset($ordering['meta_key'])) {
+			$query_args['meta_key'] = $ordering['meta_key'];
+		}
+		$query_args['orderby'] = $ordering['orderby'];
+		$query_args['order'] = $ordering['order'];
+
+		// this should be always set
+		// purpose AND Bedrooms AND price AND type
+		$query_1 = array_merge($purpose_query, $beds_query, $price_query);
+
+		// within radius AND purpose AND Bedrooms AND price AND type
+		$query_2 = array_merge($radius_query, $keyword_query);
+
+		// if no keyword
+		if ( $location == '' ) {
+			$query_1['relation'] = 'AND';
+			$meta_query[] = $query_1;
+		}
+
+		// if keyword
+		if ($location != '') {
+			$query_2['relation'] = 'OR';
+			$meta_query[] = $query_1;
+			$meta_query[] = $query_2;
+			$meta_query['relation'] = 'AND';
+		}
+		if (isset($_GET['type']) && !empty($_GET['type'])) {
+			$query_args['tax_query'] = $type_query;
+		}
+
+		$query_args['meta_query'] = $meta_query;
+		
+		$archive_listings = new WP_Query($query_args);
+		ob_start();
+		while ($archive_listings->have_posts()) : $archive_listings->the_post();
+			wre_get_part('content-listing.php');
+		endwhile;
+		echo $data = ob_get_clean();
+		exit;
+	}
 	/**
 	 * Register custom query vars, based on our registered fields
 	 *
@@ -413,16 +494,20 @@ class WRE_Search {
 	 * @access public
 	 * @return array
 	 */
-	public function radius_query( $q ) {
-		if ( (isset( $_GET['s'] ) && ! empty( $_GET['s'] )) || (isset( $_GET['location'] ) && ! empty( $_GET['location'] )) ) {
+	public function radius_query( $q, $location = '' ) {
 		
+		if ( (isset( $_GET['s'] ) && ! empty( $_GET['s'] )) || (isset( $_GET['location'] ) && ! empty( $_GET['location'] )) || $location != '') {
+			
 			if( isset( $_GET['s'] ) && ! empty( $_GET['s'] ) ) {
 				$searchterm = isset( $q->query_vars['s'] ) ? $q->query_vars['s'] : '';
 
 				// we have to remove the "s" parameter from the query, because it will prevent the posts from being found
 				$q->query_vars['s'] = '';
 			} else {
-				$searchterm = $_GET['location'];
+				if( $location == '' && isset( $_GET['location'] ) ) {
+					$location = $_GET['location'];
+			}
+				$searchterm = $location;
 			}
 
 			if ( $searchterm != '' ) {
@@ -526,8 +611,8 @@ class WRE_Search {
 	 * Searches through our custom fields using a keyword match
 	 * @return array
 	 */
-	protected function keyword_query( $q ) {
-		if ( (isset( $_GET['s'] ) && ! empty( $_GET['s'] )) || (isset( $_GET['location'] ) && ! empty( $_GET['location'] )) ) {
+	protected function keyword_query( $q, $location = '' ) {
+		if ( (isset( $_GET['s'] ) && ! empty( $_GET['s'] )) || (isset( $_GET['location'] ) && ! empty( $_GET['location'] )) || $location == '' ) {
 
 			$custom_fields = apply_filters( 'wre_keyword_search_fields', array(
 				// put all the meta fields you want to search for here
@@ -542,7 +627,10 @@ class WRE_Search {
 			// we have to remove the "s" parameter from the query, because it will prevent the posts from being found
 			$q->query_vars['s'] = '';
 			} else {
-				$searchterm = esc_html( $_GET['location'] );
+				if( $location == '' && isset( $_GET['location'] ) ) {
+					$location = $_GET['location'];
+			}
+				$searchterm = $location;
 			}
 
 			if ( $searchterm != '' ) {
@@ -565,8 +653,15 @@ class WRE_Search {
 	 * Return a meta query for filtering by type.
 	 * @return array
 	 */
-	protected function type_meta_query() {
+	protected function type_meta_query( $type = '' ) {
+		
+		if( $type == '' ) {
 		if ( isset( $_GET['type'] ) && ! empty( $_GET['type'] ) ) {
+				$type = $_GET['type'];
+			}
+		}
+		
+		if ( $type != '' ) {
 			return array(
 				'taxonomy'	=> 'listing-type',
 				'field'		=> 'slug',
@@ -580,10 +675,21 @@ class WRE_Search {
 	 * Return a meta query for filtering by price.
 	 * @return array
 	 */
-	protected function price_meta_query() {
-		if ( isset( $_GET['max_price'] ) && ! empty( $_GET['max_price'] ) || isset( $_GET['min_price'] ) && ! empty( $_GET['min_price'] ) ) {
-			$min = ( ! empty( $_GET['min_price'] ) ) ? floatval( $_GET['min_price'] ) : '';
-			$max = ( ! empty( $_GET['max_price'] ) ) ? floatval( $_GET['max_price'] ) : '';
+	protected function price_meta_query( $min_price = '', $max_price = '' ) {
+		if( $min_price == '' ) {
+			if( isset( $_GET['min_price'] ) && ! empty( $_GET['min_price'] ) ) {
+				$min_price = $_GET['min_price'];
+			}
+		}
+		if( $max_price == '' ) {
+			if( isset( $_GET['max_price'] ) && ! empty( $_GET['max_price'] ) ) {
+				$max_price = $_GET['max_price'];
+			}
+		}
+
+		if( $min_price || $max_price ) {
+			$min = ( ! empty( $min_price ) ) ? floatval( $min_price ) : '';
+			$max = ( ! empty( $max_price ) ) ? floatval( $max_price ) : '';
 
 			if( $min && $max ) {
 				$value = array( $min, $max );
@@ -610,10 +716,22 @@ class WRE_Search {
 	 * Return a meta query for filtering by number of beds.
 	 * @return array
 	 */
-	protected function beds_meta_query() {
-		if ( isset( $_GET['max_beds'] ) && ! empty( $_GET['max_beds'] ) || isset( $_GET['min_beds'] ) && ! empty( $_GET['min_beds'] ) ) {
-			$min = ( ! empty( $_GET['min_beds'] ) ) ? floatval( $_GET['min_beds'] ) : '';
-			$max = ( ! empty( $_GET['max_beds'] ) ) ? floatval( $_GET['max_beds'] ) : '';
+	protected function beds_meta_query( $min_beds = '', $max_beds = '' ) {
+
+		if( $min_beds == '' ) {
+			if( isset( $_GET['min_beds'] ) && ! empty( $_GET['min_beds'] ) ) {
+				$min_beds = $_GET['min_beds'];
+			}
+		}
+		if( $max_beds == '' ) {
+			if( isset( $_GET['max_beds'] ) && ! empty( $_GET['max_beds'] ) ) {
+				$max_beds = $_GET['max_beds'];
+			}
+		}
+		
+		if ( $min_beds || $max_beds ) {
+			$min = ( ! empty( $min_beds ) ) ? floatval( $min_beds ) : '';
+			$max = ( ! empty( $max_beds ) ) ? floatval($max_beds ) : '';
 
 			if( $min && $max ) {
 				$value = array( $min, $max );
@@ -634,6 +752,49 @@ class WRE_Search {
 			
 		}
 		return array();
+	}
+
+	/**
+	 * Returns an array of arguments for ordering listings based on the selected values.
+	 *
+	 * @access public
+	 * @return array
+	 */
+	protected function get_ordering_args($orderby = '', $order = '') {
+
+		// Get ordering from query string unless defined
+		if (!$orderby) {
+			$orderby_value = isset($_GET['wre-orderby']) ? esc_html($_GET['wre-orderby']) : 'date';
+
+			// Get order + orderby args from string
+			$orderby_value = explode('-', $orderby_value);
+			$orderby = esc_attr($orderby_value[0]);
+			$order = !empty($orderby_value[1]) ? $orderby_value[1] : $order;
+		}
+
+		$orderby = strtolower($orderby);
+		$order = strtoupper($order);
+		$args = array();
+
+		// default - menu_order
+		$args['orderby'] = 'date ID';
+		$args['order'] = $order == 'OLD' ? 'ASC' : 'DESC';
+		$args['meta_key'] = '';
+
+		switch ($orderby) {
+
+			case 'date' :
+				$args['orderby'] = 'date ID';
+				$args['order'] = $order == 'OLD' ? 'ASC' : 'DESC';
+				break;
+			case 'price' :
+				$args['orderby'] = "meta_value_num ID";
+				$args['order'] = $order == 'HIGH' ? 'DESC' : 'ASC';
+				$args['meta_key'] = '_wre_listing_price';
+				break;
+		}
+
+		return apply_filters('wre_get_ordering_args', $args);
 	}
 
 }

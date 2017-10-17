@@ -66,6 +66,16 @@ function wre_options_page() {
 			'contact_form_messages',
 		),
 	);
+	
+	$tabs[] = array(
+		'id' => 'idx-settings',
+		'title' => 'IDX Settings',
+		'desc' => '',
+		'boxes' => array(
+			'idx_imported_listings',
+			'idx_import_options',
+		),
+	);
 
 	$tabs[] = array(
 		'id' => 'advanced',
@@ -538,6 +548,87 @@ function wre_options_page() {
 	$boxes[] = $cmb;
 
 
+	/* ==================== IDX Settings ==================== */
+
+	$cmb = new_cmb2_box(array(
+		'id' => 'idx_imported_listings',
+		'title' => __('IDX Imported Listings', 'wp-real-estate'),
+		'description' => '<p class="cmb2-metabox-description">' . __('These settings apply to any imported IDX listings. Imported listings are updated via the latest API response twice daily.', 'wp-real-estate') . '</p>',
+		'show_on' => $show_on,
+	));
+	
+	$cmb->add_field(array(
+		'name' => __('Update Listings', 'wp-real-estate'),
+		'before_row' => '<p class="cmb2-metabox-description">' . __('These settings apply to any imported IDX listings. Imported listings are updated via the latest API response twice daily.', 'wp-real-estate') . '</p>',
+		'id' => 'wre_update_listings',
+		'type' => 'radio_inline',
+		'default' => 'update_all',
+		'options' => array(
+			'update_all' => __('Update All', 'wp-real-estate') . '<p class="cmb2-metabox-description">'.__('Excludes Post Title and Post Content', 'wp-real-estate').')</span>',
+			'update_noimage' => __('Update Excluding Images', 'wp-real-estate') . '<p class="cmb2-metabox-description">'.__('Also excludes Post Title and Post Content', 'wp-real-estate').')</p>',
+			'update_none' => __('Do Not Update', 'wp-real-estate') . '<p class="cmb2-metabox-description"> <b>'.__( 'Not recommended as displaying inaccurate MLS data may violate your IDX agreement.', 'wp-real-estate' ).'</b><br />'.__('Listing will be changed to sold status if it exists in the sold data feed.', 'wp-real-estate').'</p>',
+		),
+	));
+	
+	$cmb->add_field(array(
+		'name' => __('Sold Listings', 'wp-real-estate'),
+		'id' => 'wre_sold_listings',
+		'type' => 'radio',
+		'default' => 'keep_sold',
+		'options' => array(
+			'keep_sold' => __('Keep All', 'wp-real-estate') . '<p class="cmb2-metabox-description">'.__('This will keep all imported listings published with the status changed to reflect as sold.', 'wp-real-estate').'</p>',
+			'draft_sold' => __('Keep as Draft', 'wp-real-estate') . '<p class="cmb2-metabox-description">'.__('This will keep all imported listings that have been sold, but they will be changed to draft status in WordPress.', 'wp-real-estate').'</p>',
+			'delete_sold' => __('Delete Sold', 'wp-real-estate') . '<p class="cmb2-metabox-description"><b>'.__( 'Not recommended.', 'wp-real-estate' ).'</b><br />'.__('This will delete all sold listings and attached featured images from your WordPress database and media library.', 'wp-real-estate').'</p>',
+		),
+	));
+
+	$cmb->object_type('options-page');
+	$boxes[] = $cmb;
+	
+	$cmb = new_cmb2_box(array(
+		'id' => 'idx_import_options',
+		'title' => __('Additional Import Options', 'wp-real-estate'),
+		'show_on' => $show_on,
+	));
+	
+	$cmb->add_field( array(
+		'name' => __('Automatically Import New Listings?', 'wp-real-estate'),
+		'desc' => '',
+		'id'   => 'wre_auto_import_idx_listings',
+		'type' => 'checkbox',
+	) );
+	
+	$cmb->add_field( array(
+		'name'				=> __('Imported Listings Title', 'wp-real-estate'),
+		'desc'				=> __( 'By default, imported listings use the street address as the title and permalink.', 'wp-real-estate' ),
+		'id'				=> 'wre_idx_listing_title',
+		'type'				=> 'select',
+		'default'			=> 'address',
+		'options'			=> array(
+				'listingid'	=> __( 'Listing Id', 'wp-real-estate' ),
+				'address'	=> __( 'Address', 'wp-real-estate' ),
+				'city'		=> __( 'City', 'wp-real-estate' ),
+				'state'		=> __( 'State', 'wp-real-estate' ),
+				'zipcode'	=> __( 'Zipcode', 'wp-real-estate' ),
+		),
+	) );
+	
+	$cmb->add_field(array(
+		'name' => __('Select an author to use when importing listings ', 'wp-real-estate'),
+		'desc' => '',
+		'id' => 'wre_idx_listings_author',
+		'type' => 'select',
+		'options_cb' => 'wre_admin_get_agents',
+	));
+
+	$cmb->object_type('options-page');
+	$boxes[] = $cmb;
+	
+	
+	$cmb->object_type('options-page');
+	$boxes[] = $cmb;
+
+	
 	/* ==================== Advanced Options ==================== */
 
 	// template html

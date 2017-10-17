@@ -501,7 +501,7 @@ form#wre_contact_form .button-primary:hover {
 	float: right;
 	margin-bottom: 40px;
 }
-.wre-content .wre-items + .wre-pagination {
+.wre-content .wre-items + .wre-pagination, .wre-content #wre-archive-wrapper + .wre-pagination {
 	margin-top: 40px;
 	margin-bottom: 0;
 }
@@ -1203,7 +1203,26 @@ form#wre_contact_form .button-primary:hover {
 	}
 	.wre-select-wrap::after { display: block; }
 }
-
+	#wre-archive-wrapper {
+		overflow: hidden;
+		width: 100%;
+		position: relative;
+	}
+	#wre-archive-wrapper .wre-orderby-loader {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background-color: rgba(255,255,255,0.8);
+		display: none;
+	}
+	#wre-archive-wrapper .wre-orderby-loader.in {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 1;
+	}
 /* ============ MEDIA QUERIES ======================================== */
 @media (min-width: 768px) {
 	.wre-search-form.fields-10 > div { width: 10%; }

@@ -44,8 +44,6 @@ class WRE_Idx_Listing {
 			update_option('wre_import_progress', true);
 
 			if (is_array($listings) && is_array($properties)) {
-				$listing_author = wre_option('wre_idx_listings_author');
-				$listing_title = wre_option('wre_idx_listing_title');
 				$listing_sold_status = wre_option('wre_sold_listings');
 				// Loop through featured properties
 				foreach ($properties as $prop) {
@@ -68,23 +66,14 @@ class WRE_Idx_Listing {
 					// Add post and update post meta
 					if (in_array($prop['listingID'], $listings) && !isset($idx_featured_listing_wp_options[$prop['listingID']]['post_id'])) {
 
-						if (empty($listing_title)) {
-							$title_format = $properties[$key]['address'];
-						} else {
-							$title_format = $listing_title;
-							$title_format = str_replace('address', $properties[$key]['address'], $title_format);
-							$title_format = str_replace('city', $properties[$key]['cityName'], $title_format);
-							$title_format = str_replace('state', $properties[$key]['state'], $title_format);
-							$title_format = str_replace('zipcode', $properties[$key]['zipcode'], $title_format);
-							$title_format = str_replace('listingid', $properties[$key]['listingID'], $title_format);
-						}
+						$title_format = $properties[$key]['address'];
 
 						// Post creation options
 						$opts = array(
 							'post_title' => $title_format,
 							'post_status' => 'publish',
 							'post_type' => 'listing',
-							'post_author' => $listing_author ? $listing_author : 1
+							'post_author' => 1
 						);
 
 						// Add the post
@@ -99,7 +88,6 @@ class WRE_Idx_Listing {
 							$idx_featured_listing_wp_options[$prop['listingID']]['post_id'] = $add_post;
 							$idx_featured_listing_wp_options[$prop['listingID']]['status'] = 'publish';
 							update_post_meta($add_post, '_listing_details_url', $properties[$key]['fullDetailsURL']);
-							update_post_meta($add_post, '_wre_listing_agent', $listing_author);
 
 							self::wre_idx_insert_post_meta($add_post, $properties[$key]);
 						}
@@ -248,44 +236,50 @@ class WRE_Idx_Listing {
 			update_post_meta($id, '_wre_listing_hide', $hide_address);
 		}
 		if (isset($idx_featured_listing_data['sqFt'])) {
-			update_post_meta($id, '_wre_listing_building_size', $idx_featured_listing_data['sqFt']);
-			update_post_meta($id, '_wre_listing_building_unit', 'sqFt');
+			$building_size = (int)str_replace(',', '', $idx_featured_listing_data['sqFt']);
+			update_post_meta($id, '_wre_listing_building_size', $building_size);
+			update_post_meta($id, '_wre_listing_building_unit', 'sqft');
+		}
+		if (isset($idx_featured_listing_data['acres'])) {
+			$land_size = str_replace(',', '', $idx_featured_listing_data['acres']);
+			update_post_meta($id, '_wre_listing_land_size', $land_size);
+			update_post_meta($id, '_wre_listing_land_unit', 'acres');
 		}
 		if (isset($idx_featured_listing_data['address'])) {
-			update_post_meta($id, '_wre_listing_displayed_address', $idx_featured_listing_data['address']);
+			update_post_meta($id, '_wre_listing_displayed_address', sanitize_textarea_field($idx_featured_listing_data['address']));
 		}
 		if (isset($idx_featured_listing_data['cityName'])) {
-			update_post_meta($id, '_wre_listing_city', $idx_featured_listing_data['cityName']);
+			update_post_meta($id, '_wre_listing_city', sanitize_text_field($idx_featured_listing_data['cityName']));
 		}
 		if (isset($idx_featured_listing_data['country'])) {
-			update_post_meta($id, '_wre_listing_country', $idx_featured_listing_data['country']);
+			update_post_meta($id, '_wre_listing_country', sanitize_text_field($idx_featured_listing_data['country']));
 		}
 		if (isset($idx_featured_listing_data['state'])) {
-			update_post_meta($id, '_wre_listing_state', $idx_featured_listing_data['state']);
+			update_post_meta($id, '_wre_listing_state', sanitize_text_field($idx_featured_listing_data['state']));
 		}
 		if (isset($idx_featured_listing_data['zipcode'])) {
-			update_post_meta($id, '_wre_listing_zip', $idx_featured_listing_data['zipcode']);
+			update_post_meta($id, '_wre_listing_zip', intval($idx_featured_listing_data['zipcode']));
 		}
 		if (isset($idx_featured_listing_data['listingID'])) {
-			update_post_meta($id, '_wre_listing_mls', $idx_featured_listing_data['listingID']);
+			update_post_meta($id, '_wre_listing_mls', sanitize_text_field($idx_featured_listing_data['listingID']));
 		}
-		if (isset($idx_featured_listing_data['_wre_listing_bedrooms'])) {
-			update_post_meta($id, '_wre_listing_bedrooms', $idx_featured_listing_data['bedrooms']);
+		if (isset($idx_featured_listing_data['bedrooms'])) {
+			update_post_meta($id, '_wre_listing_bedrooms', sanitize_text_field($idx_featured_listing_data['bedrooms']));
 		}
 		if (isset($idx_featured_listing_data['totalBaths'])) {
-			update_post_meta($id, '_wre_listing_bathrooms', $idx_featured_listing_data['totalBaths']);
+			update_post_meta($id, '_wre_listing_bathrooms', sanitize_text_field($idx_featured_listing_data['totalBaths']));
 		}
 		if (isset($idx_featured_listing_data['latitude'])) {
-			update_post_meta($id, '_wre_listing_lat', $idx_featured_listing_data['latitude']);
+			update_post_meta($id, '_wre_listing_lat', sanitize_text_field($idx_featured_listing_data['latitude']));
 		}
 		if (isset($idx_featured_listing_data['longitude'])) {
-			update_post_meta($id, '_wre_listing_lng', $idx_featured_listing_data['longitude']);
+			update_post_meta($id, '_wre_listing_lng', sanitize_text_field($idx_featured_listing_data['longitude']));
 		}
 		if (isset($idx_featured_listing_data['remarksConcat'])) {
-			update_post_meta($id, 'content', $idx_featured_listing_data['remarksConcat']);
+			update_post_meta($id, 'content', sanitize_textarea_field($idx_featured_listing_data['remarksConcat']));
 		}
-		if (isset($idx_featured_listing_data['idxStatus'])) {
-			update_post_meta($id, '_wre_listing_status', $idx_featured_listing_data['idxStatus']);
+		if (isset($idx_featured_listing_data['propStatus'])) {
+			update_post_meta($id, '_wre_listing_status', sanitize_text_field($propstatus));
 		}
 
 		// Add disclaimers and courtesies
@@ -294,22 +288,22 @@ class WRE_Idx_Listing {
 				if (in_array('details', $disclaimer)) {
 					$disclaimer_logo = ($disclaimer['logoURL']) ? '<br /><img src="' . $disclaimer['logoURL'] . '" style="opacity: 1 !important; position: static !important;" />' : '';
 					$disclaimer_combined = $disclaimer['text'] . $disclaimer_logo;
-					update_post_meta($id, '_listing_disclaimer', $disclaimer_combined);
+					update_post_meta($id, '_wre_listing_disclaimer', $disclaimer_combined);
 				}
 				if (in_array('widget', $disclaimer)) {
 					$disclaimer_logo = ($disclaimer['logoURL']) ? '<br /><img src="' . $disclaimer['logoURL'] . '" style="opacity: 1 !important; position: static !important;" />' : '';
 					$disclaimer_combined = $disclaimer['text'] . $disclaimer_logo;
-					update_post_meta($id, '_listing_disclaimer_widget', $disclaimer_combined);
+					update_post_meta($id, '_wre_listing_disclaimer_widget', $disclaimer_combined);
 				}
 			}
 		}
 		if (isset($idx_featured_listing_data['courtesy'])) {
 			foreach ($idx_featured_listing_data['courtesy'] as $courtesy) {
 				if (in_array('details', $courtesy)) {
-					update_post_meta($id, '_listing_courtesy', $courtesy['text']);
+					update_post_meta($id, '_wre_listing_courtesy', sanitize_textarea_field($courtesy['text']));
 				}
 				if (in_array('widget', $courtesy)) {
-					update_post_meta($id, '_listing_courtesy_widget', $courtesy['text']);
+					update_post_meta($id, '_wre_listing_courtesy_widget', sanitize_textarea_field($courtesy['text']));
 				}
 			}
 		}
@@ -628,10 +622,6 @@ function wre_idx_listing_setting_page() {
  */
 if (class_exists('IDX_Broker_Plugin')) {
 	add_action('admin_init', 'wre_idx_update_schedule');
-
-	if (wre_option('wre_auto_import_idx_listings') && wre_option('wre_auto_import_idx_listings') == 'on') {
-		add_action('admin_init', 'wre_idx_auto_import_schedule');
-	}
 }
 
 function wre_idx_update_schedule() {
@@ -644,30 +634,6 @@ function wre_idx_update_schedule() {
  * On the scheduled update event, run wre_update_post
  */
 add_action('wre_idx_update', array('WRE_Idx_Listing', 'wre_update_post'));
-
-/**
- * Schedule auto import task
- */
-function wre_idx_auto_import_schedule() {
-	if (!wp_next_scheduled('wre_idx_auto_import')) {
-		wp_schedule_event(time(), 'twicedaily', 'wre_idx_auto_import');
-	}
-}
-
-add_action('wre_idx_auto_import', 'wre_idx_auto_import_task');
-/**
- * Get listingIDs and pass to create post cron job
- * @return void
- */
-function wre_idx_auto_import_task() {
-	$properties = wre_get_idx_properties();
-	if( $properties ) {
-		foreach ($properties as $prop) {
-			$listingIDs[] = $prop['listingID'];
-		}
-		wre_idx_create_post_cron($listingIDs);
-	}
-}
 
 function wre_get_idx_properties( $type='featured' ) {
 	if (class_exists('IDX_Broker_Plugin')) {

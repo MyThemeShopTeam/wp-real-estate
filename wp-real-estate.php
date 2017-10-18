@@ -176,7 +176,7 @@ if ( ! class_exists( 'WRE' ) ) :
 				include_once( 'includes/class-wre-archive-listings.php' );
 				include_once( 'includes/class-wre-agent-rewrite.php' );
 			}
-//			include_once( 'includes/admin/class-wre-idx-import.php' );
+			include_once( 'includes/admin/class-wre-idx-import.php' );
 		}
 
 		/**

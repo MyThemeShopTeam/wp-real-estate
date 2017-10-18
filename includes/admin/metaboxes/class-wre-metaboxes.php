@@ -117,7 +117,6 @@ if ( ! class_exists( 'WRE_Metaboxes' ) ) :
 								'object_types'	=> array( $this->type ), 
 						) );
 
-
 						$fields = array();
 
 						$fields[10] = array(
@@ -282,9 +281,9 @@ if ( ! class_exists( 'WRE_Metaboxes' ) ) :
 							'id'			=> $this->prefix . 'building_unit',
 							'type'			=> 'select',
 							'options'		=> apply_filters( 'wre_building_unit', array(
-								'Squares'	=> __( 'Squares', 'wp-real-estate' ),
-								'Sq Mtr'	=> __( 'Sq Mtr', 'wp-real-estate' ),
-								'Sq Ft'		=> __( 'Sq Ft', 'wp-real-estate' ),
+								'squares'	=> __( 'Squares', 'wp-real-estate' ),
+								'sqmtr'	=> __( 'Sq Mtr', 'wp-real-estate' ),
+								'sqft'		=> __( 'Sq Ft', 'wp-real-estate' ),
 							) ),
 						);
 
@@ -303,11 +302,11 @@ if ( ! class_exists( 'WRE_Metaboxes' ) ) :
 							'id'			=> $this->prefix . 'land_unit',
 							'type'			=> 'select',
 							'options'		=> apply_filters( 'wre_land_unit', array(
-								'Squares'	=> __( 'Squares', 'wp-real-estate' ),
-								'Sq Mtr'	=> __( 'Sq Mtr', 'wp-real-estate' ),
-								'Sq Ft'		=> __( 'Sq Ft', 'wp-real-estate' ),
-								'Acres'		=> __( 'Acres', 'wp-real-estate' ),
-								'Hectares'	=> __( 'Hectares', 'wp-real-estate' ),
+								'squares'	=> __( 'Squares', 'wp-real-estate' ),
+								'sqmtr'		=> __( 'Sq Mtr', 'wp-real-estate' ),
+								'sqft'		=> __( 'Sq Ft', 'wp-real-estate' ),
+								'acres'		=> __( 'Acres', 'wp-real-estate' ),
+								'hectares'	=> __( 'Hectares', 'wp-real-estate' ),
 							) ),
 						);
 

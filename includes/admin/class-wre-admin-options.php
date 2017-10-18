@@ -73,7 +73,6 @@ function wre_options_page() {
 		'desc' => '',
 		'boxes' => array(
 			'idx_imported_listings',
-			'idx_import_options',
 		),
 	);
 
@@ -582,49 +581,6 @@ function wre_options_page() {
 		),
 	));
 
-	$cmb->object_type('options-page');
-	$boxes[] = $cmb;
-	
-	$cmb = new_cmb2_box(array(
-		'id' => 'idx_import_options',
-		'title' => __('Additional Import Options', 'wp-real-estate'),
-		'show_on' => $show_on,
-	));
-	
-	$cmb->add_field( array(
-		'name' => __('Automatically Import New Listings?', 'wp-real-estate'),
-		'desc' => '',
-		'id'   => 'wre_auto_import_idx_listings',
-		'type' => 'checkbox',
-	) );
-	
-	$cmb->add_field( array(
-		'name'				=> __('Imported Listings Title', 'wp-real-estate'),
-		'desc'				=> __( 'By default, imported listings use the street address as the title and permalink.', 'wp-real-estate' ),
-		'id'				=> 'wre_idx_listing_title',
-		'type'				=> 'select',
-		'default'			=> 'address',
-		'options'			=> array(
-				'listingid'	=> __( 'Listing Id', 'wp-real-estate' ),
-				'address'	=> __( 'Address', 'wp-real-estate' ),
-				'city'		=> __( 'City', 'wp-real-estate' ),
-				'state'		=> __( 'State', 'wp-real-estate' ),
-				'zipcode'	=> __( 'Zipcode', 'wp-real-estate' ),
-		),
-	) );
-	
-	$cmb->add_field(array(
-		'name' => __('Select an author to use when importing listings ', 'wp-real-estate'),
-		'desc' => '',
-		'id' => 'wre_idx_listings_author',
-		'type' => 'select',
-		'options_cb' => 'wre_admin_get_agents',
-	));
-
-	$cmb->object_type('options-page');
-	$boxes[] = $cmb;
-	
-	
 	$cmb->object_type('options-page');
 	$boxes[] = $cmb;
 

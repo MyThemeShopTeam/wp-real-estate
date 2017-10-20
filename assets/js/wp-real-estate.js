@@ -163,13 +163,13 @@
 				wre_map = new google.maps.Map(mapClass[key], options);
 				var position = new google.maps.LatLng(lat, lng);
 				var set_marker = new google.maps.Marker({
-					icon: new google.maps.MarkerImage(
-							wre.marker_image,
-							null, // size is determined at runtime
-							null, // origin is 0,0
-							null, // anchor is bottom center of the scaled image
-							new google.maps.Size(50, 50)
-						),
+					icon: ' ',
+					label: {
+						fontFamily: 'wrewp',
+						text: "\140",
+						fontSize: '60px',
+						color: '#44a3d3'
+					},
 					map: wre_map,
 					position: position
 				});

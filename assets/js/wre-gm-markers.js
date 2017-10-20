@@ -16,14 +16,6 @@
 
 	var map = null, markers = [], newMarkers = [], markerCluster = null, infobox = [], address = null;
 
-	var customIcon = new google.maps.MarkerImage(
-		wre_map_data.images.green_marker,
-		null, // size is determined at runtime
-		null, // origin is 0,0
-		null, // anchor is bottom center of the scaled image
-		new google.maps.Size(50, 50)
-	);
-
 	var markerClusterOptions = {
 		gridSize: 60, // Default: 60
 		maxZoom: 14,
@@ -125,20 +117,29 @@
 		var bounds = new google.maps.LatLngBounds();
 
 		for (var i = 0; i < markerData.length; i++) {
-			icon = customIcon;
+			var labelData = '';
 			if(markerData[i].icon) {
 				icon = new google.maps.MarkerImage(
 					markerData[i].icon,
 					null, // size is determined at runtime
 					null, // origin is 0,0
 					null, // anchor is bottom center of the scaled image
-					new google.maps.Size(50, 50)
+					new google.maps.Size(50, 70)
 				);
+			} else {
+				icon = ' ';
+				labelData = {
+					fontFamily: 'wrewp',
+					text: "\140",
+					fontSize: '60px',
+					color: '#44a3d3'
+				}
 			}
 			marker = new google.maps.Marker({
 				map: map,
 				position: markerData[i].latLng,
 				icon: icon,
+				label: labelData,
 				animation: google.maps.Animation.DROP
 			}),
 			infoboxOptions = {

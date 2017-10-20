@@ -56,7 +56,6 @@ function wre_enqueue_styles_scripts() {
 			wp_localize_script('wp-real-estate-lightslider', 'wre_slider', apply_filters('wre_localized_script', $slider_localize_data));
 		}
 		$localized_array['ajax_url'] = admin_url('admin-ajax.php');
-		$localized_array['marker_image'] = WRE_PLUGIN_URL . 'assets/images/wre-default-marker.png';
 
 		wp_localize_script('wp-real-estate', 'wre', apply_filters('wre_localized_script', $localized_array));
 		wp_enqueue_style('wp-real-estate', $url . $css_dir . 'wp-real-estate.css', array(), $ver, 'all');

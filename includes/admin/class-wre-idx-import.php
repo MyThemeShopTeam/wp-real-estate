@@ -35,9 +35,12 @@ class WRE_Idx_Listing {
 	 * @return [type] $featured [description]
 	 */
 	public static function wre_idx_create_post($listings) {
-		if (class_exists('IDX_Broker_Plugin')) {
+
+		$properties_data = wre_get_idx_properties('featured?disclaimers=true');
+
+		if( isset($properties_data['properties']) && !empty( $properties_data['properties'] ) ) {
 			
-			$properties = wre_get_idx_properties('featured?disclaimers=true');
+			$properties = $properties_data['properties'];
 			// Load WP options
 			$idx_featured_listing_wp_options = get_option('wre_idx_featured_listing_wp_options');
 
@@ -131,53 +134,53 @@ class WRE_Idx_Listing {
 	 * @return true if success
 	 */
 	public static function wre_update_post() {
-
-		require_once(ABSPATH . 'wp-content/plugins/idx-broker-platinum/idx/idx-api.php');
-
-		// Load IDX Broker API Class and retrieve featured properties
-		$_idx_api = new \IDX\Idx_Api();
-		$properties = $_idx_api->client_properties('featured?disclaimers=true');
-
+		$properties_data = wre_get_idx_properties('featured?disclaimers=true');
 		// Load WP options
 		$idx_featured_listing_wp_options = get_option('wre_idx_featured_listing_wp_options');
-		$auto_update_listings = wre_option('wre_update_listings');
-		$sold_listing = wre_option('wre_sold_listings');
-		foreach ($properties as $prop) {
 
-			$key = self::get_key($properties, 'listingID', $prop['listingID']);
+		if( isset($properties_data['properties']) && !empty( $properties_data['properties'] ) ) {
+			$properties = $properties_data['properties'];
+			$auto_update_listings = wre_option('wre_update_listings');
+			$sold_listing = wre_option('wre_sold_listings');
+			foreach ($properties as $prop) {
 
-			if (isset($idx_featured_listing_wp_options[$prop['listingID']]['post_id'])) {
-				if (!($auto_update_listings) || isset($auto_update_listings) && $auto_update_listings != 'update_none')
-					self::wre_idx_insert_post_meta($idx_featured_listing_wp_options[$prop['listingID']]['post_id'], $properties[$key], true, ($auto_update_listings == 'update_noimage') ? false : true, false);
-				$idx_featured_listing_wp_options[$prop['listingID']]['updated'] = date("m/d/Y h:i:sa");
+				$key = self::get_key($properties, 'listingID', $prop['listingID']);
+				if (isset($idx_featured_listing_wp_options[$prop['listingID']]['post_id'])) {
+					if (!($auto_update_listings) || isset($auto_update_listings) && $auto_update_listings != 'update_none')
+						self::wre_idx_insert_post_meta($idx_featured_listing_wp_options[$prop['listingID']]['post_id'], $properties[$key], true, ($auto_update_listings == 'update_noimage') ? false : true, false);
+					$idx_featured_listing_wp_options[$prop['listingID']]['updated'] = date("m/d/Y h:i:sa");
+				}
 			}
 		}
 
 		// Load and loop through Sold properties
-		$sold_properties = $_idx_api->client_properties('soldpending');
-		foreach ($sold_properties as $sold_prop) {
+		$sold_properties_data = wre_get_idx_properties('soldpending');
+		if( isset($sold_properties_data['properties']) && !empty( $sold_properties_data['properties'] ) ) {
+			$sold_properties = $sold_properties_data['properties'];
+			foreach ($sold_properties as $sold_prop) {
 
-			$key = self::get_key($sold_properties, 'listingID', $sold_prop['listingID']);
+				$key = self::get_key($sold_properties, 'listingID', $sold_prop['listingID']);
 
-			if (isset($idx_featured_listing_wp_options[$sold_prop['listingID']]['post_id'])) {
+				if (isset($idx_featured_listing_wp_options[$sold_prop['listingID']]['post_id'])) {
 
-				// Update property data
-				self::wre_idx_insert_post_meta($idx_featured_listing_wp_options[$sold_prop['listingID']]['post_id'], $sold_properties[$key], true, ($auto_update_listings == 'update_noimage') ? false : true, true);
+					// Update property data
+					self::wre_idx_insert_post_meta($idx_featured_listing_wp_options[$sold_prop['listingID']]['post_id'], $sold_properties[$key], true, ($auto_update_listings == 'update_noimage') ? false : true, true);
 
-				if ($sold_listing && $sold_listing == 'draft_sold') {
-					// Change to draft
-					self::wre_idx_change_post_status($idx_featured_listing_wp_options[$sold_prop['listingID']]['post_id'], 'draft');
-				} elseif ($sold_listing && $sold_listing == 'delete_sold') {
-					// Delete featured image
-					$post_gallery_images = get_post_meta($idx_featured_listing_wp_options[$prop['listingID']]['post_id'], '_wre_listing_image_gallery', true);
-					if( !empty($post_gallery_images) ) {
-						foreach( $post_gallery_images as $attachment_id => $post_gallery_image ) {
-							wp_delete_attachment($attachment_id, true);
+					if ($sold_listing && $sold_listing == 'draft_sold') {
+						// Change to draft
+						self::wre_idx_change_post_status($idx_featured_listing_wp_options[$sold_prop['listingID']]['post_id'], 'draft');
+					} elseif ($sold_listing && $sold_listing == 'delete_sold') {
+						// Delete featured image
+						$post_gallery_images = get_post_meta($idx_featured_listing_wp_options[$prop['listingID']]['post_id'], '_wre_listing_image_gallery', true);
+						if( !empty($post_gallery_images) ) {
+							foreach( $post_gallery_images as $attachment_id => $post_gallery_image ) {
+								wp_delete_attachment($attachment_id, true);
+							}
 						}
-					}
 
-					//Delete post
-					wp_delete_post($idx_featured_listing_wp_options[$sold_prop['listingID']]['post_id']);
+						//Delete post
+						wp_delete_post($idx_featured_listing_wp_options[$sold_prop['listingID']]['post_id']);
+					}
 				}
 			}
 		}
@@ -210,9 +213,9 @@ class WRE_Idx_Listing {
 			$propstatus = ucfirst($idx_featured_listing_data['archiveStatus']);
 		} else {
 			if ($idx_featured_listing_data['propStatus'] == 'A') {
-				$propstatus = 'Active';
+				$propstatus = 'active';
 			} elseif ($idx_featured_listing_data['propStatus'] == 'S') {
-				$propstatus = 'Sold';
+				$propstatus = 'sold';
 			} else {
 				$propstatus = ucfirst($idx_featured_listing_data['propStatus']);
 			}
@@ -278,8 +281,8 @@ class WRE_Idx_Listing {
 		if (isset($idx_featured_listing_data['remarksConcat'])) {
 			update_post_meta($id, 'content', sanitize_textarea_field($idx_featured_listing_data['remarksConcat']));
 		}
-		if (isset($idx_featured_listing_data['propStatus'])) {
-			update_post_meta($id, '_wre_listing_status', sanitize_text_field($propstatus));
+		if (isset($idx_featured_listing_data['idxStatus'])) {
+			update_post_meta($id, '_wre_listing_status', sanitize_text_field($idx_featured_listing_data['idxStatus']));
 		}
 
 		// Add disclaimers and courtesies
@@ -381,7 +384,7 @@ class WRE_Idx_Listing {
 			}
 		}
 	}
-	
+
 	public static function is_image_file( $file ) {
 
 		$check = false;
@@ -488,8 +491,18 @@ function wre_idx_listing_setting_page() {
 		add_settings_error('wre_idx_listing_settings_group', 'idx_listing_import_progress', 'Your listings are being imported in the background. This notice will dismiss when all selected listings have been imported.', 'updated');
 	}
 	$idx_featured_listing_wp_options = get_option('wre_idx_featured_listing_wp_options');
+	$properties_data = wre_get_idx_properties();
 	?>
 	<h1><?php _e( 'Import IDX Listings', 'wp-real-estate' ); ?></h1>
+	<?php
+	
+	if( isset($properties_data['error']) && $properties_data['error'] != '' ) {
+		add_settings_error('wre_idx_listing_settings_group', 'idx_invalid_key', $properties_data['error'], 'error');
+		settings_errors('wre_idx_listing_settings_group');
+		return;
+	}
+
+	?>
 	<p><?php _e( 'Select the listings to import.', 'wp-real-estate' ); ?></p>
 	<form id="wre-idx-listing-import" method="post" action="options.php">
 		<label for="wre-selectall">
@@ -518,45 +531,14 @@ function wre_idx_listing_setting_page() {
 
 		submit_button( __('Import Listings', 'wp-real-estate') );
 
-		// Show popup if IDX Broker plugin not active or installed
-		if (!class_exists('IDX_Broker_Plugin')) {
-			// thickbox like content
-			echo '<div class="wre-idx-import thickbox">
-					 <a href="http://www.idxbroker.com/features/idx-wordpress-plugin" target="_blank"><img src="' . WRE_PLUGIN_URL . 'includes/admin/assets/images/idx-ad.png' . '" alt="Sign up for IDX now!"/></a>
-				</div>';
-
-			return;
-		}
-
 		settings_errors('wre_idx_listing_settings_group');
 		?>
 
 		<ol id="selectable" class="wre-grid">
 			<?php
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-			$plugin_data = get_plugins();
-
-			// Get properties from IDX Broker plugin
-			if (class_exists('IDX_Broker_Plugin')) {
-				// bail if IDX plugin version is not at least 2.0
-				if ($plugin_data['idx-broker-platinum/idx-broker-platinum.php']['Version'] < 2.0) {
-					add_settings_error('wre_idx_listing_settings_group', 'idx_listing_update', 'You must update to <a href="' . admin_url('update-core.php') . '">IMPress for IDX Broker</a> version 2.0.0 or higher to import listings.', 'error');
-					settings_errors('wre_idx_listing_settings_group');
-					return;
-				}
-				$properties =wre_get_idx_properties();
-				
-			} elseif (is_wp_error($properties)) {
-				$error_string = $properties->get_error_message();
-				add_settings_error('wre_idx_listing_settings_group', 'idx_listing_update', $error_string, 'error');
-				settings_errors('wre_idx_listing_settings_group');
-				return;
-			} else {
-				return;
-			}
 			settings_fields('wre_idx_listing_settings_group');
 			do_settings_sections('wre_idx_listing_settings_group');
-
+			$properties = $properties_data['properties'];
 			// No featured properties found
 			if (!$properties || !empty($properties->errors)) {
 				echo __('No featured properties found.', 'wp-real-estate');
@@ -620,9 +602,8 @@ function wre_idx_listing_setting_page() {
  * Only add if IDX plugin is installed
  * @since 2.0
  */
-if (class_exists('IDX_Broker_Plugin')) {
-	add_action('admin_init', 'wre_idx_update_schedule');
-}
+
+add_action('admin_init', 'wre_idx_update_schedule');
 
 function wre_idx_update_schedule() {
 	if (!wp_next_scheduled('wre_idx_update')) {
@@ -636,10 +617,70 @@ function wre_idx_update_schedule() {
 add_action('wre_idx_update', array('WRE_Idx_Listing', 'wre_update_post'));
 
 function wre_get_idx_properties( $type='featured' ) {
-	if (class_exists('IDX_Broker_Plugin')) {
-		require_once(ABSPATH . 'wp-content/plugins/idx-broker-platinum/idx/idx-api.php');
-		$_idx_api = new \IDX\Idx_Api();
-		return $properties = $_idx_api->client_properties($type);
+
+	$idx_broker_key = wre_option('wre_idx_api_key');
+
+	if( $idx_broker_key == '' ) {
+		return array("code" => "", "error" => "Please add your IDX API key in <a href=". admin_url('edit.php?post_type=listing&page=wre_options&tab=opt-tab-idx-settings') ."> WRE Settings </a> to continue.");
 	}
-	return false;
+
+	if (!function_exists('curl_init')) {
+		return array("code" => "PHP", "error" => "The cURL extension for PHP is not enabled on your server.<br />Please contact your developer and/or hosting provider.");
+	}
+
+	// access URL and request method
+	$url = 'https://api.idxbroker.com/clients/'.$type;
+	$method = 'GET';
+	// headers (required and optional)
+	$headers = array(
+		'Content-Type: application/x-www-form-urlencoded', // required
+		'accesskey: ' . $idx_broker_key,
+		'outputtype: json' // optional - overrides the preferences in our API control page
+	);
+	// set up cURL
+	$handle = curl_init();
+	curl_setopt($handle, CURLOPT_URL, $url);
+	curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+	curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+	curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+	// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+	$response = curl_exec($handle);
+
+	$response_code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+	$properties = $err_message = '';
+	if (is_numeric($response_code)) {
+		switch ($response_code) {
+			case 401:
+				$err_message = 'Access key is invalid or has been revoked, please ensure there are no spaces in your key.<br />If the problem persists, please reset your API key in the <a href="https://support.idxbroker.com/customer/en/portal/articles/1911631-api-key-control">IDX Broker Dashboard</a>, or contact <a href="mailto:help@idxbroker.com?subject=IMPress for IDX Broker - Error 401">help@idxbroker.com</a>';
+				break;
+			case 403:
+				$ip = gethostbyname(trim(`hostname`));
+				$err_message = 'IP address: '.$ip.' was blocked due to violation of TOS. Contact <a href="mailto:help@idxbroker.com?subject=IMPress for IDX Broker - Error 403">help@idxbroker.com</a> with your IP to determine the reason for the block.';
+				break;
+			case 403.4:
+				$err_message = 'API call generated from WordPress is not using SSL (HTTPS) to communicate.<br />Please contact your developer and/or hosting provider.';
+				break;
+			case 405:
+			case 409:
+				$err_message = 'Invalid request sent to IDX Broker API, please re-install the IMPress for IDX Broker plugin.';
+				break;
+			case 406:
+				$err_message = 'Access key is missing. To obtain an access key, please visit your <a href="https://support.idxbroker.com/customer/en/portal/articles/1911631-api-key-control">IDX Broker Dashboard</a>.';
+				break;
+			case 412:$err_message = 'Your account has exceeded the hourly access limit for your API key.<br />You may either wait and try again later, reset your API key in the <a href="https://support.idxbroker.com/customer/en/portal/articles/1911631-api-key-control">IDX Broker Dashboard</a>, or contact <a href="mailto:help@idxbroker.com?subject=IMPress for IDX Broker - Error 412">help@idxbroker.com</a>';
+				break;
+			case 500:
+				$err_message = 'General system error when attempting to communicate with the IDX Broker API, please try again in a few moments or contact <a href="mailto:help@idxbroker.com?subject=IMPress for IDX Broker - Error 500">help@idxbroker.com</a> if the problem persists.';
+				break;
+			case 503:
+				$err_message = 'IDX Broker API is currently undergoing maintenance. Please try again in a few moments or contact <a href="mailto:help@idxbroker.com?subject=IMPress for IDX Broker - Error 503">help@idxbroker.com</a> if the problem persists.';
+				break;
+			case 200:
+				$properties = json_decode($response,true);
+				break;
+		}
+	}
+	return array( "code" => $response_code,"error" => $err_message, 'properties' => $properties );
 }

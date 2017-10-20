@@ -556,6 +556,17 @@ function wre_options_page() {
 		'show_on' => $show_on,
 	));
 	
+	$cmb->add_field( array(
+		'name' => __('Enter Your API Key:', 'wp-real-estate'),
+		'desc' => __('Enter your API key to continue', 'wp-real-estate'),
+		'before_row' => '<p class="cmb2-metabox-description">' . __( 'If you do not have an IDX Broker account, please contact the IDX Broker team at 800-421-9668.', 'wp-real-estate' ) .' </p>',
+		'id'   => 'wre_idx_api_key',
+		'type' => 'text',
+		'default' => '',
+		'attributes' => array(
+		),
+	) );
+	
 	$cmb->add_field(array(
 		'name' => __('Update Listings', 'wp-real-estate'),
 		'before_row' => '<p class="cmb2-metabox-description">' . __('These settings apply to any imported IDX listings. Imported listings are updated via the latest API response twice daily.', 'wp-real-estate') . '</p>',

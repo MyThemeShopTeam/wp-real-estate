@@ -116,6 +116,17 @@ if (!function_exists('wre_template_single_sizes')) {
 }
 
 /**
+ * Output MLS Number.
+ */
+if (!function_exists('wre_template_single_mls_number')) {
+
+	function wre_template_single_mls_number() {
+		wre_get_part('single-listing/mls.php');
+	}
+
+}
+
+/**
  * Output the gallery.
  */
 if (!function_exists('wre_template_single_gallery')) {

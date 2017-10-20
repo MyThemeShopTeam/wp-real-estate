@@ -279,6 +279,10 @@ form#wre_contact_form .button-primary:hover {
 	float: left;
 	margin: 0 30px 0 0;
 }
+.wre-single .mls-wrapper {
+	float: right;
+	line-height: 30px;
+}
 .wre-single .open-times {
 	background: #eee none repeat scroll 0 0;
 	margin-bottom: 5px;
@@ -1593,6 +1597,7 @@ form#wre_contact_form .button-primary:hover {
 	vertical-align: bottom;
 	line-height: 1.5;
 }
+.wre-icon-marker:before { content: '\53'; }
 .wre-icon-tick-2:before { content: '\21'; }
 .wre-icon-tick-7:before { content: '\22'; }
 .wre-icon-tick-1:before { content: '\23'; }
@@ -1643,7 +1648,6 @@ form#wre_contact_form .button-primary:hover {
 .wre-icon-email:before { content: '\50'; }
 .wre-icon-grid-view:before { content: '\51'; }
 .wre-icon-list-view:before { content: '\52'; }
-.wre-icon-marker:before { content: '\53'; }
 .wre-icon-star:before { content: '\54'; }
 .wre-icon-edit:before { content: '\55'; }
 .wre-icon-avatar:before { content: '\56'; }

@@ -58,7 +58,8 @@ add_action('wre_single_listing_summary', 'wre_template_single_price', 20);
 add_action('wre_single_listing_summary', 'wre_template_single_address', 30);
 add_action('wre_single_listing_summary', 'wre_template_single_at_a_glance', 40);
 add_action('wre_single_listing_summary', 'wre_template_single_sizes', 50);
-add_action('wre_single_listing_summary', 'wre_template_single_open_for_inspection', 60);
+add_action('wre_single_listing_summary', 'wre_template_single_mls_number', 60);
+add_action('wre_single_listing_summary', 'wre_template_single_open_for_inspection', 70);
 
 add_action('wre_single_listing_content', 'wre_template_single_tagline', 10);
 add_action('wre_single_listing_content', 'wre_template_single_description', 20);

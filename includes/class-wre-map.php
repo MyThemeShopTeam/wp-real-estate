@@ -31,12 +31,6 @@ class WRE_Maps_Shortcodes {
 
 			wp_enqueue_script('wre-gm-markers-js', $url . $js_dir . 'wre-gm-markers.js', array(), $ver, true);
 			wp_enqueue_style('wre-gm-markers', $url . $css_dir . 'wre-google-map.css', array(), $ver, 'all');
-
-			$listings_data = array();
-			$listings_data['images'] = array(
-				'green_marker' => WRE_PLUGIN_URL . 'assets/images/wre-default-marker.png',
-			);
-			wp_localize_script('wre-gm-markers-js', 'wre_map_data', apply_filters('wre_localized_script', $listings_data));
 		}
 	}
 
@@ -101,7 +95,6 @@ class WRE_Maps_Shortcodes {
 			'search' => $atts['search'],
 			'search_zoom' => $atts['search_zoom'],
 		);
-		$listings_data['images'] = array( 'green_marker' => WRE_PLUGIN_URL . 'assets/images/default-marker.png' );
 
 		// start the query
 		$query_args = array(
@@ -153,13 +146,15 @@ class WRE_Maps_Shortcodes {
 				}
 
 				if ($lat && $lng) {
+					$content = wp_trim_words(esc_html(wre_meta('content')), 20, '...');
+					$content = preg_replace("/[^ \w]+/", "", $content);
 					$listings_data['listings'][] = apply_filters('wre_maps_listing_data', array(
 						'title' => get_the_title(),
 						'permalink' => get_the_permalink(),
 						'lat' => $lat,
 						'lng' => $lng,
 						'price' => wre_price(wre_meta('price')),
-						'content' => wp_trim_words(esc_html(wre_meta('content')), 20, '...'),
+						'content' => $content,
 						'thumbnail' => wre_get_first_image(),
 						'icon' => $marker_image
 					));

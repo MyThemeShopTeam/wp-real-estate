@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-$mls_number = wre_meta( '_wre_listing_mls' );
+$mls_number = wre_meta( 'mls' );
 
 if( empty( $mls_number ) )
 	return;

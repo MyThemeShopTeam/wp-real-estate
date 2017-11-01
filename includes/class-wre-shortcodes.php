@@ -195,31 +195,38 @@ class WRE_Shortcodes {
 
 		$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
+		$agent_details = array();
+		
 		$agents_args = array(
-			'role__in' => array( 'wre_agent', 'administrator' ),
-			'number' => $atts['number'],
-			'count_total' => true,
-			'meta_query' => array(
-				'relation' => 'OR',
-				array(
-					'key'     => '_wre_listing_ids',
-					'value'   => '',
-					'compare' => '!='
-				),
-				array(
-					'key'     => 'wpq_capabilities',
-					'value'   => 'wre_agent',
-					'compare' => 'LIKE'
-				),
-			)
+			'role__in'	=> array( 'wre_agent', 'administrator' ),
+			'number'	=> -1,
+			'fields'	=> array( 'ID', 'user_email', 'display_name', 'user_url' )
 		);
 		
-		if( $atts['allow_pagination'] == 'yes' && $atts['view'] == 'lists' ) {
-			$agents_args['paged'] = $paged;
+		$agents = get_users( $agents_args );
+
+		foreach( $agents as $agent ) {
+
+			if( user_can( $agent->ID, 'wre_agent' )) {
+				$agent_details[] = $agent;
+			} else if( count_user_posts( $agent->ID, 'listing' ) > 0 ) {
+				$agent_details[] = $agent;
+		}
 		}
 		
-		$agents = new WP_User_Query( $agents_args );
-		if( ! empty( $agents->results ) ) {
+		$number = $atts['number'];
+
+		if( $atts['allow_pagination'] == 'yes' && $atts['view'] == 'lists' && !empty( $agent_details ) ) {
+			$total_agents = count( $agent_details );
+			$agent_details = array_chunk($agent_details, $number);
+			$agent_details = $agent_details[$paged-1];
+		}
+
+		if( $atts['view'] == 'carousel' && !empty( $agent_details ) ) {
+			$agent_details = array_slice( $agent_details, 0, $number );
+		}
+
+		if( ! empty( $agent_details ) ) {
 
 		$attributes = '';
 		if( $atts['view'] == 'carousel' ) {
@@ -231,13 +238,13 @@ class WRE_Shortcodes {
 			<div class="wre-agents-container">
 				<div class="agents-wrapper agents-<?php echo esc_attr( $atts['view'] ).' '.esc_attr( $atts['agents-view'] ); ?>" data-value='<?php echo $attributes; ?>'>
 					<?php
-					foreach( $agents->results as $agent ) {
-						$agent_id	= $agent->ID;
+					foreach( $agent_details as $user ) {
+						$agent_id	= $user->ID;
 						$phone		= get_the_author_meta( 'phone', $agent_id );
 						$mobile		= get_the_author_meta( 'mobile', $agent_id );
-						$email		= $agent->user_email;
-						$website	= $agent->user_url;
-						$agent_name = $agent->display_name;
+						$email		= $user->user_email;
+						$website	= $user->user_url;
+						$agent_name = $user->display_name;
 						$gravatar_url = wre_get_agent_attachment_url($agent_id);
 						$position = get_the_author_meta( 'title_position', $agent_id );
 						$agent_description = strip_tags( get_the_author_meta( 'description', $agent_id ) );
@@ -286,7 +293,6 @@ class WRE_Shortcodes {
 				<?php if( $atts['allow_pagination'] == 'yes' && $atts['view'] == 'lists' ) { ?>
 					<nav class="wre-pagination">
 						<?php
-							$total_agents = $agents->get_total();
 							$pl_args = array(
 								'base'		=>	add_query_arg('paged','%#%'),
 								'format'	=>	'',
@@ -311,7 +317,6 @@ class WRE_Shortcodes {
 			wp_enqueue_style('wp-real-estate-lightslider');
 			wp_enqueue_script('wp-real-estate-lightslider');
 		}
-		
 
 		return ob_get_clean();
 	}

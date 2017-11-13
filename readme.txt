@@ -3,8 +3,8 @@ Contributors: MyThemeShop
 Creator's website link: http://mythemeshop.com/plugins/wp-real-estate/
 Tags: real estate listing, real estate listings, real estate plugin, real estate, real-estate, real estate agent, property listings, listings, listing search, realtor, agent, broker
 Requires at least: 4.5
-Tested up to: 4.8.2
-Stable tag: 1.0.0
+Tested up to: 4.8.3
+Stable tag: 1.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -73,8 +73,26 @@ A robust, flexible framework & template system gives you full control over every
 
 Easily override the default HTML template files by including them into your own theme. 
 
-The template system used is very similar to the WooCommerce template system, so if you have used that before, this will be a breeze. 
+The template system used is very similar to the WooCommerce template system, so if you have used that before, this will be a breeze.
 
+== Changelog ==
+
+= v1.1.0 (Nov 14, 2017) =
+* Integrated IDX/MLS
+* Added Notice for WP Real Estate Pro [Advanced IDX integration, Paid Listings, Memberships and much more]
+* Added compatibility for SEO plugins
+* Added Ajax loading in 'Order By' dropdown
+* Removed script loading on admin pages where they are not needed
+* Reduced single listing slider speed
+* Replaced Lightbox close icon image with font icon
+* Replaced marker image icon with font icon
+* Changed color of Sold Label
+* Changed few label names
+* Fixed bug which was making Agents page slow
+* Minor improvements in the code
+
+= v1.0.0 (Oct 9, 2017) =
+* Plugin released
 
 == Installation ==
 

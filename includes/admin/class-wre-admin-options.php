@@ -501,7 +501,7 @@ function wre_options_page() {
 		'desc' => __('The max number of agents to show', 'wp-real-estate') . '<br>' . __('Could show less than this if not enough agents are found.', 'wp-real-estate'),
 		'id'   => 'agents_archive_max_agents',
 		'type' => 'text',
-		'default' => '10',
+		'default' => '9',
 		'attributes' => array(
 			'type' => 'number',
 			'min'	=> 1

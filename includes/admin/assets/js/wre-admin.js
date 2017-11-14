@@ -88,5 +88,11 @@
 		});
 
 	});
+	
+	jQuery( 'body' ).on( 'click', '#wre_pro_version_image', function(e){
+		e.preventDefault();
+		 window.open('https://mythemeshop.com/plugins/wp-real-estate-pro/?utm_source=WP+Real+Estate&utm_medium=Link+CPC&utm_content=WP+Real+Estate+Pro+LP&utm_campaign=WordPressOrg', '_blank');
+		return false;
+	});
 
 })(jQuery);

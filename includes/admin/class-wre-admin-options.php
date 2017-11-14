@@ -733,6 +733,21 @@ function wre_options_page() {
 	));
 	$cmb->object_type('options-page');
 	$boxes[] = $cmb;
+	
+	$cmb = new_cmb2_box(array(
+		'id' => 'wre_pro_version_image',
+		'title' => 'WRE Pro Version',
+		'show_on' => $show_on,
+		'context' => 'side',
+	));
+	$cmb->add_field(array(
+		'id' => 'wre_save_button1',
+		'name' => '',
+		'type' => 'wiki_test_textareasmall',
+		'show_names' => false,
+	));
+	$cmb->object_type('options-page');
+	$boxes[] = $cmb;
 
 	// Arguments array. See the arguments page for more detail
 	$args = array(

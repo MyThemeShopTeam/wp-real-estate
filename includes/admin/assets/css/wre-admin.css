@@ -382,22 +382,6 @@
 	align-items: center;
 	background-color: rgba(238, 238, 238, 0.6);
 }
-.wre #wre-ie-wrapper .wre-ie-inner-container form .button-primary {
-	background-size: 320px;
-	background-position: center;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	width: 100%;
-    height: 300px;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	-o-box-shadow: none;
-	-ms-box-shadow: none;
-	box-shadow: none;
-	border: none;
-}
-.wre #wre-ie-wrapper .wre-ie-inner-container#import form .button-primary { background-image: url(../images/import.png); }
-.wre #wre-ie-wrapper .wre-ie-inner-container#export form .button-primary { background-image: url(../images/export.png); }
 .wre-idx-import.thickbox {
 	display: block;
 	width: 100%;
@@ -526,3 +510,24 @@
 	display: block;
 }
 .wre #setting-error-idx_listing_import_progress { margin-left: 0; }
+
+#wre_pro_version_image {
+	height: 700px;
+	background-color: #f1f1f1;
+    position: relative;
+    box-shadow: none;
+    border: none;
+}
+
+#wre_pro_version_image:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-image: url(../images/wre-pro-image.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	cursor: pointer;
+}

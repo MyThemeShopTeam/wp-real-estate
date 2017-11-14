@@ -3,7 +3,7 @@
  * Plugin Name: WP Real Estate
  * Plugin URI: https://mythemeshop.com/plugins/wp-real-estate/
  * Description: A Real Estate Listings plugin for WordPress. Create a smart real estate website quickly and easily.
- * Version: 1.0.0
+ * Version: 1.1.1
  * Author: MyThemesShop
  * Author URI: http://mythemeshop.com/
  * Text Domain: wp-real-estate
@@ -43,7 +43,7 @@ if ( ! class_exists( 'WRE' ) ) :
 		 * Plugin Version
 		 * @var string
 		 */
-		private $version = '1.0.0';
+		private $version = '1.1.1';
 
 		/**
 		 * @var WRE The one true WRE

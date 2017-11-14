@@ -181,7 +181,7 @@ add_action('init', 'wre_add_new_image_sizes', 11);
 
 function wre_add_new_image_sizes() {
 	add_theme_support('post-thumbnails');
-	add_image_size('wre-lge', 1200, 900, array('center', 'center')); //main
+	add_image_size('wre-lge', 800, 600, array('center', 'center')); //main
 	add_image_size('wre-sml', 400, 300, array('center', 'center')); //thumb
 }
 
@@ -288,7 +288,7 @@ function wre_nearby_listings_callback() {
 	$lat = $data['current_lat'];
 	$lng = $data['current_lng'];
 	$radius = $measurement == 'kilometers' ? 6371 : 3950;
-
+	$view = $data['view'] ? $data['view'] : 'list-view';
 	// latitude boundaries
 	$maxlat = $lat + rad2deg($distance / $radius);
 	$minlat = $lat - rad2deg($distance / $radius);
@@ -318,7 +318,7 @@ function wre_nearby_listings_callback() {
 	$related_posts = get_posts($related_args);
 	if (!empty($related_posts)) {
 		$related_posts = implode(',', $related_posts);
-		$content = do_shortcode('[wre_listings number="' . $max_listings . '" ids="' . $related_posts . '" order="desc" compact="' . $compact . '"]');
+		$content = do_shortcode('[wre_listings number="' . $max_listings . '" view="'. $view .'" ids="' . $related_posts . '" order="desc" compact="' . $compact . '"]');
 		$flag = true;
 	} else {
 		$content = __('Sorry, no listings were found.', 'wp-real-estate');
@@ -404,6 +404,20 @@ if (!function_exists('wre_is_theme_compatible')) {
 	}
 
 }
+
+function wre_theme_activation($oldname, $oldtheme=false) {
+	$wre_options = get_option('wre_options');
+	$theme_compatible = $wre_options['wre_theme_compatibility'];
+	$theme_compatible = apply_filters('wre_theme_compatibility', $theme_compatible);
+	if( $theme_compatible ) {
+		$theme_compatible = 'enable';
+	} else {
+		$theme_compatible = 'disable';
+	}
+	$wre_options['wre_theme_compatibility'] = $theme_compatible;
+	update_option( 'wre_options', $wre_options );
+}
+add_action("after_switch_theme", "wre_theme_activation", 10 , 2);
 
 function wre_compare_listings_callback() {
 
@@ -514,7 +528,7 @@ if (!function_exists('wre_get_contextual_query')) {
  */
 
 function wre_template_path() {
-	return apply_filters('wre_template_path', 'listings/');
+	return apply_filters('wre_template_path', 'wp-real-estate/');
 }
 
 function wre_get_part($part, $id = null) {

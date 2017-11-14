@@ -289,9 +289,15 @@ function wre_install_data() {
 	$options['map_height'] = '300';
 	$options['distance_measurement'] = 'miles';
 	$options['search_radius'] = '20';
-	
-	$options['wre_theme_compatibility'] = 'enable';
-	
+
+	$theme_compatible = apply_filters('wre_theme_compatibility', true);
+	if( $theme_compatible ) {
+		$theme_compatible = 'enable';
+	} else {
+		$theme_compatible = 'disable';
+	}
+	$options['wre_theme_compatibility'] = $theme_compatible;
+
 	$options['wre_agents_mode'] = 'list-view';
 	$options['wre_archive_agents_columns'] = 3;
 	$options['agents_archive_max_agents'] = 10;
@@ -314,7 +320,10 @@ function wre_run_install() {
 	$types->register_post_type();
 
 	// install data
-	wre_install_data();
+	$wre_options = get_option('wre_options');
+	if( empty( $wre_options ) ) {
+		wre_install_data();
+	}
 	wre_install_listings_page();
 	wre_install_sample_listing();
 	wre_install_compare_listings_page();
@@ -414,10 +423,17 @@ function wre_install_success_notice() {
 	if ( false !== $redirected && isset( $_GET['page'] ) && $_GET['page'] == 'wre_options' ) {
 		// Delete the transient
 		//delete_transient( '_wre_redirected' );
-
+		$listing_created = get_transient( '_wre_listing_created' );
 		$class = 'notice notice-info is-dismissible';
-		$message = '<strong>' . __( 'Success!', 'wp-real-estate' ) . '</strong>' . __( ' A sample listing has been created: ', 'wp-real-estate' );
-		$message .= '<a class="button button-small" target="_blank" href="' . esc_url( get_permalink( wre_option( 'archives_page' ) ) ) . '">' . __( 'View First Listing', 'wp-real-estate' ) . '</a><br><br>';
+		$message = '';
+		$message .= '<strong>' . __( 'Success!', 'wp-real-estate' ) . '</strong>';
+		if( $listing_created !== false ) {
+			delete_transient( '_wre_listing_created' );
+			$message .= __( ' A sample listing has been created: ', 'wp-real-estate' );
+			$message .= '<a class="button button-small" target="_blank" href="' . esc_url( get_permalink( wre_option( 'archives_page' ) ) ) . '">' . __( 'View First Listing', 'wp-real-estate' ) . '</a><br><br>';
+		} else {
+			$message .= '<br />';
+		}
 		$message .= __( 'Step 1. Please go through each tab below, configure the options and <strong>hit the save button</strong>.', 'wp-real-estate' ) . '<br>';
 		$message .= __( 'Step 2. Add your first Listing by navigating to <strong>Listings > New Listing</strong>', 'wp-real-estate' ) . '<br>';
 

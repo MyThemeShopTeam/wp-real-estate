@@ -25,7 +25,7 @@ get_header( 'listings' );
 		do_action( 'wre_archive_page_content' );
 
 		if ( have_posts() ) :
-
+			$default_listing_mode = wre_default_display_mode();
 			/**
 			 * @hooked wre_ordering (the ordering dropdown)
 			 * @hooked wre_pagination (the pagination)
@@ -33,7 +33,7 @@ get_header( 'listings' );
 			 */
 			do_action( 'wre_before_listings_loop' );
 			echo '<div id="wre-archive-wrapper">';
-			echo '<ul class="wre-items">';
+			echo '<ul class="wre-items '. esc_attr( $default_listing_mode ) .'">';
 				while ( have_posts() ) : the_post();
 
 					wre_get_part( 'content-listing.php' );

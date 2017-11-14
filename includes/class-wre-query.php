@@ -52,7 +52,7 @@ class WRE_Query {
 	public function listings_query( $q ) {
 
 		$q->set( 'post_status', 'publish' );
-
+		$q->set( 'posts_per_page', wre_default_posts_number() );
 		// Ordering query vars
 		$ordering  = $this->get_ordering_args();
 		$q->set( 'orderby', $ordering['orderby'] );

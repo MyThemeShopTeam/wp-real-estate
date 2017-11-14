@@ -93,6 +93,15 @@ Install like any other plugin - directly from plugins page or upload via FTP.
 3. Go to Users > Add New to add a new Real Estate Agent
 4. Go to Listings > New Listing to add a new property listing
 
+== Changelog ==
+
+= 1.1.1 =
+* Changed template folder name from /listings to /wp-real-estate
+* Added Theme Compatibility filter
+* Fixed Plugin Activation Message
+* Improved IDX option tab
+* Added an option to change default view mode of Listings page
+* Fixed option reset issue on reactivation
 
 == Frequently Asked Questions ==
 

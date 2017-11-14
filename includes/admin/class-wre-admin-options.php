@@ -29,6 +29,7 @@ function wre_options_page() {
 		'title' => __('General', 'wp-real-estate'),
 		'desc' => '',
 		'boxes' => array(
+			'wre_display_settings',
 			'google_maps',
 			'search',
 		),
@@ -85,6 +86,49 @@ function wre_options_page() {
 			'uninstall',
 		),
 	);
+	
+	// display-setttings
+	$cmb = new_cmb2_box(array(
+		'id' => 'wre_display_settings',
+		'title' => __('Display Settings', 'wp-real-estate'),
+		'show_on' => $show_on,
+	));
+	$cmb->add_field(array(
+		'name' => __('Archive Display Mode', 'wp-real-estate'),
+		'desc' => '',
+		'id' => 'wre_default_display_mode',
+		'type' => 'select',
+		'default' => 'grid-view',
+		'options' => array(
+			'grid-view' => __('Grid Mode', 'wp-real-estate'),
+			'list-view' => __('List Mode', 'wp-real-estate'),
+		),
+	));
+	$cmb->add_field(array(
+		'name' => __('Archive Grid Columns', 'wp-real-estate'),
+		'desc' => __('The number of columns to display on the archive page, when viewing listings in grid mode.', 'wp-real-estate'),
+		'id' => 'wre_grid_columns',
+		'type' => 'select',
+		'default' => '3',
+		'options' => array(
+			'2' => __('2 columns', 'wp-real-estate'),
+			'3' => __('3 columns', 'wp-real-estate'),
+			'4' => __('4 columns', 'wp-real-estate'),
+		),
+	));
+	$cmb->add_field( array(
+		'name' => __('Number of Listings/Agencies', 'wp-real-estate'),
+		'desc' => __('The max number of listings/agencies to show in archive page.', 'wp-real-estate') . '<br>' . __('Could show less than this if not enough listings/agencies are found.', 'wp-real-estate'),
+		'id'   => 'archive_listing_number',
+		'type' => 'text',
+		'default' => '9',
+		'attributes' => array(
+			'type' => 'number',
+			'min'	=> 1
+		),
+	) );
+	$cmb->object_type('options-page');
+	$boxes[] = $cmb;
 
 	// maps
 	$cmb = new_cmb2_box(array(
@@ -559,7 +603,7 @@ function wre_options_page() {
 	$cmb->add_field( array(
 		'name' => __('Enter Your API Key:', 'wp-real-estate'),
 		'desc' => __('Enter your API key to continue', 'wp-real-estate'),
-		'before_row' => '<p class="cmb2-metabox-description">' . __( 'If you do not have an IDX Broker account, please contact the IDX Broker team at 800-421-9668.', 'wp-real-estate' ) .' </p>',
+		'before_row' => '<p class="cmb2-metabox-description">' . sprintf (__( 'If you do not have an %s account, please contact the IDX Broker team at 800-421-9668.', 'wp-real-estate' ), '<a href="https://idxbroker.com" target="_blank">'. __( 'IDX Broker', 'wp-real-estate' ) .'</a>') .' </p>',
 		'id'   => 'wre_idx_api_key',
 		'type' => 'text',
 		'default' => '',
@@ -572,7 +616,7 @@ function wre_options_page() {
 		'before_row' => '<p class="cmb2-metabox-description">' . __('These settings apply to any imported IDX listings. Imported listings are updated via the latest API response twice daily.', 'wp-real-estate') . '</p>',
 		'id' => 'wre_update_listings',
 		'type' => 'radio_inline',
-		'default' => 'update_all',
+		'default' => 'update_noimage',
 		'options' => array(
 			'update_all' => __('Update All', 'wp-real-estate') . '<p class="cmb2-metabox-description">'.__('Excludes Post Title and Post Content', 'wp-real-estate').')</span>',
 			'update_noimage' => __('Update Excluding Images', 'wp-real-estate') . '<p class="cmb2-metabox-description">'.__('Also excludes Post Title and Post Content', 'wp-real-estate').')</p>',
@@ -605,6 +649,17 @@ function wre_options_page() {
 		'show_on' => $show_on,
 	));
 	$cmb->add_field(array(
+		'name' => __('Theme Compatibility', 'wp-real-estate'),
+		'desc' => __('If enabled, add [wre_archive_listings], [wre_archive_agencies] & [wre_archive_agent] shortcode on there respective pages and remove it if disabled.', 'wp-real-estate'),
+		'id' => 'wre_theme_compatibility',
+		'type' => 'select',
+		'default' => 'enable',
+		'options' => array(
+			'enable' => __('Enabled', 'wp-real-estate'),
+			'disable' => __('Disabled', 'wp-real-estate'),
+		),
+	));
+	$cmb->add_field(array(
 		'name' => __('Opening HTML Tag(s)', 'wp-real-estate'),
 		'desc' => __('Used for theme compatability, this option will override the opening HTML for all Listings pages.', 'wp-real-estate') . '<br>' . __('This can help you to match the HTML with your current theme.', 'wp-real-estate'),
 		'id' => 'opening_html',
@@ -635,17 +690,6 @@ function wre_options_page() {
 		'options' => array(
 			'yes' => __('Yes', 'wp-real-estate'),
 			'no' => __('No', 'wp-real-estate'),
-		),
-	));
-	$cmb->add_field(array(
-		'name' => __('Theme Compatibility', 'wp-real-estate'),
-		'desc' => __('If enabled, add [wre_archive_listings], [wre_archive_agencies] & [wre_archive_agent] shortcode on there respective pages and remove it if disabled.', 'wp-real-estate'),
-		'id' => 'wre_theme_compatibility',
-		'type' => 'select',
-		'default' => 'enable',
-		'options' => array(
-			'enable' => __('Enabled', 'wp-real-estate'),
-			'disable' => __('Disabled', 'wp-real-estate'),
 		),
 	));
 	
@@ -685,6 +729,21 @@ function wre_options_page() {
 		'desc' => __('Save Changes', 'wp-real-estate'),
 		'id' => 'wre_save_button',
 		'type' => 'wre_options_save_button',
+		'show_names' => false,
+	));
+	$cmb->object_type('options-page');
+	$boxes[] = $cmb;
+	
+	$cmb = new_cmb2_box(array(
+		'id' => 'wre_pro_version_image',
+		'title' => 'WRE Pro Version',
+		'show_on' => $show_on,
+		'context' => 'side',
+	));
+	$cmb->add_field(array(
+		'id' => 'wre_save_button1',
+		'name' => '',
+		'type' => 'wiki_test_textareasmall',
 		'show_names' => false,
 	));
 	$cmb->object_type('options-page');

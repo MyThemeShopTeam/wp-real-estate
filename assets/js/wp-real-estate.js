@@ -104,13 +104,8 @@
 
 		$('.wre-view-switcher div').click(function () {
 			var view = $(this).attr('id');
-			set_cookie(view);
 			switch_view(view);
 		});
-
-		if (get_cookie('view') == 'grid') {
-			switch_view('grid');
-		}
 
 		function switch_view(to) {
 
@@ -124,25 +119,6 @@
 				}
 
 			});
-		}
-
-		function set_cookie(value) {
-			var days = 30; // set cookie duration
-			if (days) {
-				var date = new Date();
-				date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-				var expires = "; expires=" + date.toGMTString();
-			}
-			else
-				var expires = "";
-			document.cookie = "view=" + value + expires + "; path=/";
-		}
-
-		function get_cookie(name) {
-			var value = "; " + document.cookie;
-			var parts = value.split("; " + name + "=");
-			if (parts.length == 2)
-				return parts.pop().split(";").shift();
 		}
 
 	}

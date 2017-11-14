@@ -4,11 +4,11 @@ Creator's website link: http://mythemeshop.com/plugins/wp-real-estate/
 Tags: real estate listing, real estate listings, real estate plugin, real estate, real-estate, real estate agent, property listings, listings, listing search, realtor, agent, broker
 Requires at least: 4.5
 Tested up to: 4.8.3
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-A Real Estate listing plugin that is feature packed, works with any theme and is easy to use. Get your Real Estate website up & running in no time.
+A Real Estate listing plugin that is feature packed, works with any theme and is easy to use. IDX/MLS integration to pull data automatically.
 
 == Description ==
 
@@ -21,6 +21,7 @@ The plugin allows you to easily manage **Real Estate Listings**, **Listing Enqui
 ### WP Real Estate Features
 
 * **Advanced Search** - smart, custom search with radius searching, attribute filtering & search near landmarks.
+* **IDX/MLS Integration** - The MLS listings can be displayed with the relevant information pulled in automatically. The listings are also updated automatically to the most current information. You can be assured that your buyers are always getting accurate and current information about a listing.
 * **Rent and/or Sell** - setup your website for only Rental properties or only properties that are For Sale. Or do both!
 * **Image Galleries** - great looking image galleries. A drag and drop interface makes it easy.
 * **Smart Maps** - Google Maps integration.
@@ -57,7 +58,7 @@ The shortcodes can be easily customized, with each shortcode having many options
 * [wre_agents ] - Used to display all agents on the site. We have given an option to change the Appearance of how agents are displayed on the front-end. You can show agents in carousel or in list/grid view
 * [wre_map] - Used to display map with all listings
 
-- We have provided an option in the TinyMce editor to add all these shortcodes.
+- We have provided advanced shortcode generator in the TinyMce editor to add all these shortcodes.
 
 ### Widgets
 
@@ -76,6 +77,17 @@ Easily override the default HTML template files by including them into your own 
 The template system used is very similar to the WooCommerce template system, so if you have used that before, this will be a breeze.
 
 == Changelog ==
+
+= v1.1.1 (Nov 15, 2017) =
+* Added option to set default display mode for the Listings page (Grid or List)
+* Added option to set default number of columns for the Listings page (2, 3 or 4)
+* Added option to control number of listings on first page of Listings page
+* Added filter to set Theme Compatibility option from the theme
+* Added Pro version's banner in the settings page
+* For theme authors, changed template folder name from /listings to /wp-real-estate
+* Fixed Plugin Activation Message issue
+* Improved IDX option tab
+* Fixed option reset issue on reactivation
 
 = v1.1.0 (Nov 14, 2017) =
 * Integrated IDX/MLS
@@ -115,13 +127,14 @@ Install like any other plugin - directly from plugins page or upload via FTP.
 == Frequently Asked Questions ==
 
 = Where can I find documentation? =
+For the documentation, please head over to [https://mythemeshop.com/](https://mythemeshop.com/) and create a free account, you can download the detailed documentation from the Member's Area.
 
 = Where can I get support? =
 
 Support is provided in the [MyThemeShop support forum](https://community.mythemeshop.com/).
 
-= Will Listings WP work with my theme? =
+= Will WP Real Estate work with my theme? =
 
-Yes, our real estate plugin works with any theme. 
+Yes, our WP Real Estate plugin works with any theme. 
 
-If you find that things are not looking quite right though, you may need to simply modify the HTML wrappers which is an option in  the Settings > Listings WP page.
+If you find that things are not looking quite right though, you may need to simply modify the HTML wrappers which is an option in  the Settings > Advanced Tab.

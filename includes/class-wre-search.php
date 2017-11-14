@@ -27,9 +27,11 @@ class WRE_Search {
 		$search_data = str_replace('?', '', $_POST['search_data']);
 		parse_str($search_data, $form_data);
 		$paged = $form_data['paged'];
+		$posts_per_page = wre_default_posts_number();
 		$query_args = array(
 			'post_type' => 'listing',
 			'post_status' => 'publish',
+			'posts_per_page' => $posts_per_page,
 			'paged' => $paged,
 		);
 

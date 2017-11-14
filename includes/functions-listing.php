@@ -349,3 +349,15 @@ function wre_cpt_author_meta_save_override( $override, $data_args, $args, $field
 	}
 	return $override;
 }
+
+function wre_default_display_mode() {
+	return $default_listing_mode = wre_option( 'wre_default_display_mode' ) ? wre_option( 'wre_default_display_mode' ) : 'grid-view';
+}
+
+function wre_default_posts_number() {
+	return $default_listing_number = wre_option( 'archive_listing_number' ) ? wre_option( 'archive_listing_number' ) : 9;
+}
+
+function wre_default_grid_columns() {
+	return $default_columns = wre_option( 'wre_grid_columns' ) ? wre_option( 'wre_grid_columns' ) : 3;
+}

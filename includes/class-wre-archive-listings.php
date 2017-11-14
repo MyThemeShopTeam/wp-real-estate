@@ -56,8 +56,8 @@ class WRE_Archive_Listings extends WRE_Search {
 			 *
 			 */
 			do_action('wre_before_listings_loop');
-
-			echo '<div id="wre-archive-wrapper"><ul class="wre-items">';
+			$default_listing_mode = wre_default_display_mode();
+			echo '<div id="wre-archive-wrapper"><ul class="wre-items ' . esc_attr( $default_listing_mode ) . '">';
 				while ($archive_listings->have_posts()) : $archive_listings->the_post();
 
 					wre_get_part('content-listing.php');
@@ -97,8 +97,10 @@ class WRE_Archive_Listings extends WRE_Search {
 		} else if( $paged == 0 ) {
 			$paged = 1;
 		}
+		$posts_per_page = wre_default_posts_number();
 		$query_args = array(
 			'post_type' => 'listing',
+			'posts_per_page' => $posts_per_page,
 			'post_status' => 'publish',
 			'paged' => $paged,
 		);

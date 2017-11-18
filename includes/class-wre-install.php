@@ -33,166 +33,6 @@ function wre_install( $network_wide = false ) {
 }
 register_activation_hook( WRE_PLUGIN_FILE, 'wre_install' );
 
-function wre_install_listings_page() {
-
-	$options = get_option( 'wre_options' );
-
-	if ( isset( $options['archives_page'] ) && ( $page_object = get_post( $options['archives_page'] ) ) ) {
-		if ( 'page' === $page_object->post_type && ! in_array( $page_object->post_status, array( 'pending', 'trash', 'future', 'auto-draft' ) ) ) {
-			// Valid page is already in place
-			return $page_object->ID;
-		}
-	}
-
-	$page = get_page_by_title( 'Listings' );
-
-	if ( $page && has_shortcode( $page->post_content, 'wre_archive_listings' ) ) {
-
-		$page_id = $page->ID;
-
-		$page_status = get_post_status( $page_id );
-		if( $page_status != 'publish' ) {
-			$page_id = wp_update_post(array(
-				'ID'    =>  $page_id,
-				'post_status'   =>  'publish'
-			));
-		}
-	} else {
-		$page_content = '[wre_search] [wre_archive_listings]';
-		$page_data = array(
-			'post_status'		=> 'publish',
-			'post_type'			=> 'page',
-			'post_title'		=> 'Listings',
-			'post_content'		=> $page_content,
-			'comment_status'	=> 'closed',
-		);
-		$page_id = wp_insert_post( $page_data );
-	}
-
-	if ( $page_id ) {
-		$options['archives_page'] = $page_id;
-		update_option( 'wre_options', $options );
-		return $page_id;
-	}
-
-}
-
-function wre_install_agents_page() {
-	
-	$page = get_page_by_title( 'Agents' );
-
-	if ( $page && has_shortcode( $page->post_content, 'wre_agents' ) ) {
-
-		$page_id = $page->ID;
-
-		$page_status = get_post_status( $page_id );
-		if( $page_status != 'publish' ) {
-			$page_id = wp_update_post(array(
-				'ID'    =>  $page_id,
-				'post_status'   =>  'publish'
-			));
-		}
-	} else {
-		$page_content = '[wre_agents]';
-		$page_data = array(
-			'post_status'		=> 'publish',
-			'post_type'			=> 'page',
-			'post_title'		=> 'Agents',
-			'post_content'		=> $page_content,
-			'comment_status'	=> 'closed',
-		);
-		$page_id = wp_insert_post( $page_data );
-	}
-}
-
-function wre_install_agent_page() {
-
-	$options = get_option( 'wre_options' );
-
-	if ( isset( $options['wre_single_agent'] ) && ( $page_object = get_post( $options['wre_single_agent'] ) ) ) {
-		if ( 'page' === $page_object->post_type && ! in_array( $page_object->post_status, array( 'pending', 'trash', 'future', 'auto-draft' ) ) ) {
-			// Valid page is already in place
-			return $page_object->ID;
-		}
-	}
-	
-	$page = get_page_by_title( 'Agent' );
-
-	if ( $page && has_shortcode( $page->post_content, 'wre_archive_agent' ) ) {
-
-		$page_id = $page->ID;
-
-		$page_status = get_post_status( $page_id );
-		if( $page_status != 'publish' ) {
-			$page_id = wp_update_post(array(
-				'ID'    =>  $page_id,
-				'post_status'   =>  'publish'
-			));
-		}
-	} else {
-		$page_content = '[wre_archive_agent]';
-		$page_data = array(
-			'post_status'		=> 'publish',
-			'post_type'			=> 'page',
-			'post_title'		=> 'Agent',
-			'post_content'		=> $page_content,
-			'comment_status'	=> 'closed',
-		);
-		$page_id = wp_insert_post( $page_data );
-	}
-
-	if ( $page_id ) {
-		$options['wre_single_agent'] = $page_id;
-		update_option( 'wre_options', $options );
-		return $page_id;
-	}
-}
-
-function wre_install_compare_listings_page() {
-
-	$options = get_option( 'wre_options' );
-
-	if ( isset( $options['compare_listings'] ) && ( $page_object = get_post( $options['compare_listings'] ) ) ) {
-		if ( 'page' === $page_object->post_type && ! in_array( $page_object->post_status, array( 'pending', 'trash', 'future', 'auto-draft' ) ) ) {
-			// Valid page is already in place
-			return $page_object->ID;
-		}
-	}
-
-	$page = get_page_by_title( 'Compare Listings' );
-
-	if ( $page && has_shortcode( $page->post_content, 'wre_compare_listings' ) ) {
-
-		$page_id = $page->ID;
-		$page_status = get_post_status( $page_id );
-		if( $page_status != 'publish' ) {
-			$page_id = wp_update_post(array(
-				'ID'    =>  $page_id,
-				'post_status'   =>  'publish'
-			));
-		}
-
-	} else {
-		$page_content = '[wre_compare_listings]';
-		$page_data = array(
-			'post_status'		=> 'publish',
-			'post_type'			=> 'page',
-			'post_title'		=> 'Compare Listings',
-			'post_content'		=> $page_content,
-			'comment_status'	=> 'closed',
-		);
-		$page_id = wp_insert_post( $page_data );
-	}
-	
-	if ( $page_id ) {
-		$options['compare_listings'] = $page_id;
-		update_option( 'wre_options', $options );
-		return $page_id;
-	}
-
-	
-}
-
 function wre_install_sample_listing() {
 
 	$listings = get_posts( array('post_type' => 'listing', 'posts_per_page' => 1, 'fields' => 'ids') );
@@ -324,11 +164,9 @@ function wre_run_install() {
 	if( empty( $wre_options ) ) {
 		wre_install_data();
 	}
-	wre_install_listings_page();
+	
+	wre_install_pages();
 	wre_install_sample_listing();
-	wre_install_compare_listings_page();
-	wre_install_agent_page();
-	wre_install_agents_page();
 
 	// Add Upgraded From Option
 	$current_version = get_option( 'wre_version' );
@@ -357,6 +195,67 @@ function wre_run_install() {
 	// Clear the permalinks
 	flush_rewrite_rules( true );
 
+}
+
+function wre_install_pages() {
+	$pages_data = array(
+		'archives_page'			=> array( 'page_title' => 'Listings', 'compare_content' => '[wre_archive_listings]', 'page_content' => '[wre_search] [wre_archive_listings]' ),
+		'agents'				=> array( 'page_title' => 'Agents', 'compare_content' => '[wre_agents]', 'page_content' => '[wre_agents]', 'settings' => 'no-settings' ),
+		'compare_listings'		=> array( 'page_title' => 'Compare Listings', 'compare_content' => '[wre_compare_listings]', 'page_content' => '[wre_compare_listings]' ),
+		'wre_single_agent'		=> array( 'page_title' => 'Agent', 'compare_content' => '[wre_archive_agent]', 'page_content' => '[wre_archive_agent]' ),
+	);
+
+	foreach( $pages_data as $key => $page ) {
+		$page_data = wre_install_page( $key, $page );
+	}
+	return $page_data;
+
+}
+
+function wre_install_page( $key, $page_data ) {
+	$options = get_option( 'wre_options' );
+	if( ! isset( $page_data['settings'] ) ) {
+		if ( isset( $options[$key] ) && ( $page_object = get_post( $options[$key] ) ) ) {
+			if ( 'page' === $page_object->post_type && $page_object->post_status == 'publish' ) {
+				// Valid page is already in place
+				return $page_object->ID;
+			}
+		}
+	}
+
+	$page = get_page_by_title( $page_data['page_title'] );
+
+	if ( $page && strpos( $page->post_content, $page_data['compare_content'] ) !== false ) {
+		$page_id = $page->ID;
+
+		$page_status = get_post_status( $page_id );
+		if( $page_status != 'publish' ) {
+			$page_id = wp_update_post(array(
+				'ID'    =>  $page_id,
+				'post_status'   =>  'publish'
+			));
+		}
+	} else {
+		$page_content = $page_data['page_content'];
+		$page_name = $page_data['page_name'] ? $page_data['page_name'] : sanitize_title( $page_data['page_title'] );
+		$page_args = array(
+			'post_status'		=> 'publish',
+			'post_type'			=> 'page',
+			'post_title'		=> $page_data['page_title'],
+			'post_name'			=> $page_name,
+			'post_content'		=> $page_content,
+			'comment_status'	=> 'closed',
+		);
+		$page_id = wp_insert_post( $page_args );
+	}
+	if ( $page_id ) {
+		if( ! isset( $page_data['settings'] ) ) {
+			$options[$key] = $page_id;
+			update_option( 'wre_options', $options );
+		}
+
+		return $page_id;
+	}
 }
 
 /**

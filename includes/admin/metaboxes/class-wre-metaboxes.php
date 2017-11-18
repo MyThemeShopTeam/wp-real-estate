@@ -65,6 +65,7 @@ if ( ! class_exists( 'WRE_Metaboxes' ) ) :
 								'id'            => $this->prefix . 'description',
 								'title'         => '<span class="dashicons dashicons-welcome-write-blog"></span> ' . sprintf( __( "%s Description", 'wp-real-estate' ), $this->listing_label ),
 								'object_types'  => array( $this->type ), 
+								'priority'     => 'high'
 						) );
 
 						$fields = array();
@@ -115,6 +116,7 @@ if ( ! class_exists( 'WRE_Metaboxes' ) ) :
 								'id'			=> $this->prefix . 'details',
 								'title'			=> '<span class="dashicons dashicons-admin-home"></span> ' . sprintf( __( "%s Details", 'wp-real-estate' ), $this->listing_label ),
 								'object_types'	=> array( $this->type ), 
+								'priority'     => 'high'
 						) );
 
 						$fields = array();
@@ -261,7 +263,8 @@ if ( ! class_exists( 'WRE_Metaboxes' ) ) :
 						$box = new_cmb2_box( array(
 							'id'			=> $this->prefix . 'features',
 							'title'			=> '<span class="dashicons dashicons-yes"></span> ' . sprintf( __( "%s Features", 'wp-real-estate' ), $this->listing_label ),
-							'object_types'	=> array( $this->type ), 
+							'object_types'	=> array( $this->type ),
+							'priority'     => 'high'
 						) );
 
 						$fields = array();
@@ -382,7 +385,8 @@ if ( ! class_exists( 'WRE_Metaboxes' ) ) :
 						$box = new_cmb2_box( array(
 								'id'			=> $this->prefix . 'images',
 								'title'			=> '<span class="dashicons dashicons-images-alt2"></span> ' . __( "Images", 'wp-real-estate' ),
-								'object_types'	=> array( $this->type ), 
+								'object_types'	=> array( $this->type ),
+								'priority'     => 'high'
 						) );
 
 						$fields = array();

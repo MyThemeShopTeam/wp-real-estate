@@ -78,6 +78,12 @@ The template system used is very similar to the WooCommerce template system, so 
 
 == Changelog ==
 
+= v1.1.2 (Nov 20, 2017) =
+* Fixed Duplicated pages on reactivation issue
+* Moved WRE Settings menu at the end
+* Fixed IDX auto-update issue
+* Chanted Listings metaboxes priority to high, so it will appear before other metaboxes.
+
 = v1.1.1 (Nov 15, 2017) =
 * Added option to set default display mode for the Listings page (Grid or List)
 * Added option to set default number of columns for the Listings page (2, 3 or 4)

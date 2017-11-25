@@ -313,7 +313,7 @@ function wre_options_page() {
 
 	$cmb->add_field(array(
 		'name' => __('Statuses', 'wp-real-estate'),
-		'before_row' => __('Once Statuses have been added here, they are then available in the Status dropdown field when adding or editing a listing.', 'wp-real-estate') . '<br>' . __('Statuses appear in a styled box over the listing\'s image.', 'wp-real-estate'),
+		'before_row' => __('Once Statuses have been added here, they are then available in the Status dropdown field when adding or editing a listing.', 'wp-real-estate') .' '.__('Statuses appear in a styled box over the listing\'s image.', 'wp-real-estate'),
 		'after' => '<p class="cmb2-metabox-description">' . sprintf(__('Listing Statuses such as Under Offer, Sold, Available etc.', 'wp-real-estate'), $listing_label) . '</p>',
 		'id' => 'listing_status',
 		'type' => 'text',

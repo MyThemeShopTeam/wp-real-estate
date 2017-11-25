@@ -35,7 +35,7 @@ class WRE_Idx_Listing {
 	 * @return [type] $featured [description]
 	 */
 	public static function wre_idx_create_post($listings) {
-
+			
 		$properties_data = wre_get_idx_properties('featured?disclaimers=true');
 
 		if( isset($properties_data['properties']) && !empty( $properties_data['properties'] ) ) {
@@ -47,6 +47,8 @@ class WRE_Idx_Listing {
 			update_option('wre_import_progress', true);
 
 			if (is_array($listings) && is_array($properties)) {
+				$listing_author = wre_option('wre_idx_listings_author');
+				$listing_title = wre_option('wre_idx_listing_title');
 				$listing_sold_status = wre_option('wre_sold_listings');
 				// Loop through featured properties
 				foreach ($properties as $prop) {
@@ -69,14 +71,23 @@ class WRE_Idx_Listing {
 					// Add post and update post meta
 					if (in_array($prop['listingID'], $listings) && !isset($idx_featured_listing_wp_options[$prop['listingID']]['post_id'])) {
 
-						$title_format = $properties[$key]['address'];
+						if (empty($listing_title)) {
+							$title_format = $properties[$key]['address'];
+						} else {
+							$title_format = $listing_title;
+							$title_format = str_replace('address', $properties[$key]['address'], $title_format);
+							$title_format = str_replace('city', $properties[$key]['cityName'], $title_format);
+							$title_format = str_replace('state', $properties[$key]['state'], $title_format);
+							$title_format = str_replace('zipcode', $properties[$key]['zipcode'], $title_format);
+							$title_format = str_replace('listingid', $properties[$key]['listingID'], $title_format);
+						}
 
 						// Post creation options
 						$opts = array(
 							'post_title' => $title_format,
 							'post_status' => 'publish',
 							'post_type' => 'listing',
-							'post_author' => 1
+							'post_author' => $listing_author ? $listing_author : 1
 						);
 
 						// Add the post
@@ -91,6 +102,7 @@ class WRE_Idx_Listing {
 							$idx_featured_listing_wp_options[$prop['listingID']]['post_id'] = $add_post;
 							$idx_featured_listing_wp_options[$prop['listingID']]['status'] = 'publish';
 							update_post_meta($add_post, '_listing_details_url', $properties[$key]['fullDetailsURL']);
+							update_post_meta($add_post, '_wre_listing_agent', $listing_author);
 
 							self::wre_idx_insert_post_meta($add_post, $properties[$key]);
 						}
@@ -313,29 +325,28 @@ class WRE_Idx_Listing {
 		/**
 		 * Pull featured image if it's not an update or update image is set to true
 		 */
-		if (($update == false || $update_image == true) && isset($idx_featured_listing_data['image'])) {
+		if ( $update_image == true && isset($idx_featured_listing_data['image']) ) {
 			$images = $idx_featured_listing_data['image'];
 
 			$value = array();
 			foreach ($images as $key => $image) {
 				if (isset($image['url'])) {
 					$img_url = $image['url'];
-					$new_path = self::download_image_file($img_url, true);
+					$attach_id = self::wre_check_image_exists($img_url);
+					if( ! $attach_id ) {
+						$attach_id = wre_download_image_file($img_url, $id);
+						if( $attach_id ) {
+							$newpath = get_attached_file($attach_id);
+							$wp_filetype = wp_check_filetype($new_path);
 
-					$wp_filetype = wp_check_filetype($new_path);
-					$attachment = array(
-						'guid' => $new_path,
-						'post_mime_type' => $wp_filetype['type'],
-						'post_title' => basename($new_path),
-						'post_status' => 'inherit',
-					);
-
-					$attach_id = wp_insert_attachment($attachment, $new_path, $id);
-
-					// Generate the metadata for the attachment, and update the database record.
-					$attach_data = wp_generate_attachment_metadata($attach_id, $new_path);
-					wp_update_attachment_metadata($attach_id, $attach_data);
-					$value[$attach_id] = wp_get_attachment_image_src($attach_id, 'medium')[0];
+							// Generate the metadata for the attachment, and update the database record.
+							$attach_data = wp_generate_attachment_metadata($attach_id, $new_path);
+							wp_update_attachment_metadata($attach_id, $attach_data);
+						}
+					}
+					if( $attach_id ) {
+						$value[$attach_id] = wp_get_attachment_image_src($attach_id, 'medium')[0];
+					}
 				}
 			}
 			
@@ -344,57 +355,20 @@ class WRE_Idx_Listing {
 
 		return true;
 	}
-
-	public static function download_image_file($file, $path = false, $post_id = '', $desc = '') {
-
-		// Need to require these files
-		if (!function_exists('media_handle_upload')) {
-			require_once( ABSPATH . 'wp-admin/includes/image.php' );
-			require_once( ABSPATH . 'wp-admin/includes/file.php' );
-			require_once( ABSPATH . 'wp-admin/includes/media.php' );
+	
+	public function wre_check_image_exists($img_url) {
+		preg_match('/[^\?]+\.(jpg|JPG|jpe|JPE|jpeg|JPEG|gif|GIF|png|PNG)/', $img_url, $matches);
+		$filename = basename($matches[0]);
+		$attachment_args = array(
+			'posts_per_page' => 1,
+			'post_type'      => 'attachment',
+			'name'           => $filename
+		);
+		$attachment_check = new Wp_Query( $attachment_args );
+		if ( $attachment_check->have_posts() ) {
+			return $attachment_check->post->ID;
 		}
-
-		if (!empty($file) && self::is_image_file( $file ) ) {
-			// Download file to temp location
-			$tmp = download_url($file);
-
-			// Set variables for storage, fix file filename for query strings.
-			preg_match('/[^\?]+\.(jpg|JPG|jpe|JPE|jpeg|JPEG|gif|GIF|png|PNG)/', $file, $matches);
-			$file_array['name'] = basename($matches[0]);
-			$file_array['tmp_name'] = $tmp;
-
-			// If error storing temporarily, unlink
-			if (is_wp_error($tmp)) {
-				@unlink($file_array['tmp_name']);
-				$file_array['tmp_name'] = '';
-				return false;
-			}
-			$desc = $file_array['name'];
-			$id = media_handle_sideload($file_array, $post_id, $desc);
-			// If error storing permanently, unlink
-			if (is_wp_error($id)) {
-				@unlink($file_array['tmp_name']);
-				return false;
-			}
-
-			if ($path) {
-				return get_attached_file($id);
-			} else {
-				return wp_get_attachment_url($id);
-			}
-		}
-	}
-
-	public static function is_image_file( $file ) {
-
-		$check = false;
-		$filetype = wp_check_filetype( $file );
-		$valid_exts = array( 'jpg', 'jpeg', 'gif', 'png' );
-		if ( in_array( strtolower( $filetype['ext'] ), $valid_exts ) ) {
-			$check = true;
-		}
-
-		return $check;
+		return false;
 	}
 
 }
@@ -405,7 +379,7 @@ class WRE_Idx_Listing {
  * Enqueues scripts for display
  * Deletes post and post thumbnail via ajax
  */
-add_action('admin_menu', 'wre_idx_listing_register_menu_page', 100);
+add_action('admin_menu', 'wre_idx_listing_register_menu_page', 11);
 
 function wre_idx_listing_register_menu_page() {
 	add_submenu_page('edit.php?post_type=listing', __('Import IDX Listings', 'wp-real-estate'), __('Import IDX Listings', 'wp-real-estate'), 'manage_options', 'wre-idx-listing', 'wre_idx_listing_setting_page');
@@ -602,8 +576,11 @@ function wre_idx_listing_setting_page() {
  * Only add if IDX plugin is installed
  * @since 2.0
  */
-
 add_action('admin_init', 'wre_idx_update_schedule');
+
+if (wre_option('wre_auto_import_idx_listings') && wre_option('wre_auto_import_idx_listings') == 'on') {
+	add_action('admin_init', 'wre_idx_auto_import_schedule');
+}
 
 function wre_idx_update_schedule() {
 	if (!wp_next_scheduled('wre_idx_update')) {
@@ -615,6 +592,30 @@ function wre_idx_update_schedule() {
  * On the scheduled update event, run wre_update_post
  */
 add_action('wre_idx_update', array('WRE_Idx_Listing', 'wre_update_post'));
+
+/**
+ * Schedule auto import task
+ */
+function wre_idx_auto_import_schedule() {
+	if (!wp_next_scheduled('wre_idx_auto_import')) {
+		wp_schedule_event(time(), 'twicedaily', 'wre_idx_auto_import');
+	}
+}
+
+add_action('wre_idx_auto_import', 'wre_idx_auto_import_task');
+/**
+ * Get listingIDs and pass to create post cron job
+ * @return void
+ */
+function wre_idx_auto_import_task() {
+	$properties = wre_get_idx_properties();
+	if( $properties ) {
+		foreach ($properties as $prop) {
+			$listingIDs[] = $prop['listingID'];
+		}
+		wre_idx_create_post_cron($listingIDs);
+	}
+}
 
 function wre_get_idx_properties( $type='featured' ) {
 

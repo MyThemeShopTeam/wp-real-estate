@@ -4,7 +4,7 @@ Creator's website link: http://mythemeshop.com/plugins/wp-real-estate/
 Tags: real estate listing, real estate listings, real estate plugin, real estate, real-estate, real estate agent, property listings, listings, listing search, realtor, agent, broker
 Requires at least: 4.5
 Tested up to: 4.8.3
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -77,6 +77,12 @@ Easily override the default HTML template files by including them into your own 
 The template system used is very similar to the WooCommerce template system, so if you have used that before, this will be a breeze.
 
 == Changelog ==
+
+= v1.1.2 (Nov 25, 2017) =
+* Fixed Duplicated pages on reactivation issue
+* Moved WRE Settings menu at the end
+* Fixed IDX auto-update issue
+* Changed Listings metaboxes priority to high, so it will appear before other metaboxes like Yoast SEO or WP Review Box.
 
 = v1.1.1 (Nov 15, 2017) =
 * Added option to set default display mode for the Listings page (Grid or List)

@@ -586,3 +586,49 @@ function wp_real_estate_admin_notice_ignore() {
              add_user_meta($user_id, 'wp_real_estate_ignore_notice', 'true', true);
     }
 }
+
+function wre_check_image_file( $file ) {
+	$check = false;
+	$filetype = wp_check_filetype( $file );
+	$valid_exts = array( 'jpg', 'jpeg', 'gif', 'png' );
+	if ( in_array( strtolower( $filetype['ext'] ), $valid_exts ) ) {
+		$check = true;
+	}
+
+	return $check;
+}
+
+function wre_download_image_file( $file, $post_id = '' ) {
+	// Need to require these files
+	if (!function_exists('media_handle_upload')) {
+		require_once( ABSPATH . 'wp-admin/includes/image.php' );
+		require_once( ABSPATH . 'wp-admin/includes/file.php' );
+		require_once( ABSPATH . 'wp-admin/includes/media.php' );
+	}
+
+	if (!empty($file) && wre_check_image_file( $file ) ) {
+		// Download file to temp location
+		$tmp = download_url($file);
+
+		// Set variables for storage, fix file filename for query strings.
+		preg_match('/[^\?]+\.(jpg|JPG|jpe|JPE|jpeg|JPEG|gif|GIF|png|PNG)/', $file, $matches);
+		$file_array['name'] = basename($matches[0]);
+		$file_array['tmp_name'] = $tmp;
+
+		// If error storing temporarily, unlink
+		if (is_wp_error($tmp)) {
+			@unlink($file_array['tmp_name']);
+			$file_array['tmp_name'] = '';
+			return false;
+		}
+		$desc = $file_array['name'];
+		$id = media_handle_sideload($file_array, $post_id, $desc);
+		// If error storing permanently, unlink
+		if (is_wp_error($id)) {
+			@unlink($file_array['tmp_name']);
+			return false;
+		}
+
+		return $id;
+	}
+}

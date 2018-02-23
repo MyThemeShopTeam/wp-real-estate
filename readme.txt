@@ -78,6 +78,9 @@ The template system used is very similar to the WooCommerce template system, so 
 
 == Changelog ==
 
+= v1.1.3 (Feb 23, 2018) =
+* Updated Cmb2 library to make it compatible with PHP v7.2
+
 = v1.1.2 (Nov 25, 2017) =
 * Fixed Duplicated pages on reactivation issue
 * Moved WRE Settings menu at the end

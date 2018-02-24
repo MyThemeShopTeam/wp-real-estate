@@ -3,8 +3,8 @@ Contributors: MyThemeShop
 Creator's website link: http://mythemeshop.com/plugins/wp-real-estate/
 Tags: real estate listing, real estate listings, real estate plugin, real estate, real-estate, real estate agent, property listings, listings, listing search, realtor, agent, broker
 Requires at least: 4.5
-Tested up to: 4.8.3
-Stable tag: 1.1.2
+Tested up to: 4.9.4
+Stable tag: 1.1.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -79,7 +79,7 @@ The template system used is very similar to the WooCommerce template system, so 
 == Changelog ==
 
 = v1.1.3 (Feb 23, 2018) =
-* Updated Cmb2 library to make it compatible with PHP v7.2
+* Updated cmb2 library to make it compatible with PHP v7.2
 
 = v1.1.2 (Nov 25, 2017) =
 * Fixed Duplicated pages on reactivation issue

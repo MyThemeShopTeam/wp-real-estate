@@ -90,7 +90,7 @@ function wre_install_sample_listing() {
 }
 
 function wre_install_data() {
-	
+
 	$options = array();
 	$options['delete_data'] = 'no';
 	$options['archives_page_title'] = 'no';
@@ -105,7 +105,7 @@ function wre_install_data() {
 		'Tennis Court',
 	);
 	$options['listing_status'] = array( 'Under Offer', 'Sold', 'Active' );
-		
+
 		// Save Contact form Default Data
 	$contact_message = __( 'Hi {agent_name},', 'wp-real-estate' ) . "\r\n" .
 						__( 'There has been a new enquiry on <strong>{listing_title}</strong>', 'wp-real-estate' ) . "\r\n" .
@@ -123,7 +123,7 @@ function wre_install_data() {
 	$options['contact_form_error'] = __( 'There was an error. Please try again.', 'wp-real-estate' );
 	$options['contact_form_success'] = __( 'Thank you, the agent will be in touch with you soon.', 'wp-real-estate' );
 	$options['contact_form_include_error'] = 'yes';
-	
+
 	//Save MAP Options
 	$options['map_zoom'] = '14';
 	$options['map_height'] = '300';
@@ -154,7 +154,7 @@ function wre_install_data() {
  * @return void
  */
 function wre_run_install() {
-	
+
 	// Setup the Listings Custom Post Type
 	$types = new WRE_Post_Types;
 	$types->register_post_type();
@@ -164,7 +164,7 @@ function wre_run_install() {
 	if( empty( $wre_options ) ) {
 		wre_install_data();
 	}
-	
+
 	wre_install_pages();
 	wre_install_sample_listing();
 
@@ -237,7 +237,7 @@ function wre_install_page( $key, $page_data ) {
 		}
 	} else {
 		$page_content = $page_data['page_content'];
-		$page_name = $page_data['page_name'] ? $page_data['page_name'] : sanitize_title( $page_data['page_title'] );
+		$page_name = isset( $page_data['page_name'] ) ? $page_data['page_name'] : sanitize_title( $page_data['page_title'] );
 		$page_args = array(
 			'post_status'		=> 'publish',
 			'post_type'			=> 'page',
@@ -336,7 +336,7 @@ function wre_install_success_notice() {
 		$message .= __( 'Step 1. Please go through each tab below, configure the options and <strong>hit the save button</strong>.', 'wp-real-estate' ) . '<br>';
 		$message .= __( 'Step 2. Add your first Listing by navigating to <strong>Listings > New Listing</strong>', 'wp-real-estate' ) . '<br>';
 
-		printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message ); 
+		printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
 	}
 }
 add_action( 'admin_notices', 'wre_install_success_notice' );

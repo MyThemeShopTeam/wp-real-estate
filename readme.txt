@@ -3,8 +3,8 @@ Contributors: MyThemeShop
 Creator's website link: http://mythemeshop.com/plugins/wp-real-estate/
 Tags: real estate listing, real estate listings, real estate plugin, real estate, real-estate, real estate agent, property listings, listings, listing search, realtor, agent, broker
 Requires at least: 4.5
-Tested up to: 4.9.4
-Stable tag: 1.1.3
+Tested up to: 4.9.5
+Stable tag: 1.1.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,7 +30,7 @@ The plugin allows you to easily manage **Real Estate Listings**, **Listing Enqui
 * **Listing Types** - the property type such as House, Villa, Land, Commercial.
 * **Listing Features** - External & Internal Features can be added to any listing. Features could be Cooling, Heating, Swimming Pool, Tennis Court or anything else a property has.
 * **Listing Statuses** - Statuses are displayed over the properties image and can be styled with different colors and icons per status.
-* **Theme Compatibility** - works with all themes. 
+* **Theme Compatibility** - works with all themes.
 * **List View or Grid View** - allow visitors to choose their own style of viewing properties.
 * **SEO Friendly**
 * **Developer Friendly**
@@ -42,13 +42,13 @@ Google Maps is integrated into each listing. When adding a listing, you simply n
 
 ### Real Estate Search
 
-The search box is extremely smart. 
+The search box is extremely smart.
 
 It uses a combination of Google Maps Geocoding, radius searching and traditional searching for keywords to help find relevant results. As well as this it also has a number of attributes to help narrow the results such as Type of property, min & max bedrooms, min & max price, Buy or Rent and more.
 
 ### Real Estate Listings Shortcodes
 
-The shortcodes can be easily customized, with each shortcode having many options. 
+The shortcodes can be easily customized, with each shortcode having many options.
 
 * [wre_listings] - Used to display all the listings or filter listings by attributes like agent_id, listing_ids etc provided in the shortcode.
 * [wre_search] - Used to display search box
@@ -72,11 +72,14 @@ The shortcodes can be easily customized, with each shortcode having many options
 
 A robust, flexible framework & template system gives you full control over every aspect of your real estate website, so you can customize it to fit your needs.
 
-Easily override the default HTML template files by including them into your own theme. 
+Easily override the default HTML template files by including them into your own theme.
 
 The template system used is very similar to the WooCommerce template system, so if you have used that before, this will be a breeze.
 
 == Changelog ==
+
+= v1.1.4 (Apr 25, 2018) =
+* Minor code improvements
 
 = v1.1.3 (Feb 23, 2018) =
 * Updated cmb2 library to make it compatible with PHP v7.2
@@ -144,6 +147,6 @@ Support is provided in the [MyThemeShop support forum](https://community.mytheme
 
 = Will WP Real Estate work with my theme? =
 
-Yes, our WP Real Estate plugin works with any theme. 
+Yes, our WP Real Estate plugin works with any theme.
 
 If you find that things are not looking quite right though, you may need to simply modify the HTML wrappers which is an option in  the Settings > Advanced Tab.

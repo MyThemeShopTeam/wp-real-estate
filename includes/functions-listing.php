@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 } // Exit if accessed directly.
 
 /**
- * Type of listings to display (buy or rent). 
+ * Type of listings to display (buy or rent).
  */
 function wre_display() {
 	$purpose = wre_option( 'display_purpose' );
@@ -26,66 +26,69 @@ function wre_display() {
 /**
  * Post classes for listings.
  */
-function wre_listing_post_class( $classes, $class = '', $post_id = '' ) {
+ if( !function_exists( 'wre_listing_post_class' ) ) {
 
-	if ( ! $post_id || 'listing' !== get_post_type( $post_id ) ) {
-		return $classes;
-	}
+	function wre_listing_post_class( $classes, $class = '', $post_id = '' ) {
 
-	$listing = get_post( $post_id );
-
-	if ( $listing ) {
-
-		$classes[] = 'listing';
-		$classes[] = 'listing-' . $listing->ID;
-
-		if ( wre_meta( 'type' ) ) {
-			$classes[] = strtolower( wre_meta( 'type' ) );
+		if ( ! $post_id || 'listing' !== get_post_type( $post_id ) ) {
+			return $classes;
 		}
 
-		if ( wre_meta( 'status' ) ) {
-			$classes[] = strtolower( wre_meta( 'status' ) );
-		}
+		$listing = get_post( $post_id );
 
-		if ( wre_meta( 'purpose' ) ) {
-			$classes[] = strtolower( wre_meta( 'purpose' ) );
-		}
+		if ( $listing ) {
 
-		$images = wre_meta( 'image_gallery' );
-		if ( $images ) {
-			foreach ( $images as $key => $url ) {
-				if( ! empty( $url ) ) {
-					$classes[] = strtolower( 'has-thumbnail' );
-					break;
+			$classes[] = 'listing';
+			$classes[] = 'listing-' . $listing->ID;
+
+			if ( wre_meta( 'type' ) ) {
+				$classes[] = strtolower( wre_meta( 'type' ) );
+			}
+
+			if ( wre_meta( 'status' ) ) {
+				$classes[] = strtolower( wre_meta( 'status' ) );
+			}
+
+			if ( wre_meta( 'purpose' ) ) {
+				$classes[] = strtolower( wre_meta( 'purpose' ) );
+			}
+
+			$images = wre_meta( 'image_gallery' );
+			if ( $images ) {
+				foreach ( $images as $key => $url ) {
+					if( ! empty( $url ) ) {
+						$classes[] = strtolower( 'has-thumbnail' );
+						break;
+					}
 				}
 			}
+
+			if ( wre_meta( 'bedrooms' ) ) {
+				$classes[] = 'beds-' . wre_meta( 'bedrooms' );
+			}
+
+			if ( wre_meta( 'bathrooms' ) ) {
+				$classes[] = 'baths-' . wre_meta( 'bathrooms' );
+			}
+
 		}
 
-		if ( wre_meta( 'bedrooms' ) ) {
-			$classes[] = 'beds-' . wre_meta( 'bedrooms' );
+		if ( false !== ( $key = array_search( 'hentry', $classes ) ) ) {
+			unset( $classes[ $key ] );
 		}
 
-		if ( wre_meta( 'bathrooms' ) ) {
-			$classes[] = 'baths-' . wre_meta( 'bathrooms' );
-		}
-
+		return $classes;
 	}
-
-	if ( false !== ( $key = array_search( 'hentry', $classes ) ) ) {
-		unset( $classes[ $key ] );
-	}
-
-	return $classes;
 }
-
 /*
  * Show Archive Page title within page content area
  */
-function wre_force_page_title() {
-	$force = wre_option( 'archives_page_title' ) ? wre_option( 'archives_page_title' ) : 'no';
-	return $force;
+if( !function_exists( 'wre_force_page_title' ) ) {
+	function wre_force_page_title() {
+		$force = wre_option( 'archives_page_title' ) ? wre_option( 'archives_page_title' ) : 'no';
+		return $force;
+	}
 }
-
 /*
  * Map height
  */
@@ -140,55 +143,57 @@ function wre_get_first_image( $post_id = 0 ) {
 /*
  * Get the listing status
  */
-function wre_get_status() {
+ if( !function_exists( 'wre_get_status' ) ) {
 
-	$listing_status     = wre_meta( 'status' );
-	$option_statuses    = wre_option( 'listing_status' );
+	function wre_get_status() {
 
-	if( ! $listing_status )
-		return;
+		$listing_status     = wre_meta( 'status' );
+		$option_statuses    = wre_option( 'listing_status' );
 
-	$status = null;
-	foreach ($option_statuses as $option_status) {
-		$status_slug = strtolower( str_replace( ' ', '-', $option_status) );
-		if( $listing_status == $status_slug ) {
-			$status = isset( $option_status ) ? $option_status : null;
-			if( $status ) {
+		if( ! $listing_status )
+			return;
 
-				
-				$status_bg_color = '';
-				$status_text_color = '';
-				$status_icon_class = '';
+		$status = null;
+		foreach ($option_statuses as $option_status) {
+			$status_slug = strtolower( str_replace( ' ', '-', $option_status) );
+			if( $listing_status == $status_slug ) {
+				$status = isset( $option_status ) ? $option_status : null;
+				if( $status ) {
 
-				$bg_color = $text_color = $icon = null;
 
-				if($status_bg_color)
-					$bg_color = $status_bg_color;
+					$status_bg_color = '';
+					$status_text_color = '';
+					$status_icon_class = '';
 
-				if($status_text_color)
-					$text_color = $status_text_color;
+					$bg_color = $text_color = $icon = null;
 
-				if($status_icon_class)
-					$icon = $status_icon_class;
+					if($status_bg_color)
+						$bg_color = $status_bg_color;
+
+					if($status_text_color)
+						$text_color = $status_text_color;
+
+					if($status_icon_class)
+						$icon = $status_icon_class;
+				}
 			}
 		}
-	}
 
-	if( ! $status ) {
-		$status 	= $listing_status;
-		$bg_color 	= '#ffffff';
-		$text_color = '#444444';
-		$icon 		= '';
-	}
+		if( ! $status ) {
+			$status 	= $listing_status;
+			$bg_color 	= '#ffffff';
+			$text_color = '#444444';
+			$icon 		= '';
+		}
 
-	return array(
-		'status'		=> $status,
-		'bg_color'		=> $bg_color,
-		'text_color'	=> $text_color,
-		'icon'			=> $icon,
-	);
+		return array(
+			'status'		=> $status,
+			'bg_color'		=> $bg_color,
+			'text_color'	=> $text_color,
+			'icon'			=> $icon,
+		);
+	}
 }
-
 /**
  * Do we include the decimals
  * @since  1.0.0
@@ -203,12 +208,16 @@ function wre_include_decimals() {
  *
  * @return string
  */
-function wre_format_price_format() {
-	$currency_pos = 'left';
-	$format = '%1$s%2$s';
+ if( !function_exists( 'wre_format_price_format' ) ) {
 
-	return apply_filters( 'wre_format_price_format', $format, $currency_pos );
-}
+		function wre_format_price_format() {
+			$currency_pos = 'left';
+			$format = '%1$s%2$s';
+
+			return apply_filters( 'wre_format_price_format', $format, $currency_pos );
+		}
+
+	}
 
 /**
  * Return the currency_symbol for prices.

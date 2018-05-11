@@ -632,3 +632,178 @@ function wre_download_image_file( $file, $post_id = '' ) {
 		return $id;
 	}
 }
+
+// GDPR Compliant - Export User Information
+if(!function_exists('wre_agent_data_exporter')) {
+	function wre_agent_data_exporter( $email_address, $page = 1 ) {
+
+		$export_items = array();
+		$user_id = email_exists($email_address);
+
+		if($user_id) {
+
+			$agent = new WRE_Agent();
+			$meta_fields = $agent->get_customer_meta_fields();
+			$meta_fields = $meta_fields['agent_profile'];
+			$group_label = $meta_fields['title'];
+			$meta_fields['fields']['wre_upload_meta'] = array('label' => 'Agent Profile Photo');
+			$data = array();
+			
+			foreach($meta_fields['fields'] as $key => $meta_field) {
+				$value = get_user_meta($user_id, $key, true);
+				if($value) {
+					$data[] = array(
+						'name'	=> $meta_field['label'],
+						'value'	=> $value
+					);
+				}
+			}
+			if(!empty($data)) {
+				$export_items[] = array(
+					'group_id'	=> 'wre_user_data',
+					'group_label'	=> apply_filters('wre_export_user_data_label', $group_label),
+					'item_id'	=> 'wre_agent_info',
+					'data'	=> $data,
+				);
+			}
+		}
+
+		//Enquiry Details
+		$enquiries = wre_get_enquiries_by_email($email_address);
+
+		if(!empty($enquiries)) {
+			$enquiry_meta_fields = apply_filters( 'wre_enquiry_meta_fields', array(
+				'_wre_enquiry_name' => __('Name', 'wp-real-estate'),
+				'_wre_enquiry_email' => __('Email', 'wp-real-estate'),
+				'_wre_enquiry_phone' => __('Phone Number', 'wp-real-estate'),
+				'_wre_enquiry_message' => __('Message', 'wp-real-estate'),
+				'_wre_consent' => __('Consent', 'wp-real-estate'),
+			));
+			foreach($enquiries as $enquiry) {
+				$enqury_data = array();
+				$enqury_data[] = array( 'name'	=> __('Title', 'wp-real-estate'), 'value'	=> get_the_title($enquiry) );
+				foreach($enquiry_meta_fields as $meta_key => $enquiry_meta_field) {
+					$value = get_post_meta($enquiry, $meta_key, true);
+					if($value) {
+						$enqury_data[] = array( 'name'	=> $enquiry_meta_field, 'value'	=> $value );
+					}
+				}
+
+				$export_items[] = array(
+					'group_id'	=> 'wre_enquiry_data'.$enquiry,
+					'group_label'	=> apply_filters('wre_export_enquiry_data_label', 'Enquiry #'.$enquiry),
+					'item_id'	=> 'wre_enquiry_info'.$enquiry,
+					'data'	=> $enqury_data,
+				);
+			}
+		}
+
+		return array(
+			'data'	=> $export_items,
+			'done'	=> true,
+		);
+	}
+}
+
+// Filter function to register data exporter
+if(!function_exists('wre_register_data_exporter')) {
+
+	function wre_register_data_exporter( $exporters ) {
+		$exporters[] = array(
+			'exporter_friendly_name'	=> apply_filters('wre_exporter_friendly_name', __( 'WRE Data', 'wp-real-estate' )),
+			'callback'	=> 'wre_agent_data_exporter',
+		);
+		return $exporters;
+	}
+
+}
+
+add_filter( 'wp_privacy_personal_data_exporters', 'wre_register_data_exporter', 10 );
+
+// GDPR Compliant - Erase User Information
+function wre_agent_data_eraser( $email_address, $page = 1 ) {
+
+	$default_eraser_data = array(
+		'items_removed'		=> false,
+		'items_retained'	=> false,
+		'messages'				=> array(),
+		'done'						=> true,
+	);
+
+	if ( empty( $email_address ) ) {
+		return $default_eraser_data;
+	}
+
+	$items_removed = false;
+	$items_retained = false;
+	$messages = array();
+	$erase_agent_data = apply_filters('wre_remove_agent_data', 'yes');
+	$user_id = email_exists($email_address);
+	if($user_id && $erase_agent_data === 'yes') {
+
+		$agent = new WRE_Agent();
+		$meta_fields = $agent->get_customer_meta_fields();
+		$meta_fields = $meta_fields['agent_profile'];
+		$group_label = $meta_fields['title'];
+		$meta_fields['fields']['wre_upload_meta'] = array('label' => 'Agent Profile Photo');
+		$data = array();
+		foreach($meta_fields['fields'] as $key => $meta_field) {
+			$meta_value = get_user_meta($user_id, $key, true);
+			if($meta_value) {
+				delete_user_meta($user_id, $key);
+				$items_removed = true;
+			}
+		}
+
+		if($items_removed) $messages[] = apply_filters('wre_data_eraser_message', __('Removed Agent Profile Information', 'wp-real-estate'));
+
+	}
+
+	$anonymize_enquiries = apply_filters('wre_anonymize_enquiries', 'yes');
+	if($anonymize_enquiries === 'yes') {
+		$enquiries = wre_get_enquiries_by_email($email_address);
+		if(!empty($enquiries)) {
+			foreach($enquiries as $enquiry) {
+				delete_post_meta($enquiry, '_wre_enquiry_email');
+				delete_post_meta($enquiry, '_wre_enquiry_phone');
+				$items_removed = true;
+				$messages[] = apply_filters('wre_anonymize_enquiry_message', sprintf(__('Anonymized Enquiry #%s for email %s', 'wp-real-estate'), $enquiry, $email_address), $enquiry, $email_address);
+			}
+		}
+	}
+
+	if(!empty($messages)) {
+		return array(
+			'items_removed'	=> $items_removed,
+			'items_retained' => $items_retained,
+			'messages'	=> $messages,
+			'done'	=> true,
+		);
+	}
+
+	return $default_eraser_data;
+}
+
+//Filter function to register data eraser
+if(!function_exists('wre_register_data_eraser')) {
+	function wre_register_data_eraser( $erasers ) {
+		$erasers[] = array(
+			'eraser_friendly_name'	=> apply_filters('wre_eraser_friendly_name', __( 'WRE Data', 'wp-real-estate' )),
+			'callback'	=> 'wre_agent_data_eraser',
+		);
+		return $erasers;
+	}
+}
+add_filter( 'wp_privacy_personal_data_erasers', 'wre_register_data_eraser', 10 );
+
+function wre_get_enquiries_by_email($email) {
+	return get_posts(
+			array (
+				'posts_per_page' => -1,
+				'post_type' => 'listing-enquiry',
+				'meta_key' => '_wre_enquiry_email',
+				'meta_value' => $email,
+				'fields' => 'ids'
+			)
+		);
+}

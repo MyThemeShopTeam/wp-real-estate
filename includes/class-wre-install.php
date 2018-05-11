@@ -123,6 +123,8 @@ function wre_install_data() {
 	$options['contact_form_error'] = __( 'There was an error. Please try again.', 'wp-real-estate' );
 	$options['contact_form_success'] = __( 'Thank you, the agent will be in touch with you soon.', 'wp-real-estate' );
 	$options['contact_form_include_error'] = 'yes';
+	$options['contact_form_consent_label']	=	apply_filters( 'wre_contact_form_consent_label', 'I consent to my submitted data being collected via this form*' );
+	$options['contact_form_consent_desc']	=	apply_filters( 'wre_contact_form_include_error', sprintf(__('Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our %s privacy policy %s.', 'wp-real-estate'), '<a href="#">', '</a>') );
 
 	//Save MAP Options
 	$options['map_zoom'] = '14';

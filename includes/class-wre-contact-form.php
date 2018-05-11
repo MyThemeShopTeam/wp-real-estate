@@ -213,16 +213,30 @@ class WRE_Contact_Form {
 			)
 		);
 
-		// filter the fields & sort numerically
-				$fields = apply_filters( 'wre_contact_fields', $fields );
-				ksort( $fields );
+		$has_consent	= wre_option( 'contact_form_consent_label' ) ? wre_option( 'contact_form_consent_label' ) : '';
+		$has_consent = apply_filters('contact_form_consent_label', $has_consent);
+		if($has_consent) {
+			$fields[50] = array(
+				'name'    => '',
+				'id'      => '_wre_consent',
+				'type'    => 'checkbox',
+				'desc'		=> $has_consent,
+				'attributes' => array(
+					'required' => 'required'
+				)
+			);
+		}
 
-				// loop through ordered fields and add them
-				if( $fields ) {
-						foreach ($fields as $key => $value) {
-								$fields[$key] = $metabox->add_field( $value );
-						}
+		// filter the fields & sort numerically
+		$fields = apply_filters( 'wre_contact_fields', $fields );
+		ksort( $fields );
+
+		// loop through ordered fields and add them
+		if( $fields ) {
+				foreach ($fields as $key => $value) {
+						$fields[$key] = $metabox->add_field( $value );
 				}
+		}
 
 	}
 
@@ -295,6 +309,11 @@ class WRE_Contact_Form {
 				$loader_image = '';
 		// Get our form
 		$output .= cmb2_get_metabox_form( $cmb, 'wre_contact_form_object_id', array( 'save_button' => __( 'Contact Agent', 'wp-real-estate' ) ) );
+		$consent_desc	= wre_option( 'contact_form_consent_desc' ) ? wre_option( 'contact_form_consent_desc' ) : '';
+		$consent_desc	= apply_filters('contact_form_consent_desc', $consent_desc);
+		if($consent_desc) {
+			$output .= '<small>'.$consent_desc.'</small>';
+		}
 		return $output;
 
 	}

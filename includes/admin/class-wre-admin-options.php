@@ -434,6 +434,23 @@ function wre_options_page() {
 	));
 
 	$cmb->add_field(array(
+		'name' => __('Consent Field Label', 'wp-real-estate'),
+		'desc' => __('Add Consent Field.', 'wp-real-estate'),
+		'id' => 'contact_form_consent_label',
+		'type' => 'text',
+		'default' => ''
+	));
+
+	$cmb->add_field(array(
+		'name' => __('Consent Description', 'wp-real-estate'),
+		'desc' => __('Add Consent Description.', 'wp-real-estate'),
+		'id' => 'contact_form_consent_desc',
+		'type' => 'wysiwyg',
+		'options' => array( 'teeny' => true, 'quicktags' => false, 'media_buttons' => false, 'textarea_rows' => 5 ),
+		'default' => ''
+	));
+
+	$cmb->add_field(array(
 		'name' => __('Success Message', 'wp-real-estate'),
 		'desc' => __('The message that is displayed to users upon successfully sending a message.', 'wp-real-estate'),
 		'id' => 'contact_form_success',

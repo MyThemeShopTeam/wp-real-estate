@@ -30,6 +30,7 @@ function wre_install( $network_wide = false ) {
 		wre_run_install();
 	}
 
+	update_option('wp_real_estate_activated', time());
 }
 register_activation_hook( WRE_PLUGIN_FILE, 'wre_install' );
 

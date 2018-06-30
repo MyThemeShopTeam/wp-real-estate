@@ -571,8 +571,8 @@ function wp_real_estate_admin_notice() {
     /* Only show the notice 2 days after plugin activation */
     if ( ! get_user_meta($user_id, 'wp_real_estate_ignore_notice') && time() >= (get_option( 'wp_real_estate_activated', 0 ) + (2 * 24 * 60 * 60)) ) {
         echo '<div class="updated notice-info wp-real-estate-notice" id="wprealestate-notice" style="position:relative;">';
-			printf(__('<p><strong>WP Real Estate Pro</strong> offers advanced IDX integration, Paid Listings, User Subscriptions, Related Listings, Import/Export, Payment Gateways and much more... <br><a target="_blank" href="https://mythemeshop.com/plugins/wp-real-estate-pro/?utm_source=WP+Real+Estate&utm_medium=Notification+Link&utm_content=WP+Real+Estate+Pro+LP&utm_campaign=WordPressOrg"><strong>Grab your copy now!</strong></a></p><a class="notice-dismiss" href="%1$s"></a>'), '?wp_real_estate_admin_notice_ignore=0');
-			echo "</div>";
+				echo __('<p><strong>WP Real Estate Pro</strong> offers advanced IDX integration, Paid Listings, User Subscriptions, Related Listings, Import/Export, Payment Gateways and much more... <br><a target="_blank" href="https://mythemeshop.com/plugins/wp-real-estate-pro/?utm_source=WP+Real+Estate&utm_medium=Notification+Link&utm_content=WP+Real+Estate+Pro+LP&utm_campaign=WordPressOrg"><strong>Grab your copy now!</strong></a></p><a class="notice-dismiss mts-realestate-notice-dismiss" data-ignore="0" href="#"></a>');
+				echo "</div>";
     }
 
     /* Other notice appears right after activating */
@@ -584,25 +584,24 @@ function wp_real_estate_admin_notice() {
 			echo '<p>';
 			_e('Thank you for trying WP Real Estate. We hope you will like it.', 'wp-real-estate');
 			echo '</p>';
-			echo '<a class="notice-dismiss" href="?wp_real_estate_admin_notice_ignore=1"></a>';
+			echo '<a class="notice-dismiss mts-realestate-notice-dismiss" data-ignore="1" href="#"></a>';
 			echo "</div>";
 		}
 }
 
-add_action('admin_init', 'wp_real_estate_admin_notice_ignore');
+add_action('wp_ajax_mts_dismiss_realestate_notice', function(){
+  global $current_user;
+  $user_id = $current_user->ID;
+  /* If user clicks to ignore the notice, add that to their user meta */
+  if ( isset($_POST['dismiss']) ) {
 
-function wp_real_estate_admin_notice_ignore() {
-	global $current_user;
-	$user_id = $current_user->ID;
-	/* If user clicks to ignore the notice, add that to their user meta */
-	if ( isset($_GET['wp_real_estate_admin_notice_ignore']) ) {
-		if('0' == $_GET['wp_real_estate_admin_notice_ignore']) {
-			add_user_meta($user_id, 'wp_real_estate_ignore_notice', 'true', true);
-		} else if('1' == $_GET['wp_real_estate_admin_notice_ignore']) {
-			add_user_meta($user_id, 'wp_real_estate_ignore_notice_2', 'true', true);
-		}
-	}
-}
+    if ( '0' == $_POST['dismiss'] ) {
+      add_user_meta($user_id, 'wp_real_estate_ignore_notice', 'true', true);
+    } elseif ( '1' == $_POST['dismiss'] ) {
+      add_user_meta($user_id, 'wp_real_estate_ignore_notice_2', 'true', true);
+    }
+  }
+});
 
 function wre_check_image_file( $file ) {
 	$check = false;

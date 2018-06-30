@@ -26,9 +26,8 @@ function wre_load_admin_scripts( $hook ) {
 			wp_enqueue_script( 'wre-geocomplete', $js_dir . 'jquery.geocomplete.min.js', array(), WRE_VERSION, true );
 			wp_enqueue_script( 'wre-geocomplete-map', $js_dir . 'wre-admin-geocomplete.js', array(), WRE_VERSION, true );
 		}
-		wp_enqueue_script( 'wre-admin', $js_dir . 'wre-admin.js', array(), WRE_VERSION, true );
 	}
-	
+	wp_enqueue_script( 'wre-admin', $js_dir . 'wre-admin.js', array(), WRE_VERSION, true );
 }
 add_action( 'admin_enqueue_scripts', 'wre_load_admin_scripts', 100 );
 add_action( 'customize_controls_print_styles', 'wre_load_admin_scripts' );

@@ -83,6 +83,7 @@ class WRE_Post_Types {
 			'has_archive' => $listing_archive,
 			'hierarchical' => false,
 			'supports' => apply_filters('wre_listing_supports', array('title', 'revisions', 'author')),
+            'show_in_rest' => true,
 		);
 		register_post_type('listing', apply_filters('wre_listing_post_type_args', $listing_args));
 
@@ -131,6 +132,7 @@ class WRE_Post_Types {
 			//'has_archive'			=> '',
 			'hierarchical' => false,
 			'supports' => apply_filters('wre_enquiry_supports', array('title', 'revisions')),
+            'show_in_rest' => true,
 		);
 		register_post_type('listing-enquiry', apply_filters('wre_enquiry_post_type_args', $enquiry_args));
 

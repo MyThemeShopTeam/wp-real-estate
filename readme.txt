@@ -4,7 +4,7 @@ Creator's website link: http://mythemeshop.com/plugins/wp-real-estate/
 Tags: real estate listing, real estate listings, real estate plugin, real estate, real-estate, real estate agent, property listings, listings, listing search, realtor, agent, broker
 Requires at least: 4.5
 Tested up to: 4.9.5
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -77,6 +77,9 @@ Easily override the default HTML template files by including them into your own 
 The template system used is very similar to the WooCommerce template system, so if you have used that before, this will be a breeze.
 
 == Changelog ==
+
+= 1.1.8 [Dec 4, 2018] =
+* Added Rest API support for custom post types
 
 = 1.1.7 [June 30, 2018] =
 * Updated admin notices

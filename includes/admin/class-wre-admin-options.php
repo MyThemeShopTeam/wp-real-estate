@@ -67,7 +67,7 @@ function wre_options_page() {
 			'contact_form_messages',
 		),
 	);
-	
+
 	$tabs[] = array(
 		'id' => 'idx-settings',
 		'title' => 'IDX Settings',
@@ -86,7 +86,7 @@ function wre_options_page() {
 			'uninstall',
 		),
 	);
-	
+
 	// display-setttings
 	$cmb = new_cmb2_box(array(
 		'id' => 'wre_display_settings',
@@ -512,7 +512,7 @@ function wre_options_page() {
 			'4' => __('4 columns', 'wp-real-estate'),
 		),
 	));
-	
+
 	$cmb->add_field( array(
 		'name' => __('Agents Archive Number of Agents', 'wp-real-estate'),
 		'desc' => __('The max number of agents to show', 'wp-real-estate') . '<br>' . __('Could show less than this if not enough agents are found.', 'wp-real-estate'),
@@ -524,7 +524,7 @@ function wre_options_page() {
 			'min'	=> 1
 		),
 	) );
-	
+
 	$cmb->add_field(array(
 		'name' => __('Agents Archive Allow Pagination', 'wp-real-estate'),
 		'desc' => '',
@@ -583,7 +583,7 @@ function wre_options_page() {
 			'4' => __('4 columns', 'wp-real-estate'),
 		),
 	));
-	
+
 	$cmb->add_field( array(
 		'name' => __('Single Agent Page Max Listings', 'wp-real-estate'),
 		'desc' => __('The max number of agent listings to show', 'wp-real-estate') . '<br>' . __('Could show less than this if not enough agent listings are found.', 'wp-real-estate'),
@@ -616,18 +616,18 @@ function wre_options_page() {
 		'description' => '<p class="cmb2-metabox-description">' . __('These settings apply to any imported IDX listings. Imported listings are updated via the latest API response twice daily.', 'wp-real-estate') . '</p>',
 		'show_on' => $show_on,
 	));
-	
+
 	$cmb->add_field( array(
 		'name' => __('Enter Your API Key:', 'wp-real-estate'),
 		'desc' => __('Enter your API key to continue', 'wp-real-estate'),
-		'before_row' => '<p class="cmb2-metabox-description">' . sprintf (__( 'If you do not have an %s account, please contact the IDX Broker team at 800-421-9668.', 'wp-real-estate' ), '<a href="https://idxbroker.com" target="_blank">'. __( 'IDX Broker', 'wp-real-estate' ) .'</a>') .' </p>',
+		'before_row' => '<p class="cmb2-metabox-description">' . sprintf (__( 'If you do not have an %s account, please contact the IDX Broker team at 800-421-9668.', 'wp-real-estate' ), '<a href="https://signup.idxbroker.com/a/mythemeshop" target="_blank">'. __( 'IDX Broker', 'wp-real-estate' ) .'</a>') .' </p>',
 		'id'   => 'wre_idx_api_key',
 		'type' => 'text',
 		'default' => '',
 		'attributes' => array(
 		),
 	) );
-	
+
 	$cmb->add_field(array(
 		'name' => __('Update Listings', 'wp-real-estate'),
 		'before_row' => '<p class="cmb2-metabox-description">' . __('These settings apply to any imported IDX listings. Imported listings are updated via the latest API response twice daily.', 'wp-real-estate') . '</p>',
@@ -640,7 +640,7 @@ function wre_options_page() {
 			'update_none' => __('Do Not Update', 'wp-real-estate') . '<p class="cmb2-metabox-description"> <b>'.__( 'Not recommended as displaying inaccurate MLS data may violate your IDX agreement.', 'wp-real-estate' ).'</b><br />'.__('Listing will be changed to sold status if it exists in the sold data feed.', 'wp-real-estate').'</p>',
 		),
 	));
-	
+
 	$cmb->add_field(array(
 		'name' => __('Sold Listings', 'wp-real-estate'),
 		'id' => 'wre_sold_listings',
@@ -656,7 +656,7 @@ function wre_options_page() {
 	$cmb->object_type('options-page');
 	$boxes[] = $cmb;
 
-	
+
 	/* ==================== Advanced Options ==================== */
 
 	// template html
@@ -709,7 +709,7 @@ function wre_options_page() {
 			'no' => __('No', 'wp-real-estate'),
 		),
 	));
-	
+
 	$cmb->object_type('options-page');
 	$boxes[] = $cmb;
 
@@ -750,7 +750,7 @@ function wre_options_page() {
 	));
 	$cmb->object_type('options-page');
 	$boxes[] = $cmb;
-	
+
 	$cmb = new_cmb2_box(array(
 		'id' => 'wre_pro_version_image',
 		'title' => 'WRE Pro Version',
